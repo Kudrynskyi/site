@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Товар — Огого!</title>
+  <meta name="description" content="Огого! — товари для дому, кухні, дітей і свят за чесними цінами.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css?v=20261119-7">
+</head>
+<body class="product-page">
+
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2.4"/><path d="M16.5 16.5 21 21" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></symbol>
+    <symbol id="i-cart" viewBox="0 0 24 24"><path d="M2 3h3l2.4 11.2a1.5 1.5 0 0 0 1.5 1.2h8.7a1.5 1.5 0 0 0 1.4-1.1L21 7H6" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/><circle cx="9.5" cy="20" r="1.6" fill="currentColor"/><circle cx="17" cy="20" r="1.6" fill="currentColor"/></symbol>
+    <symbol id="i-heart" viewBox="0 0 24 24"><path d="M12 20.5s-7.5-4.6-9.3-9.2C1.4 8 3.5 4.5 7 4.5c2 0 3.6 1.1 5 2.9 1.4-1.8 3-2.9 5-2.9 3.5 0 5.6 3.5 4.3 6.8C19.5 15.9 12 20.5 12 20.5Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></symbol>
+    <symbol id="i-heart-fill" viewBox="0 0 24 24"><path d="M12 20.5s-7.5-4.6-9.3-9.2C1.4 8 3.5 4.5 7 4.5c2 0 3.6 1.1 5 2.9 1.4-1.8 3-2.9 5-2.9 3.5 0 5.6 3.5 4.3 6.8C19.5 15.9 12 20.5 12 20.5Z" fill="currentColor"/></symbol>
+    <symbol id="i-user" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9.5" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="10" r="3.2" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M6 18.5c1.4-2.2 3.5-3.3 6-3.3s4.6 1.1 6 3.3" fill="none" stroke="currentColor" stroke-width="1.8"/></symbol>
+    <symbol id="i-burger" viewBox="0 0 24 24"><path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+    <symbol id="i-grid" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2"><rect x="3.5" y="3.5" width="7" height="7" rx="2"/><rect x="13.5" y="3.5" width="7" height="7" rx="2"/><rect x="3.5" y="13.5" width="7" height="7" rx="2"/><rect x="13.5" y="13.5" width="7" height="7" rx="2"/></g></symbol>
+    <symbol id="i-list" viewBox="0 0 24 24"><g stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M9 6h12M9 12h12M9 18h12"/><path d="M4 6h.01M4 12h.01M4 18h.01" stroke-width="3"/></g></symbol>
+    <symbol id="i-home" viewBox="0 0 24 24"><path d="M3.5 10.5 12 3.5l8.5 7V20a1 1 0 0 1-1 1h-5v-6h-5v6h-5a1 1 0 0 1-1-1Z" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"/></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s7-6.3 7-11.5A7 7 0 0 0 5 9.5C5 14.7 12 21 12 21Z" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="9.5" r="2.5" fill="currentColor"/></symbol>
+    <symbol id="i-star" viewBox="0 0 24 24"><path d="m12 2.8 2.8 5.9 6.4.8-4.7 4.4 1.2 6.4L12 17.2l-5.7 3.1 1.2-6.4-4.7-4.4 6.4-.8Z" fill="currentColor"/></symbol>
+    <symbol id="i-comment" viewBox="0 0 24 24"><path d="M4 5h16v11H9l-5 4Z" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"/></symbol>
+    <symbol id="i-close" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></symbol>
+    <symbol id="i-sort" viewBox="0 0 24 24"><path d="M3 6h18M6 12h12M9 18h6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></symbol>
+    <symbol id="i-filter" viewBox="0 0 24 24"><path d="M3 4h18l-7 8.5V19l-4 2v-8.5Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></symbol>
+    <symbol id="i-trash" viewBox="0 0 24 24"><path d="M4 7h16M9 7V4h6v3M6 7l1 13h10l1-13" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-chevron-left" viewBox="0 0 24 24"><path d="M15 4 7 12l8 8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-arrows" viewBox="0 0 24 24"><path d="m6 6 6 6-6 6M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-phone" viewBox="0 0 24 24"><path d="M6.5 3h3l1.5 4.5-2 1.5a11 11 0 0 0 6 6l1.5-2 4.5 1.5v3a2 2 0 0 1-2 2A16 16 0 0 1 4.5 5a2 2 0 0 1 2-2Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></symbol>
+    <symbol id="i-edit" viewBox="0 0 24 24"><path d="M4 20h4L19 9l-4-4L4 16Z M13.5 6.5l4 4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></symbol>
+    <symbol id="i-store" viewBox="0 0 24 24"><path d="M3.5 9 5 4h14l1.5 5M3.5 9h17M3.5 9a2.8 2.8 0 0 0 5.7 0 2.8 2.8 0 0 0 5.6 0 2.8 2.8 0 0 0 5.7 0M5 11.5V20h14v-8.5M10 20v-5h4v5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></symbol>
+    <symbol id="i-chevron-right" viewBox="0 0 24 24"><path d="m9 5 7 7-7 7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-truck" viewBox="0 0 24 24"><path d="M2 6h12v10H2zM14 9h4l4 4v3h-8" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"/><circle cx="6" cy="18" r="2" fill="currentColor"/><circle cx="18" cy="18" r="2" fill="currentColor"/></symbol>
+  </svg>
+
+  <header class="header">
+    <div class="container">
+      <div class="top-nav">
+        <div class="top-left">
+          <a href="index.html" class="logo" aria-label="Огого! — на головну"><span class="logo-o">О</span>гого!</a>
+          <span class="lang">УКР</span>
+          <button class="store-chip" data-open-stores aria-label="Змінити магазин">
+            <svg class="store-ico"><use href="#i-store"/></svg>
+            <span data-store-full>Київ, ТРЦ «Сонячний», вул. Прикладна, 1</span>
+            <svg class="chev"><use href="#i-chevron-right"/></svg>
+          </button>
+        </div>
+        <nav class="top-links">
+          <a href="index.html#deals">Усі акції</a>
+          <a href="index.html?sale=1#catalog" class="sale-chip">РОЗПРОДАЖ ДО −40%</a>
+          <a href="index.html#footer">Магазини</a>
+          <a href="index.html#footer">Покупцям ▾</a>
+        </nav>
+        <div class="top-right">
+          <a href="index.html#footer">ⓘ Допомога</a>
+          <a href="#">Увійти</a>
+        </div>
+        <button class="store-pill" id="storePill" data-open-stores aria-label="Змінити магазин">
+          <svg class="pin"><use href="#i-pin"/></svg>
+          <span><b data-store-city>Київ</b><small data-store-addr>ТРЦ «Сонячний», вул. Прикладна, 1</small></span>
+          <svg class="edit"><use href="#i-edit"/></svg>
+        </button>
+      </div>
+
+      <div class="main-row">
+        <button class="burger" id="burgerBtn" aria-label="Каталог"><svg><use href="#i-burger"/></svg></button>
+        <button class="catalog-btn" id="catalogBtn" aria-expanded="false" aria-controls="catalogMenu">
+          <svg><use href="#i-list"/></svg> КАТАЛОГ ТОВАРІВ
+        </button>
+        <form class="search" id="searchForm" role="search" action="index.html" method="get">
+          <input type="search" id="searchInput" name="q" placeholder="Я шукаю…" aria-label="Пошук товарів" autocomplete="off">
+          <button type="submit" aria-label="Шукати"><svg><use href="#i-search"/></svg></button>
+        </form>
+        <a href="tel:0800000000" class="phone-btn" aria-label="Зателефонувати"><svg><use href="#i-phone"/></svg></a>
+        <a class="head-tool" href="index.html#wishlist">
+          <span class="tool-icon"><svg><use href="#i-heart"/></svg><span class="count" data-wish-count hidden>0</span></span>
+          <span>Обране</span>
+        </a>
+        <div class="head-tool bonuses">
+          <span class="bonus-chip" id="bonusTotal">₴0</span>
+          <span>Ваші бонуси</span>
+        </div>
+        <a class="cart-btn" href="index.html#cart">
+          <span class="tool-icon"><svg><use href="#i-cart"/></svg><span class="count count-brand" data-cart-count hidden>0</span></span>
+          <span class="cart-sum"><small>Разом</small><b id="headerTotal">₴0</b></span>
+        </a>
+      </div>
+    </div>
+
+    <nav class="catalog-menu" id="catalogMenu" hidden>
+      <div class="container catalog-menu-grid" id="catalogMenuGrid"></div>
+    </nav>
+  </header>
+
+  <main class="container pdp" id="pdp">
+    <nav class="breadcrumbs" aria-label="Навігація" id="pdpCrumbs"></nav>
+
+    <div class="pdp-grid">
+      <section class="pdp-gallery" aria-label="Фото товару">
+        <div class="pdp-photo">
+          <img id="pdpImg" alt="">
+          <div class="badges" id="pdpBadges"></div>
+          <button class="wish" id="pdpWish" aria-pressed="false" aria-label="Додати в обране"><svg><use href="#i-heart"/></svg></button>
+        </div>
+      </section>
+
+      <section class="pdp-info">
+        <p class="pdp-cat" id="pdpCat"></p>
+        <h1 id="pdpTitle"></h1>
+        <div class="pdp-meta">
+          <div class="rating" id="pdpRating"></div>
+          <span class="pdp-code" id="pdpCode"></span>
+        </div>
+
+        <div class="pdp-buybox">
+          <div class="pdp-price">
+            <div class="old-row" id="pdpOld"></div>
+            <b class="price" id="pdpPrice"></b>
+            <p class="pdp-bonus" id="pdpBonus"></p>
+          </div>
+          <div class="pdp-actions" id="pdpActions"></div>
+        </div>
+
+        <button class="pdp-stock" data-open-stores>
+          <span class="dot"></span>
+          <span><b>Є в наявності</b><small data-store-full>Київ, ТРЦ «Сонячний», вул. Прикладна, 1</small></span>
+          <svg class="chev"><use href="#i-chevron-right"/></svg>
+        </button>
+
+        <ul class="pdp-perks">
+          <li><svg><use href="#i-store"/></svg><div><b>Самовивіз сьогодні</b><small>Безкоштовно з вибраного магазину</small></div></li>
+          <li><svg><use href="#i-truck"/></svg><div><b>Доставка 1–2 дні</b><small id="pdpDelivery">₴59 · безкоштовно від ₴500</small></div></li>
+          <li><svg><use href="#i-check"/></svg><div><b>Повернення 14 днів</b><small>Без зайвих питань</small></div></li>
+        </ul>
+      </section>
+    </div>
+
+    <section class="pdp-section">
+      <h2 class="section-title">Опис</h2>
+      <p class="pdp-desc" id="pdpDesc"></p>
+    </section>
+
+    <section class="pdp-section">
+      <h2 class="section-title">Характеристики</h2>
+      <dl class="pdp-specs" id="pdpSpecs"></dl>
+    </section>
+
+    <section class="pdp-section">
+      <h2 class="section-title">Відгуки</h2>
+      <div class="pdp-reviews" id="pdpReviews"></div>
+    </section>
+
+    <section class="pdp-section">
+      <h2 class="section-title">Схожі товари</h2>
+      <div class="scroller pdp-related" id="pdpRelated"></div>
+    </section>
+
+    <section class="pdp-missing" id="pdpMissing" hidden>
+      <h1>Товар не знайдено</h1>
+      <p>Можливо, посилання застаріло.</p>
+      <a class="btn btn-brand" href="index.html">На головну</a>
+    </section>
+  </main>
+
+  <footer class="footer" id="footer">
+    <div class="container footer-grid">
+      <div>
+        <a href="index.html" class="logo"><span class="logo-o">О</span>гого!</a>
+        <p>Мультимаркет товарів для дому та родини за чесними цінами. Понад 50 магазинів, щодня з 8:00 до 22:00.</p>
+      </div>
+      <div>
+        <h4>Покупцям</h4>
+        <a href="#">Доставка й оплата</a>
+        <a href="#">Повернення</a>
+        <a href="#">Бонусна програма</a>
+      </div>
+      <div>
+        <h4>Компанія</h4>
+        <a href="#">Про нас</a>
+        <a href="#">Вакансії</a>
+        <a href="#">Магазини</a>
+      </div>
+      <div>
+        <h4>Контакти</h4>
+        <a href="tel:0800000000" class="phone">0 800 000 000</a>
+        <small>Безкоштовно по Україні</small>
+      </div>
+    </div>
+    <p class="copyright">© 2026 Огого! · Навчальний концепт-проєкт</p>
+  </footer>
+
+  <!-- Нижня панель покупки (телефон) -->
+  <div class="pdp-bar" id="pdpBar">
+    <div class="pdp-bar-price"><small id="pdpBarOld"></small><b id="pdpBarPrice"></b></div>
+    <div class="pdp-bar-actions" id="pdpBarActions"></div>
+  </div>
+
+  <div class="overlay" id="overlay" hidden></div>
+
+  <!-- Вибір магазину -->
+  <section class="store-modal" id="storeModal" role="dialog" aria-modal="true" aria-labelledby="storeTitle" aria-hidden="true">
+    <div class="sheet-handle"></div>
+    <div class="sheet-head">
+      <h3 id="storeTitle">Оберіть магазин</h3>
+      <button class="icon-btn" data-close aria-label="Закрити"><svg><use href="#i-close"/></svg></button>
+    </div>
+    <p class="store-hint">Покажемо наявність і ціни у вибраному магазині. Забрати замовлення можна вже сьогодні.</p>
+    <div class="city-chips" id="cityChips"></div>
+    <label class="store-search">
+      <svg><use href="#i-search"/></svg>
+      <input type="search" id="storeSearch" placeholder="Місто, вулиця або ТРЦ" autocomplete="off">
+    </label>
+    <ul class="store-list" id="storeList"></ul>
+  </section>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="data.js?v=20261119-7"></script>
+  <script src="product.js?v=20261119-7"></script>
+</body>
+</html>
