@@ -32,6 +32,8 @@
     <symbol id="i-trash" viewBox="0 0 24 24"><path d="M4 7h16M9 7V4h6v3M6 7l1 13h10l1-13" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></symbol>
     <symbol id="i-chevron-left" viewBox="0 0 24 24"><path d="M15 4 7 12l8 8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></symbol>
     <symbol id="i-arrows" viewBox="0 0 24 24"><path d="m6 6 6 6-6 6M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-phone" viewBox="0 0 24 24"><path d="M6.5 3h3l1.5 4.5-2 1.5a11 11 0 0 0 6 6l1.5-2 4.5 1.5v3a2 2 0 0 1-2 2A16 16 0 0 1 4.5 5a2 2 0 0 1 2-2Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></symbol>
+    <symbol id="i-edit" viewBox="0 0 24 24"><path d="M4 20h4L19 9l-4-4L4 16Z M13.5 6.5l4 4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></symbol>
     <symbol id="i-truck" viewBox="0 0 24 24"><path d="M2 6h12v10H2zM14 9h4l4 4v3h-8" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"/><circle cx="6" cy="18" r="2" fill="currentColor"/><circle cx="18" cy="18" r="2" fill="currentColor"/></symbol>
   </svg>
 
@@ -79,6 +81,7 @@
           <input type="search" id="searchInput" placeholder="Я шукаю…" aria-label="Пошук товарів" autocomplete="off">
           <button type="submit" aria-label="Шукати"><svg><use href="#i-search"/></svg></button>
         </form>
+        <a href="tel:0800000000" class="phone-btn" aria-label="Зателефонувати"><svg><use href="#i-phone"/></svg></a>
         <button class="head-tool" data-show-wishlist>
           <span class="tool-icon"><svg><use href="#i-heart"/></svg><span class="count" data-wish-count hidden>0</span></span>
           <span>Обране</span>
@@ -100,6 +103,15 @@
   </header>
 
   <main>
+    <!-- Обраний магазин -->
+    <div class="container">
+      <button class="store-pill" id="storePill">
+        <svg class="pin"><use href="#i-pin"/></svg>
+        <span><b>Київ</b><small>Магазин №12, вул. Прикладна, 1</small></span>
+        <svg class="edit"><use href="#i-edit"/></svg>
+      </button>
+    </div>
+
     <!-- Банери -->
     <section class="container scroller banners" id="deals" aria-label="Акції">
       <article class="banner banner-warm">
@@ -107,7 +119,7 @@
         <h2>ТЕПЛІШЕ<br>РАЗОМ</h2>
         <p class="banner-big">до −40%</p>
         <img src="images/pled.jpg" alt="" class="banner-img">
-        <button class="banner-strip" data-cat-go="home">БЕЗКОШТОВНА ДОСТАВКА</button>
+        <button class="banner-strip" data-cat-go="home">БЕЗКОШТОВНА ДОСТАВКА ВІД ₴500</button>
       </article>
       <article class="banner banner-crazy">
         <h2 class="crazy">ШАЛЕНІ ЗНИЖКИ!</h2>
@@ -125,6 +137,10 @@
         <button class="banner-strip" data-cat-go="office">ДО КАНЦТОВАРІВ</button>
       </article>
     </section>
+
+    <div class="container">
+      <button class="catalog-pill" id="catalogPill"><svg><use href="#i-grid"/></svg>Каталог ▾</button>
+    </div>
 
     <!-- Категорії -->
     <section class="container section">
@@ -177,6 +193,7 @@
 
           <details class="filter-group" open>
             <summary>Ціна, ₴</summary>
+            <div class="range-chips" id="priceChips"></div>
             <div class="price-inputs">
               <span>Від</span><input type="number" id="priceMin" inputmode="numeric" min="0">
               <span>До</span><input type="number" id="priceMax" inputmode="numeric" min="0">
@@ -194,7 +211,7 @@
             <label class="check"><input type="checkbox" data-flag="sale"><i style="--dot:#E95C2A"></i>Зі знижкою</label>
             <label class="check"><input type="checkbox" data-flag="hit"><i style="--dot:#825DC7"></i>Хіти продажу</label>
             <label class="check"><input type="checkbox" data-flag="new"><i style="--dot:#2E8B3E"></i>Новинки</label>
-            <label class="check"><input type="checkbox" data-flag="free"><i style="--dot:#F5A524"></i>Безкоштовна доставка</label>
+            <label class="check"><input type="checkbox" data-flag="cheap"><i style="--dot:#F5A524"></i>До ₴100</label>
           </details>
 
           <details class="filter-group" open>
@@ -202,7 +219,10 @@
             <div id="catChecks"></div>
           </details>
 
-          <button class="btn btn-brand btn-block show-results" id="showResults">ПОКАЗАТИ ТОВАРИ</button>
+          <div class="filters-foot">
+            <button class="btn btn-ghost" id="resetInSheet">Скинути</button>
+            <button class="btn btn-brand show-results" id="showResults">ПОКАЗАТИ ТОВАРИ</button>
+          </div>
         </aside>
 
         <div class="products" id="productGrid"></div>
@@ -268,6 +288,7 @@
       <button class="icon-btn back" data-close aria-label="Назад"><svg><use href="#i-chevron-left"/></svg></button>
       <h3>Кошик</h3><span id="cartItemsCount">0 товарів</span>
     </div>
+    <div class="free-delivery" id="freeDelivery" hidden></div>
     <ul class="cart-list" id="cartList"></ul>
     <div class="cart-empty" id="cartEmpty">
       <svg><use href="#i-cart"/></svg>
@@ -275,7 +296,9 @@
       <button class="btn btn-outline" data-close>Перейти до покупок</button>
     </div>
     <div class="cart-pay" id="cartPay">
+      <div class="cart-summary" id="cartSummary"></div>
       <div class="pay-row"><span>До сплати</span><b id="cartTotal">₴0</b></div>
+      <p class="cart-bonus" id="cartBonus"></p>
       <button class="btn btn-brand btn-block btn-lg" id="checkoutBtn">Оформити замовлення</button>
     </div>
   </aside>
