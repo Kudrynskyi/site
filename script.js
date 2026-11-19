@@ -195,10 +195,6 @@ function productCard(p) {
         </div>
         <button class="buy ${qty ? "in-cart" : ""}" data-${qty ? "open-cart" : "add"}="${p.id}">${qty ? "У КОШИКУ" : "КУПИТИ"}</button>
       </div>
-      <div class="meta">
-        <span class="meta-chip">${catById(p.cat).name}</span>
-        <span class="meta-chip brand">Бонус +${money(bonus(p))}</span>
-      </div>
     </article>`;
 }
 
@@ -348,7 +344,7 @@ function toggleCatalog(force) {
 $("#catalogBtn").addEventListener("click", () => toggleCatalog());
 $("#burgerBtn").addEventListener("click", () => toggleCatalog());
 $("#catalogPill").addEventListener("click", () => { window.scrollTo({ top: 0, behavior: "smooth" }); toggleCatalog(true); });
-$("#storePill").addEventListener("click", () => toast("Вибір магазину з'явиться згодом 🙂"));
+
 
 // ================= Обране =================
 function toggleWish(id) {
@@ -491,9 +487,69 @@ $("#checkoutBtn").addEventListener("click", () => {
 });
 
 // ================= Шари =================
+// ================= Вибір магазину =================
+const stores = [
+  { id: 1, city: "Київ",   place: "ТРЦ «Сонячний»", street: "вул. Прикладна, 1",  hours: "8:00–22:00" },
+  { id: 2, city: "Київ",   place: "",               street: "вул. Зелена, 25",    hours: "8:00–22:00" },
+  { id: 3, city: "Київ",   place: "ТЦ «Каштан»",    street: "просп. Світлий, 40", hours: "9:00–21:00" },
+  { id: 4, city: "Львів",  place: "ТЦ «Площа»",     street: "вул. Квіткова, 7",   hours: "9:00–21:00" },
+  { id: 5, city: "Одеса",  place: "",               street: "вул. Морська, 3",    hours: "8:00–22:00" },
+  { id: 6, city: "Харків", place: "ТРЦ «Простір»",  street: "вул. Річкова, 12",   hours: "9:00–21:00" },
+  { id: 7, city: "Дніпро", place: "",               street: "вул. Липова, 18",    hours: "8:00–22:00" },
+];
+let storeId = load("ogogo-store", 1);
+let storeCity = "Усі";
+const storeAddr = (st) => [st.place, st.street].filter(Boolean).join(", ");
+
+function renderStoreLabels() {
+  const st = stores.find((x) => x.id === storeId) || stores[0];
+  $$("[data-store-full]").forEach((el) => (el.textContent = `${st.city}, ${storeAddr(st)}`));
+  $$("[data-store-city]").forEach((el) => (el.textContent = st.city));
+  $$("[data-store-addr]").forEach((el) => (el.textContent = storeAddr(st)));
+}
+
+function renderStores() {
+  const cities = ["Усі", ...new Set(stores.map((x) => x.city))];
+  $("#cityChips").innerHTML = cities.map((c) =>
+    `<button class="city-chip ${c === storeCity ? "on" : ""}" data-city="${c}">${c}</button>`).join("");
+  const q = $("#storeSearch").value.trim().toLowerCase();
+  const list = stores.filter((x) =>
+    (storeCity === "Усі" || x.city === storeCity) &&
+    (!q || `${x.city} ${x.place} ${x.street}`.toLowerCase().includes(q)));
+  $("#storeList").innerHTML = list.length ? list.map((x) => `
+    <li><button class="store-item ${x.id === storeId ? "on" : ""}" data-store="${x.id}">
+      <svg class="store-ico"><use href="#i-store"/></svg>
+      <span><b>${x.city}${x.place ? `, ${x.place}` : ""}</b><small>${x.street} · ${x.hours}</small></span>
+      ${x.id === storeId ? `<svg class="tick"><use href="#i-check"/></svg>` : ""}
+    </button></li>`).join("") : `<li class="store-none">Магазинів не знайдено</li>`;
+}
+
+function openStores() {
+  closeAll();
+  renderStores();
+  $("#storeModal").classList.add("open");
+  $("#storeModal").setAttribute("aria-hidden", "false");
+  showOverlay();
+}
+
+$("#storeSearch").addEventListener("input", renderStores);
+$("#storeModal").addEventListener("click", (e) => {
+  const c = e.target.closest("[data-city]");
+  if (c) { storeCity = c.dataset.city; renderStores(); return; }
+  const b = e.target.closest("[data-store]");
+  if (b) {
+    storeId = Number(b.dataset.store);
+    save("ogogo-store", storeId);
+    renderStoreLabels();
+    closeAll();
+    const st = stores.find((x) => x.id === storeId);
+    toast(`Магазин: ${st.city}, ${storeAddr(st)} ✓`);
+  }
+});
+
 function showOverlay() { $("#overlay").hidden = false; document.body.classList.add("locked"); }
 function closeAll() {
-  ["#preCart", "#cartPanel"].forEach((s) => { $(s).classList.remove("open"); $(s).setAttribute("aria-hidden", "true"); });
+  ["#preCart", "#cartPanel", "#storeModal"].forEach((s) => { $(s).classList.remove("open"); $(s).setAttribute("aria-hidden", "true"); });
   $("#filtersPanel").classList.remove("open");
   $("#overlay").hidden = true;
   document.body.classList.remove("locked");
@@ -525,7 +581,7 @@ $$(".tab").forEach((tab) => tab.addEventListener("click", () => {
 
 // ================= Кліки =================
 document.addEventListener("click", (e) => {
-  const t = e.target.closest("[data-quick-add],[data-range],[data-add],[data-add-extra],[data-inc],[data-dec],[data-wish],[data-cat-go],[data-quick],[data-remove],[data-remove-item],[data-open-cart],[data-show-wishlist],[data-close]");
+  const t = e.target.closest("[data-quick-add],[data-range],[data-add],[data-add-extra],[data-inc],[data-dec],[data-wish],[data-cat-go],[data-quick],[data-remove],[data-remove-item],[data-open-cart],[data-show-wishlist],[data-open-stores],[data-close]");
   if (!t) {
     if (!e.target.closest("#catalogMenu, #catalogBtn, #burgerBtn, #catalogPill, .tab-bar")) toggleCatalog(false);
     return;
@@ -564,6 +620,7 @@ document.addEventListener("click", (e) => {
   }
   else if ("openCart" in d) openCart();
   else if ("showWishlist" in d) showWishlist();
+  else if ("openStores" in d) openStores();
   else if ("close" in d) closeAll();
 });
 
@@ -578,5 +635,6 @@ renderSort();
 renderCatalog();
 renderCounts();
 renderCart();
+renderStoreLabels();
 
 $("#resetInSheet").addEventListener("click", () => { resetFilters(); renderCatalog(); });
