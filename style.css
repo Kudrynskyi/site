@@ -1007,3 +1007,14 @@ main { padding-bottom: 64px; }
 .quick-chip:hover { background: var(--grey-200); }
 .quick-chip.on { background: var(--grey-800); color: #fff; box-shadow: none; }
 .filter-count { background: var(--grey-800); }
+
+/* Локація на телефоні — один рядок (Instacart, Blinkit) */
+@media (max-width: 760px) {
+  .top-nav .store-pill { height: 40px; padding: 0 12px; }
+  .top-nav .store-pill span { flex-direction: row; align-items: baseline; gap: 4px; white-space: nowrap; overflow: hidden; }
+  .top-nav .store-pill b { flex-shrink: 0; font-size: 15px; }
+  .top-nav .store-pill b::after { content: ","; }
+  .top-nav .store-pill small { font-size: 14px; overflow: hidden; text-overflow: ellipsis; }
+  .top-nav .store-pill .pin { font-size: 18px; }
+  .top-nav .store-pill .edit { font-size: 16px; }
+}
