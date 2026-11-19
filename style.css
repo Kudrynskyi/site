@@ -1243,3 +1243,59 @@ h1, h2, h3, .section-title, .catalog-title h2, .banner h2, .price, .deal-price {
   .product-page .toast { bottom: 96px; }
   .product-page .footer { padding-bottom: 96px; }
 }
+
+/* =========================================================
+   Шапка на комп'ютері: магазин, іконки, кошик-пігулка
+   ========================================================= */
+.store-pill-desk, .head-icon { display: none; }
+
+@media (min-width: 761px) {
+  .store-chip { display: none; }
+  .main-row { gap: 18px; }
+
+  .store-pill-desk {
+    display: flex; flex: 0 1 300px; min-width: 200px; max-width: 320px; margin: 0;
+    height: 52px; padding: 0 18px; gap: 12px; border-radius: var(--r-pill);
+  }
+  .store-pill-desk .pin { font-size: 22px; flex-shrink: 0; }
+  .store-pill-desk span { min-width: 0; line-height: 1.2; }
+  .store-pill-desk b { font-size: 15px; font-weight: 600; }
+  .store-pill-desk small { font-size: 13px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+  /* Легкі іконки без підписів */
+  .phone-btn, .head-icon, .head-tool:not(.bonuses) {
+    display: grid; place-items: center; flex-shrink: 0;
+    width: 44px; height: 44px; border-radius: 50%; background: none;
+    font-size: 26px; color: var(--text-primary);
+  }
+  .phone-btn:hover, .head-icon:hover, .head-tool:not(.bonuses):hover { background: var(--grey-100); }
+  .head-tool:not(.bonuses) > span:not(.tool-icon) { display: none; }
+  .head-tool .tool-icon { font-size: 27px; }
+  .head-tool .count {
+    top: auto; bottom: -4px; left: -6px; min-width: 18px; height: 18px; line-height: 18px;
+    background: var(--yellow); color: var(--text-primary); font-weight: 700;
+  }
+  .bonuses { display: none !important; }
+
+  /* Кошик: сума + іконка */
+  .cart-btn { height: 52px; gap: 10px; padding: 0 18px 0 22px; }
+  .cart-btn .tool-icon { order: 2; font-size: 26px; }
+  .cart-btn .count-brand { left: auto; right: -8px; top: -8px; background: var(--text-primary); color: var(--yellow); }
+  .cart-sum small { display: none; }
+  .cart-sum b { font-size: 20px; font-weight: 800; letter-spacing: -0.02em; }
+}
+
+@media (min-width: 761px) and (max-width: 1100px) {
+  .store-pill-desk { flex-basis: 220px; min-width: 170px; }
+  .catalog-btn { padding: 0 18px; }
+  .phone-btn { display: none; }
+}
+@media (min-width: 761px) {
+  .search { min-width: 200px; }
+}
+@media (min-width: 761px) and (max-width: 1000px) {
+  .catalog-btn { font-size: 0; gap: 0; padding: 0; width: 52px; height: 52px; justify-content: center; }
+  .catalog-btn svg { font-size: 22px; }
+  .store-pill-desk { flex-basis: 190px; min-width: 150px; padding: 0 14px; }
+  .main-row { gap: 12px; }
+}

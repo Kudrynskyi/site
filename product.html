@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=20261119-7">
+  <link rel="stylesheet" href="style.css?v=20261119-8">
 </head>
 <body class="product-page">
 
@@ -77,11 +77,16 @@
           <input type="search" id="searchInput" name="q" placeholder="Я шукаю…" aria-label="Пошук товарів" autocomplete="off">
           <button type="submit" aria-label="Шукати"><svg><use href="#i-search"/></svg></button>
         </form>
+        <button class="store-pill store-pill-desk" data-open-stores aria-label="Змінити магазин">
+          <svg class="pin"><use href="#i-pin"/></svg>
+          <span><b data-store-city>Київ</b><small data-store-addr>ТРЦ «Сонячний», вул. Прикладна, 1</small></span>
+        </button>
         <a href="tel:0800000000" class="phone-btn" aria-label="Зателефонувати"><svg><use href="#i-phone"/></svg></a>
         <a class="head-tool" href="index.html#wishlist">
           <span class="tool-icon"><svg><use href="#i-heart"/></svg><span class="count" data-wish-count hidden>0</span></span>
           <span>Обране</span>
         </a>
+        <a class="head-icon" href="#" aria-label="Увійти в профіль"><svg><use href="#i-user"/></svg></a>
         <div class="head-tool bonuses">
           <span class="bonus-chip" id="bonusTotal">₴0</span>
           <span>Ваші бонуси</span>
@@ -221,7 +226,7 @@
 
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
-  <script src="data.js?v=20261119-7"></script>
-  <script src="product.js?v=20261119-7"></script>
+  <script src="data.js?v=20261119-8"></script>
+  <script src="product.js?v=20261119-8"></script>
 </body>
 </html>
