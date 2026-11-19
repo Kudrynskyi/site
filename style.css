@@ -910,3 +910,87 @@ main { padding-bottom: 64px; }
 }
 .free-delivery p { display: block; line-height: 1.35; }
 .free-delivery p svg { vertical-align: -4px; margin-right: 8px; }
+
+/* =========================================================
+   Вибір магазину
+   ========================================================= */
+.store-chip {
+  display: inline-flex; align-items: center; gap: 8px; max-width: 420px;
+  padding: 7px 12px 7px 14px; border-radius: var(--r-pill);
+  border: 1.5px solid var(--border-default); background: #fff;
+  font-size: 15px; font-weight: 500; transition: border-color .15s, background .15s;
+}
+.store-chip:hover { border-color: var(--yellow-hover); background: var(--yellow-pale); }
+.store-chip span { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.store-chip .store-ico { font-size: 19px; }
+.store-chip .chev { font-size: 14px; }
+.top-left { min-width: 0; }
+
+.store-modal {
+  position: fixed; z-index: 50; left: 50%; top: 50%;
+  width: min(520px, calc(100% - 32px)); max-height: min(640px, 86vh);
+  display: flex; flex-direction: column;
+  background: #fff; border-radius: 28px; padding: 14px 20px 20px;
+  box-shadow: 0 24px 60px rgba(12, 6, 26, .25);
+  opacity: 0; pointer-events: none; transform: translate(-50%, -46%) scale(.97);
+  transition: opacity .2s, transform .25s cubic-bezier(.2, .8, .2, 1);
+}
+.store-modal.open { opacity: 1; pointer-events: auto; transform: translate(-50%, -50%) scale(1); }
+.store-modal .sheet-handle { display: none; }
+.store-hint { color: var(--text-secondary); font-size: 15px; margin: -4px 0 14px; }
+.city-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+.city-chip { padding: 7px 14px; border-radius: var(--r-pill); background: var(--yellow-pale); font-size: 15px; font-weight: 500; }
+.city-chip.on { background: var(--yellow); }
+.store-search {
+  display: flex; align-items: center; gap: 10px; height: 46px; padding: 0 16px; margin-bottom: 10px;
+  border: 2px solid var(--text-primary); border-radius: var(--r-pill);
+}
+.store-search svg { font-size: 18px; color: var(--text-secondary); }
+.store-search input { flex: 1; min-width: 0; border: none; outline: none; font-size: 16px; background: none; }
+.store-list { list-style: none; overflow-y: auto; margin: 0 -8px; padding: 0 8px; }
+.store-item {
+  display: flex; align-items: center; gap: 14px; width: 100%; text-align: left;
+  padding: 12px 14px; border-radius: 20px;
+}
+.store-item:hover { background: var(--yellow-pale); }
+.store-item.on { background: var(--yellow-soft); }
+.store-item .store-ico { font-size: 24px; flex-shrink: 0; }
+.store-item span { flex: 1; min-width: 0; display: flex; flex-direction: column; }
+.store-item b { font-size: 16px; font-weight: 500; }
+.store-item small { color: var(--text-secondary); font-size: 14px; }
+.store-item .tick { font-size: 22px; }
+.store-none { text-align: center; color: var(--text-secondary); padding: 24px 0; }
+
+@media (max-width: 1100px) {
+  .store-chip { max-width: 300px; }
+}
+@media (max-width: 760px) {
+  .store-chip { display: none; }
+  .store-modal {
+    top: auto; bottom: 0; left: 0; width: 100%; max-height: 86vh;
+    border-radius: 28px 28px 0 0; padding: 10px 16px max(16px, env(safe-area-inset-bottom));
+    transform: translateY(105%); opacity: 1;
+  }
+  .store-modal.open { transform: translateY(0); }
+  .store-modal .sheet-handle { display: block; }
+}
+
+/* Магазин у шапці */
+.top-nav .store-pill { display: none; }
+.banners { padding-top: 20px; }
+@media (max-width: 760px) {
+  .top-nav { gap: 12px; padding: 10px 0 2px; }
+  .logo { flex-shrink: 0; }
+  .top-nav .store-pill {
+    display: flex; flex: 1; min-width: 0; max-width: none; margin: 0;
+    padding: 6px 12px; gap: 8px; border-radius: var(--r-pill);
+  }
+  .top-nav .store-pill .pin { font-size: 20px; }
+  .top-nav .store-pill b { font-size: 14px; line-height: 1.15; }
+  .top-nav .store-pill small { font-size: 12px; line-height: 1.2; }
+  .top-nav .store-pill .edit { font-size: 18px; }
+  .banners { padding-top: 16px; }
+}
+@media (max-width: 360px) {
+  .logo { font-size: 26px; }
+}

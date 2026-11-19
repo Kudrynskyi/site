@@ -34,6 +34,9 @@
     <symbol id="i-arrows" viewBox="0 0 24 24"><path d="m6 6 6 6-6 6M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></symbol>
     <symbol id="i-phone" viewBox="0 0 24 24"><path d="M6.5 3h3l1.5 4.5-2 1.5a11 11 0 0 0 6 6l1.5-2 4.5 1.5v3a2 2 0 0 1-2 2A16 16 0 0 1 4.5 5a2 2 0 0 1 2-2Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></symbol>
     <symbol id="i-edit" viewBox="0 0 24 24"><path d="M4 20h4L19 9l-4-4L4 16Z M13.5 6.5l4 4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></symbol>
+    <symbol id="i-store" viewBox="0 0 24 24"><path d="M3.5 9 5 4h14l1.5 5M3.5 9h17M3.5 9a2.8 2.8 0 0 0 5.7 0 2.8 2.8 0 0 0 5.6 0 2.8 2.8 0 0 0 5.7 0M5 11.5V20h14v-8.5M10 20v-5h4v5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></symbol>
+    <symbol id="i-chevron-right" viewBox="0 0 24 24"><path d="m9 5 7 7-7 7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
     <symbol id="i-truck" viewBox="0 0 24 24"><path d="M2 6h12v10H2zM14 9h4l4 4v3h-8" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"/><circle cx="6" cy="18" r="2" fill="currentColor"/><circle cx="18" cy="18" r="2" fill="currentColor"/></symbol>
   </svg>
 
@@ -52,7 +55,11 @@
         <div class="top-left">
           <a href="#" class="logo" aria-label="Огого! — на головну">Огого!</a>
           <span class="lang">УКР</span>
-          <span class="city"><svg><use href="#i-pin"/></svg> Київ ▾</span>
+          <button class="store-chip" data-open-stores aria-label="Змінити магазин">
+            <svg class="store-ico"><use href="#i-store"/></svg>
+            <span data-store-full>Київ, ТРЦ «Сонячний», вул. Прикладна, 1</span>
+            <svg class="chev"><use href="#i-chevron-right"/></svg>
+          </button>
         </div>
         <nav class="top-links">
           <a href="#deals">Усі акції</a>
@@ -64,12 +71,11 @@
           <a href="#footer">ⓘ Допомога</a>
           <a href="#">Увійти</a>
         </div>
-        <div class="mobile-actions">
-          <button class="icon-btn" aria-label="Профіль"><svg><use href="#i-user"/></svg></button>
-          <button class="icon-btn" data-open-cart aria-label="Кошик">
-            <svg><use href="#i-cart"/></svg><span class="count" data-cart-count hidden>0</span>
-          </button>
-        </div>
+        <button class="store-pill" id="storePill" data-open-stores aria-label="Змінити магазин">
+          <svg class="pin"><use href="#i-pin"/></svg>
+          <span><b data-store-city>Київ</b><small data-store-addr>ТРЦ «Сонячний», вул. Прикладна, 1</small></span>
+          <svg class="edit"><use href="#i-edit"/></svg>
+        </button>
       </div>
 
       <div class="main-row">
@@ -103,15 +109,6 @@
   </header>
 
   <main>
-    <!-- Обраний магазин -->
-    <div class="container">
-      <button class="store-pill" id="storePill">
-        <svg class="pin"><use href="#i-pin"/></svg>
-        <span><b>Київ</b><small>Магазин №12, вул. Прикладна, 1</small></span>
-        <svg class="edit"><use href="#i-edit"/></svg>
-      </button>
-    </div>
-
     <!-- Банери -->
     <section class="container scroller banners" id="deals" aria-label="Акції">
       <article class="banner banner-warm">
@@ -302,6 +299,22 @@
       <button class="btn btn-brand btn-block btn-lg" id="checkoutBtn">Оформити замовлення</button>
     </div>
   </aside>
+
+  <!-- Вибір магазину -->
+  <section class="store-modal" id="storeModal" role="dialog" aria-modal="true" aria-labelledby="storeTitle" aria-hidden="true">
+    <div class="sheet-handle"></div>
+    <div class="sheet-head">
+      <h3 id="storeTitle">Оберіть магазин</h3>
+      <button class="icon-btn" data-close aria-label="Закрити"><svg><use href="#i-close"/></svg></button>
+    </div>
+    <p class="store-hint">Покажемо наявність і ціни у вибраному магазині. Забрати замовлення можна вже сьогодні.</p>
+    <div class="city-chips" id="cityChips"></div>
+    <label class="store-search">
+      <svg><use href="#i-search"/></svg>
+      <input type="search" id="storeSearch" placeholder="Місто, вулиця або ТРЦ" autocomplete="off">
+    </label>
+    <ul class="store-list" id="storeList"></ul>
+  </section>
 
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
