@@ -15,22 +15,22 @@ const categories = [
 ];
 
 const products = [
-  { id: 1,  name: "Сковорода антипригарна 24 см", cat: "kitchen", icon: "🍳", price: 289, old: 399, badge: "Хіт" },
-  { id: 2,  name: "Набір рушників, 3 шт.",        cat: "home",    icon: "🧺", price: 199, old: 259 },
-  { id: 3,  name: "Засіб для миття посуду 1 л",   cat: "clean",   icon: "🧴", price: 49,  old: 65,  badge: "−25%" },
-  { id: 4,  name: "Конструктор «Місто», 120 дет.",cat: "kids",    icon: "🧱", price: 349, old: null, badge: "Новинка" },
-  { id: 5,  name: "Плед флісовий 150×200",        cat: "home",    icon: "🛏️", price: 259, old: 349 },
-  { id: 6,  name: "Зошит А5, 48 арк.",            cat: "office",  icon: "📒", price: 15,  old: 19 },
-  { id: 7,  name: "Шампунь для всієї родини",     cat: "beauty",  icon: "🧼", price: 79,  old: 99 },
-  { id: 8,  name: "Гірлянда LED, 10 м",           cat: "season",  icon: "✨", price: 149, old: 219, badge: "Хіт" },
-  { id: 9,  name: "Набір контейнерів, 5 шт.",     cat: "kitchen", icon: "🥡", price: 129, old: null },
-  { id: 10, name: "Іграшка м'яка «Ведмедик»",     cat: "kids",    icon: "🧸", price: 189, old: 239 },
-  { id: 11, name: "Губки кухонні, 10 шт.",        cat: "clean",   icon: "🧽", price: 35,  old: 45 },
-  { id: 12, name: "Рюкзак шкільний",              cat: "office",  icon: "🎒", price: 449, old: 599, badge: "−25%" },
-  { id: 13, name: "Насіння томатів «Черрі»",      cat: "garden",  icon: "🍅", price: 19,  old: null },
-  { id: 14, name: "Миска для котів",              cat: "pets",    icon: "🐱", price: 59,  old: 79 },
-  { id: 15, name: "Набір викруток, 6 шт.",        cat: "tools",   icon: "🪛", price: 169, old: 219 },
-  { id: 16, name: "Ялинкові іграшки, 12 шт.",     cat: "season",  icon: "🎄", price: 119, old: 159, badge: "Новинка" },
+  { id: 1,  name: "Сковорода антипригарна 24 см", cat: "kitchen", img: "images/skovoroda.jpg", icon: "🍳", price: 289, old: 399, badge: "Хіт" },
+  { id: 2,  name: "Набір рушників, 3 шт.",        cat: "home",    img: "images/rushnyky.jpg", icon: "🧺", price: 199, old: 259 },
+  { id: 3,  name: "Засіб для миття посуду 1 л",   cat: "clean",   img: "images/zasib-posud.jpg", icon: "🧴", price: 49,  old: 65,  badge: "−25%" },
+  { id: 4,  name: "Конструктор «Місто», 120 дет.",cat: "kids",    img: "images/konstruktor.jpg", icon: "🧱", price: 349, old: null, badge: "Новинка" },
+  { id: 5,  name: "Плед флісовий 150×200",        cat: "home",    img: "images/pled.jpg", icon: "🛏️", price: 259, old: 349 },
+  { id: 6,  name: "Зошит А5, 48 арк.",            cat: "office",  img: "images/zoshyt.jpg", icon: "📒", price: 15,  old: 19 },
+  { id: 7,  name: "Шампунь для всієї родини",     cat: "beauty",  img: "images/shampun.jpg", icon: "🧼", price: 79,  old: 99 },
+  { id: 8,  name: "Гірлянда LED, 10 м",           cat: "season",  img: "images/girlyanda.jpg", icon: "✨", price: 149, old: 219, badge: "Хіт" },
+  { id: 9,  name: "Набір контейнерів, 5 шт.",     cat: "kitchen", img: "images/konteinery.jpg", icon: "🥡", price: 129, old: null },
+  { id: 10, name: "Іграшка м'яка «Ведмедик»",     cat: "kids",    img: "images/vedmedyk.jpg", icon: "🧸", price: 189, old: 239 },
+  { id: 11, name: "Губки кухонні, 10 шт.",        cat: "clean",   img: "images/gubky.jpg", icon: "🧽", price: 35,  old: 45 },
+  { id: 12, name: "Рюкзак шкільний",              cat: "office",  img: "images/ryukzak.jpg", icon: "🎒", price: 449, old: 599, badge: "−25%" },
+  { id: 13, name: "Насіння томатів «Черрі»",      cat: "garden",  img: "images/nasinnya-tomativ.jpg", icon: "🍅", price: 19,  old: null },
+  { id: 14, name: "Миска для котів",              cat: "pets",    img: "images/myska-kit.jpg", icon: "🐱", price: 59,  old: 79 },
+  { id: 15, name: "Набір викруток, 6 шт.",        cat: "tools",   img: "images/vykrutky.jpg", icon: "🪛", price: 169, old: 219 },
+  { id: 16, name: "Ялинкові іграшки, 12 шт.",     cat: "season",  img: "images/yalynkovi-igrashky.jpg", icon: "🎄", price: 119, old: 159, badge: "Новинка" },
 ];
 
 // ---------- Допоміжне ----------
@@ -70,7 +70,10 @@ function renderProducts() {
     return `
     <article class="product">
       ${p.badge ? `<span class="badge ${p.badge.startsWith("−") ? "badge-sale" : p.badge === "Новинка" ? "badge-new" : ""}">${p.badge}</span>` : ""}
-      <div class="product-img" style="--bg:${c.color}">${p.icon}</div>
+      <div class="product-img" style="--bg:${c.color}">
+        <span class="product-emoji">${p.icon}</span>
+        ${p.img ? `<img src="${p.img}" alt="${p.name}" loading="lazy" onerror="this.remove()">` : ""}
+      </div>
       <small class="product-cat">${c.name}</small>
       <h3>${p.name}</h3>
       <div class="price-row">
