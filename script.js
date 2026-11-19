@@ -563,3 +563,29 @@ const headerEl = $(".header");
 const onScrollHeader = () => headerEl.classList.toggle("scrolled", window.scrollY > 80);
 window.addEventListener("scroll", onScrollHeader, { passive: true });
 onScrollHeader();
+
+// ================= Карусель банерів =================
+(function bannerCarousel() {
+  const track = $("#bannerTrack");
+  if (!track) return;
+  const slides = $$(".pb", track);
+  const dots = $("#bannerDots");
+  dots.innerHTML = slides.map((_, i) => `<button aria-label="Банер ${i + 1}" data-dot="${i}"></button>`).join("");
+  const step = () => slides[0].getBoundingClientRect().width + parseFloat(getComputedStyle(track).columnGap || 16);
+  const update = () => {
+    const i = Math.round(track.scrollLeft / step());
+    $$("button", dots).forEach((d, k) => d.classList.toggle("on", k === i));
+    $(".car-arrow.prev").disabled = track.scrollLeft < 4;
+    $(".car-arrow.next").disabled = track.scrollLeft + track.clientWidth > track.scrollWidth - 4;
+  };
+  $$(".car-arrow").forEach((b) => b.addEventListener("click", () =>
+    track.scrollBy({ left: Number(b.dataset.car) * step(), behavior: "smooth" })));
+  dots.addEventListener("click", (e) => {
+    const d = e.target.closest("[data-dot]");
+    if (d) track.scrollTo({ left: Number(d.dataset.dot) * step(), behavior: "smooth" });
+  });
+  track.addEventListener("scroll", update, { passive: true });
+  window.addEventListener("resize", update);
+  update();
+  $$("[data-toast]", track).forEach((b) => b.addEventListener("click", () => toast(b.dataset.toast)));
+})();

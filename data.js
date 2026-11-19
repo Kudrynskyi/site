@@ -54,7 +54,7 @@ const $$ = (s, root = document) => [...root.querySelectorAll(s)];
 const money = (n) => "₴" + n.toLocaleString("uk-UA");
 const catById = (id) => categories.find((c) => c.id === id);
 const byId = (id) => products.find((p) => p.id === Number(id));
-const imgSrc = (p) => `images/${p.img}.jpg`;
+const imgSrc = (p) => `images/${p.img}.webp`;
 const bonus = (p) => Math.round(p.price * BONUS_RATE);
 const discount = (p) => (p.old ? Math.round((1 - p.price / p.old) * 100) : 0);
 
