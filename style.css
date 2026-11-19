@@ -1346,3 +1346,15 @@ h1, h2, h3, .section-title, .catalog-title h2, .banner h2, .price, .deal-price {
   .search { flex: 1 1 320px; }
   .store-pill-desk { flex: 0 1 260px; }
 }
+
+/* Промо-смужка вдвічі нижча */
+.promo-strip { gap: 10px; padding: 3px 16px; min-height: 0; }
+.promo-card { padding: 0 8px; font-size: 12px; line-height: 18px; border-width: 1.2px; border-radius: 6px; }
+.promo-title { font-size: 15px !important; line-height: 1; }
+.burst { width: 24px; height: 24px; font-size: 8.5px; }
+.promo-go { width: 22px; height: 22px; font-size: 12px; border-radius: 50% !important; }
+@media (max-width: 760px) {
+  .promo-strip { padding: 3px 12px; gap: 8px; }
+  .promo-title { font-size: 13px !important; }
+  .promo-card { font-size: 11px; }
+}
