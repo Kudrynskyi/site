@@ -829,3 +829,84 @@ main { padding-bottom: 64px; }
   }
   .catalog-pill svg { font-size: 20px; }
 }
+
+/* =========================================================
+   Жовті кнопки + більше заокруглень
+   ========================================================= */
+:root {
+  --r-lg: 16px;
+  --r-xl: 24px;
+  --r-pill: 999px;
+}
+
+/* Усі кнопки — жовті «пігулки» */
+.buy, .btn, .catalog-btn, .cart-btn, .search button, .promo-go,
+.sale-chip, .banner-strip, .installments, .add-btn, .catalog-pill {
+  border-radius: var(--r-pill) !important;
+}
+.buy {
+  background: var(--yellow); color: var(--text-primary);
+  height: 52px; padding: 0 22px; margin: 5px 5px 5px 0;
+}
+.buy:hover { background: var(--yellow-hover); }
+.buy.in-cart { background: var(--text-primary); color: var(--yellow); }
+.buy.in-cart:hover { background: #2A2238; }
+.promo-go { background: var(--text-primary); color: var(--yellow); }
+.sale-chip { background: var(--text-primary); color: var(--yellow) !important; padding: 5px 14px; }
+
+/* Сірі кнопки → жовті / світло-жовті */
+.ctrl-btn, .sort-box { background: var(--yellow-soft); border-radius: var(--r-pill); }
+.ctrl-btn svg, .sort-box svg, .ctrl-btn .brand { color: var(--text-primary); }
+.quick-chip, .range-chip, .active-chip, .meta-chip, .btn-ghost { border-radius: var(--r-pill); }
+.quick-chip { background: var(--yellow-pale); }
+.btn-ghost { background: var(--yellow-soft); }
+.btn-outline { border-color: var(--yellow-hover); color: var(--text-primary); background: var(--yellow-pale); }
+.clear-btn { color: var(--text-primary); text-decoration: underline; text-underline-offset: 3px; }
+.stepper { border-radius: var(--r-pill); background: var(--yellow-soft); }
+.stepper button { border-radius: 50%; }
+.stepper span { border-radius: var(--r-pill); }
+.icon-btn { border-radius: 50%; }
+.cart-top .back { color: var(--text-primary); background: var(--yellow-soft); }
+.wish { box-shadow: 0 2px 8px rgba(0, 0, 0, .08); }
+.filter-count { background: var(--bg-brand); }
+.count { background: var(--bg-brand); }
+
+/* Більше заокруглень */
+.banner { border-radius: 28px; }
+.deal { border-radius: 24px; }
+.deal-img { border-radius: 18px; }
+.cat-img { border-radius: 20px; }
+.card { border-radius: 24px; }
+.products { gap: 10px; }
+.card-media { border-radius: 18px; }
+.badge { border-radius: var(--r-pill) !important; padding-left: 10px; padding-right: 10px; }
+.badge-sale { padding: 6px 12px; font-size: 18px; line-height: 22px; }
+.price-panel { border-radius: var(--r-pill); padding-left: 18px; }
+.filter-bar, .filters { border-radius: 24px; }
+.filter-bar { margin-bottom: 10px; }
+.listing { gap: 10px; }
+.price-inputs input { border-radius: 14px; }
+.catalog-menu { border-radius: 0 0 28px 28px; }
+.catalog-item { border-radius: var(--r-pill); }
+.cart-item, .free-delivery { border-radius: 24px; }
+.cart-item img, .pre-item img { border-radius: 18px; }
+.cart-pay { border-radius: 28px; }
+.sheet { border-radius: 28px 28px 0 0; }
+.extra img { border-radius: 18px; }
+.empty { border-radius: 24px; }
+.check input { border-radius: 7px; }
+.toast { border-radius: var(--r-pill); padding: 12px 22px; }
+.tab-bar { border-radius: 28px; }
+.tab { border-radius: 22px; }
+
+@media (max-width: 760px) {
+  .products { gap: 8px; padding: 0 8px; }
+  .card { border-radius: 20px; }
+  .card-media { border-radius: 16px; }
+  .price-panel { border-radius: 0; padding-left: 0; }
+  .badge-sale { font-size: 14px; padding: 4px 10px; line-height: 18px; }
+  .filters { border-radius: 28px 28px 0 0; }
+  .ctrl-btn { height: 44px; }
+}
+.free-delivery p { display: block; line-height: 1.35; }
+.free-delivery p svg { vertical-align: -4px; margin-right: 8px; }
