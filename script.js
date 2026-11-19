@@ -503,7 +503,7 @@ document.addEventListener("click", (e) => {
   else if (d.dec) setQty(d.dec, (cart[d.dec] || 0) - 1);
   else if (d.removeItem) setQty(d.removeItem, 0);
   else if (d.wish) toggleWish(d.wish);
-  else if (d.catGo) goToCategory(d.catGo);
+  else if (d.catGo) { e.preventDefault(); goToCategory(d.catGo); }
   else if (d.quick) {
     e.preventDefault();
     if (t.classList.contains("sale-chip")) { resetFilters(); state.flags.add("sale"); }
@@ -557,3 +557,9 @@ $("#resetInSheet").addEventListener("click", () => { resetFilters(); renderCatal
   if (location.hash === "#wishlist") showWishlist();
   if (location.hash === "#catalog-menu") toggleCatalog(true);
 })();
+
+// Компактна шапка під час прокрутки
+const headerEl = $(".header");
+const onScrollHeader = () => headerEl.classList.toggle("scrolled", window.scrollY > 80);
+window.addEventListener("scroll", onScrollHeader, { passive: true });
+onScrollHeader();

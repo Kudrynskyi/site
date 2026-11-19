@@ -259,3 +259,9 @@ if (product) {
   $("#pdpMissing").hidden = false;
   $("#pdpBar").hidden = true;
 }
+
+// Компактна шапка під час прокрутки
+const headerEl = $(".header");
+const onScrollHeader = () => headerEl.classList.toggle("scrolled", window.scrollY > 80);
+window.addEventListener("scroll", onScrollHeader, { passive: true });
+onScrollHeader();

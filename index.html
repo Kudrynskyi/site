@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=20261119-8">
+  <link rel="stylesheet" href="style.css?v=20261119-10">
 </head>
 <body>
 
@@ -79,9 +79,10 @@
       </div>
 
       <div class="main-row">
+        <a href="index.html" class="logo logo-desk" aria-label="Огого! — на головну"><span class="logo-o">О</span>гого!</a>
         <button class="burger" id="burgerBtn" aria-label="Каталог"><svg><use href="#i-burger"/></svg></button>
         <button class="catalog-btn" id="catalogBtn" aria-expanded="false" aria-controls="catalogMenu">
-          <svg><use href="#i-list"/></svg> КАТАЛОГ ТОВАРІВ
+          <svg><use href="#i-list"/></svg> КАТАЛОГ
         </button>
         <form class="search" id="searchForm" role="search">
           <input type="search" id="searchInput" placeholder="Я шукаю…" aria-label="Пошук товарів" autocomplete="off">
@@ -106,6 +107,27 @@
           <span class="cart-sum"><small>Разом</small><b id="headerTotal">₴0</b></span>
         </button>
       </div>
+
+      <nav class="sub-nav" aria-label="Розділи">
+        <div class="sub-left">
+          <a href="index.html#deals" class="sub-deals">Усі акції</a>
+          <a href="index.html?sale=1#catalog" class="sub-sale" data-sub-sale>РОЗПРОДАЖ ДО −40%</a>
+          <span class="sub-sep"></span>
+          <a href="index.html?cat=home" data-cat-go="home">Дім і текстиль</a>
+          <a href="index.html?cat=kitchen" data-cat-go="kitchen">Кухня й посуд</a>
+          <a href="index.html?cat=clean" data-cat-go="clean">Побутова хімія</a>
+          <a href="index.html?cat=beauty" data-cat-go="beauty">Краса й гігієна</a>
+          <a href="index.html?cat=kids" data-cat-go="kids">Дитячі товари</a>
+          <a href="index.html?cat=office" data-cat-go="office">Канцтовари</a>
+          <a href="index.html?cat=garden" data-cat-go="garden">Дача й сад</a>
+          <a href="index.html?cat=pets" data-cat-go="pets">Для тварин</a>
+          <a href="index.html?cat=season" data-cat-go="season">Сезонні товари</a>
+        </div>
+        <div class="sub-right">
+          <a href="index.html#footer">Магазини</a>
+          <a href="index.html#footer">Допомога</a>
+        </div>
+      </nav>
     </div>
 
     <nav class="catalog-menu" id="catalogMenu" hidden>
@@ -322,7 +344,7 @@
 
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
-  <script src="data.js?v=20261119-8"></script>
-  <script src="script.js?v=20261119-8"></script>
+  <script src="data.js?v=20261119-10"></script>
+  <script src="script.js?v=20261119-10"></script>
 </body>
 </html>
