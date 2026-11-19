@@ -1018,3 +1018,8 @@ main { padding-bottom: 64px; }
   .top-nav .store-pill .pin { font-size: 18px; }
   .top-nav .store-pill .edit { font-size: 16px; }
 }
+
+/* Лого: червона «О», чорне «гого!» */
+.logo { color: var(--text-primary); }
+.logo-o { color: #E3242B; }
+.footer .logo { color: #fff; }
