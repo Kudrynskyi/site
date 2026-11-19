@@ -348,7 +348,7 @@ button { font: inherit; cursor: pointer; }
 
   .product-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
   .product { padding: 10px; }
-  .product-img { height: 120px; font-size: 3rem; }
+  .product-img { font-size: 3rem; }
   .product h3 { font-size: .9rem; }
   .price { font-size: 1.1rem; }
   .badge { top: 16px; left: 16px; }
@@ -358,7 +358,8 @@ button { font: inherit; cursor: pointer; }
 }
 
 /* ---------- Фото товарів ---------- */
-.product-img { position: relative; overflow: hidden; }
+.product-img { position: relative; overflow: hidden; height: auto; aspect-ratio: 1 / 1; }
+.product-img:has(img) { background: #F7ECDC; }
 .product-img img {
   position: absolute; inset: 0;
   width: 100%; height: 100%;
