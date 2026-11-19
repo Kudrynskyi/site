@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=20261119-10">
+  <link rel="stylesheet" href="style.css?v=20261119-13">
 </head>
 <body>
 
@@ -137,29 +137,59 @@
 
   <main>
     <!-- Банери -->
-    <section class="container scroller banners" id="deals" aria-label="Акції">
-      <article class="banner banner-warm">
-        <span class="dates">1 – 21 грудня</span>
-        <h2>ТЕПЛІШЕ<br>РАЗОМ</h2>
-        <p class="banner-big">до −40%</p>
-        <img src="images/pled.jpg" alt="" class="banner-img">
-        <button class="banner-strip" data-cat-go="home">БЕЗКОШТОВНА ДОСТАВКА ВІД ₴500</button>
-      </article>
-      <article class="banner banner-crazy">
-        <h2 class="crazy">ШАЛЕНІ ЗНИЖКИ!</h2>
-        <img src="images/girlyanda.jpg" alt="" class="banner-img">
-        <p class="banner-name">Гірлянда LED, 10 м</p>
-        <s class="banner-old">₴219</s>
-        <span class="banner-price">₴149</span>
-        <button class="installments" data-cat-go="season">ДИВИТИСЬ ДЕКОР</button>
-      </article>
-      <article class="banner banner-school">
-        <span class="dates">до 31 грудня</span>
-        <h2>ДО<br>ШКОЛИ</h2>
-        <p class="banner-big">від ₴15</p>
-        <img src="images/ryukzak.jpg" alt="" class="banner-img">
-        <button class="banner-strip" data-cat-go="office">ДО КАНЦТОВАРІВ</button>
-      </article>
+    <section class="container promo-carousel" id="deals" aria-label="Акції">
+      <button class="car-arrow prev" data-car="-1" aria-label="Попередній банер"><svg><use href="#i-chevron-left"/></svg></button>
+      <div class="pb-track" id="bannerTrack">
+        <article class="pb pb-frame">
+          <h2 class="pb-title">ТЕПЛІШЕ<br>РАЗОМ</h2>
+          <p class="pb-pill">Пледи й рушники до −40%</p>
+          <div class="pb-stage">
+            <img src="images/pled.webp" alt="Плед флісовий" class="pb-hero">
+            <img src="images/rushnyky.webp" alt="" class="pb-side">
+          </div>
+          <button class="pb-cta" data-cat-go="home">Обрати текстиль</button>
+        </article>
+
+        <article class="pb">
+          <h2 class="pb-title pb-3d">ШАЛЕНІ<br>ЗНИЖКИ</h2>
+          <div class="pb-stage">
+            <img src="images/girlyanda.webp" alt="Гірлянда LED" class="pb-hero">
+            <img src="images/yalynkovi-igrashky.webp" alt="" class="pb-side">
+          </div>
+          <div class="pb-card">
+            <div><small>Гірлянда LED, 10 м</small><s>₴219</s></div>
+            <b>₴149</b>
+          </div>
+        </article>
+
+        <article class="pb">
+          <h2 class="pb-title">КАРТКА<br>ОГОГО!</h2>
+          <p class="pb-pill">+5% бонусами з кожної покупки</p>
+          <p class="pb-pill pb-pill-2">Ціни тільки для своїх</p>
+          <div class="pb-stage">
+            <div class="loyalty-card" aria-hidden="true">
+              <span class="lc-logo"><span class="logo-o">О</span>гого!</span>
+              <span class="lc-name">бонусна картка</span>
+              <span class="lc-chip"></span>
+              <span class="lc-num">•••• 2026</span>
+            </div>
+            <span class="coin c1">₴</span><span class="coin c2">₴</span><span class="coin c3">₴</span>
+          </div>
+          <button class="pb-cta" data-toast="Картка з'явиться згодом 🙂">Отримати картку</button>
+        </article>
+
+        <article class="pb">
+          <h2 class="pb-title pb-3d">ДО<br>ШКОЛИ</h2>
+          <p class="pb-pill">Зошити від ₴15, рюкзаки −25%</p>
+          <div class="pb-stage">
+            <img src="images/ryukzak.webp" alt="Рюкзак шкільний" class="pb-hero">
+            <img src="images/zoshyt.webp" alt="" class="pb-side">
+          </div>
+          <button class="pb-cta" data-cat-go="office">До канцтоварів</button>
+        </article>
+      </div>
+      <button class="car-arrow next" data-car="1" aria-label="Наступний банер"><svg><use href="#i-chevron-right"/></svg></button>
+      <div class="car-dots" id="bannerDots"></div>
     </section>
 
     <div class="container">
@@ -344,7 +374,7 @@
 
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
-  <script src="data.js?v=20261119-10"></script>
-  <script src="script.js?v=20261119-10"></script>
+  <script src="data.js?v=20261119-13"></script>
+  <script src="script.js?v=20261119-13"></script>
 </body>
 </html>
