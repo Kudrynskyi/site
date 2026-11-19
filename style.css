@@ -994,3 +994,16 @@ main { padding-bottom: 64px; }
 @media (max-width: 360px) {
   .logo { font-size: 26px; }
 }
+
+/* Сірі кнопки сортування / фільтрів / швидких фільтрів */
+:root {
+  --grey-100: #EBECF0;
+  --grey-200: #DFE0E6;
+  --grey-800: #3A3A42;
+}
+.ctrl-btn, .sort-box { background: var(--grey-100); }
+.ctrl-btn:hover, .sort-box:hover { background: var(--grey-200); }
+.quick-chip { background: var(--grey-100); color: var(--text-primary); }
+.quick-chip:hover { background: var(--grey-200); }
+.quick-chip.on { background: var(--grey-800); color: #fff; box-shadow: none; }
+.filter-count { background: var(--grey-800); }
