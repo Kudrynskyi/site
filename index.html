@@ -2,163 +2,281 @@
 <html lang="uk">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>Огого! — мультимаркет низьких цін</title>
   <meta name="description" content="Огого! — товари для дому, кухні, дітей і свят за чесними цінами.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Onest:wght@800&family=Roboto+Condensed:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <!-- Верхня смужка -->
-  <div class="topbar">
-    <div class="container topbar-inner">
-      <span>🚚 Безкоштовна доставка від 500 ₴</span>
-      <span class="topbar-links">
-        <a href="#stores">Магазини</a>
-        <a href="#footer">Допомога</a>
-      </span>
-    </div>
-  </div>
+  <!-- SVG-іконки -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2.4"/><path d="M16.5 16.5 21 21" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></symbol>
+    <symbol id="i-cart" viewBox="0 0 24 24"><path d="M2 3h3l2.4 11.2a1.5 1.5 0 0 0 1.5 1.2h8.7a1.5 1.5 0 0 0 1.4-1.1L21 7H6" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/><circle cx="9.5" cy="20" r="1.6" fill="currentColor"/><circle cx="17" cy="20" r="1.6" fill="currentColor"/></symbol>
+    <symbol id="i-heart" viewBox="0 0 24 24"><path d="M12 20.5s-7.5-4.6-9.3-9.2C1.4 8 3.5 4.5 7 4.5c2 0 3.6 1.1 5 2.9 1.4-1.8 3-2.9 5-2.9 3.5 0 5.6 3.5 4.3 6.8C19.5 15.9 12 20.5 12 20.5Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></symbol>
+    <symbol id="i-heart-fill" viewBox="0 0 24 24"><path d="M12 20.5s-7.5-4.6-9.3-9.2C1.4 8 3.5 4.5 7 4.5c2 0 3.6 1.1 5 2.9 1.4-1.8 3-2.9 5-2.9 3.5 0 5.6 3.5 4.3 6.8C19.5 15.9 12 20.5 12 20.5Z" fill="currentColor"/></symbol>
+    <symbol id="i-user" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9.5" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="10" r="3.2" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M6 18.5c1.4-2.2 3.5-3.3 6-3.3s4.6 1.1 6 3.3" fill="none" stroke="currentColor" stroke-width="1.8"/></symbol>
+    <symbol id="i-burger" viewBox="0 0 24 24"><path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+    <symbol id="i-grid" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2"><rect x="3.5" y="3.5" width="7" height="7" rx="2"/><rect x="13.5" y="3.5" width="7" height="7" rx="2"/><rect x="3.5" y="13.5" width="7" height="7" rx="2"/><rect x="13.5" y="13.5" width="7" height="7" rx="2"/></g></symbol>
+    <symbol id="i-list" viewBox="0 0 24 24"><g stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M9 6h12M9 12h12M9 18h12"/><path d="M4 6h.01M4 12h.01M4 18h.01" stroke-width="3"/></g></symbol>
+    <symbol id="i-home" viewBox="0 0 24 24"><path d="M3.5 10.5 12 3.5l8.5 7V20a1 1 0 0 1-1 1h-5v-6h-5v6h-5a1 1 0 0 1-1-1Z" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"/></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s7-6.3 7-11.5A7 7 0 0 0 5 9.5C5 14.7 12 21 12 21Z" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="9.5" r="2.5" fill="currentColor"/></symbol>
+    <symbol id="i-star" viewBox="0 0 24 24"><path d="m12 2.8 2.8 5.9 6.4.8-4.7 4.4 1.2 6.4L12 17.2l-5.7 3.1 1.2-6.4-4.7-4.4 6.4-.8Z" fill="currentColor"/></symbol>
+    <symbol id="i-comment" viewBox="0 0 24 24"><path d="M4 5h16v11H9l-5 4Z" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"/></symbol>
+    <symbol id="i-close" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></symbol>
+    <symbol id="i-sort" viewBox="0 0 24 24"><path d="M3 6h18M6 12h12M9 18h6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></symbol>
+    <symbol id="i-filter" viewBox="0 0 24 24"><path d="M3 4h18l-7 8.5V19l-4 2v-8.5Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></symbol>
+    <symbol id="i-trash" viewBox="0 0 24 24"><path d="M4 7h16M9 7V4h6v3M6 7l1 13h10l1-13" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-chevron-left" viewBox="0 0 24 24"><path d="M15 4 7 12l8 8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-arrows" viewBox="0 0 24 24"><path d="m6 6 6 6-6 6M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-truck" viewBox="0 0 24 24"><path d="M2 6h12v10H2zM14 9h4l4 4v3h-8" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"/><circle cx="6" cy="18" r="2" fill="currentColor"/><circle cx="18" cy="18" r="2" fill="currentColor"/></symbol>
+  </svg>
+
+  <!-- Промо-смужка -->
+  <a href="#deals" class="promo-strip">
+    <span class="promo-card">картка Огого</span>
+    <span class="promo-title">СУПЕР<span>ЗНИЖКА</span></span>
+    <span class="burst">−5%</span>
+    <span class="promo-go"><svg><use href="#i-arrows"/></svg></span>
+  </a>
 
   <!-- Шапка -->
   <header class="header">
-    <div class="container header-inner">
-      <a href="#" class="logo" aria-label="Огого! — на головну">
-        <span class="logo-mark">О</span>
-        <span class="logo-text">гого<span class="logo-bang">!</span></span>
-      </a>
+    <div class="container">
+      <div class="top-nav">
+        <div class="top-left">
+          <a href="#" class="logo" aria-label="Огого! — на головну">Огого!</a>
+          <span class="lang">УКР</span>
+          <span class="city"><svg><use href="#i-pin"/></svg> Київ ▾</span>
+        </div>
+        <nav class="top-links">
+          <a href="#deals">Усі акції</a>
+          <a href="#catalog" class="sale-chip" data-quick="sale">РОЗПРОДАЖ ДО −40%</a>
+          <a href="#footer">Магазини</a>
+          <a href="#footer">Покупцям ▾</a>
+        </nav>
+        <div class="top-right">
+          <a href="#footer">ⓘ Допомога</a>
+          <a href="#">Увійти</a>
+        </div>
+        <div class="mobile-actions">
+          <button class="icon-btn" aria-label="Профіль"><svg><use href="#i-user"/></svg></button>
+          <button class="icon-btn" data-open-cart aria-label="Кошик">
+            <svg><use href="#i-cart"/></svg><span class="count" data-cart-count hidden>0</span>
+          </button>
+        </div>
+      </div>
 
-      <button class="catalog-btn" id="catalogBtn" aria-expanded="false" aria-controls="catalogMenu">
-        <span class="burger"></span> Каталог
-      </button>
-
-      <form class="search" id="searchForm" role="search">
-        <input type="search" id="searchInput" placeholder="Знайти товар…" aria-label="Пошук товарів">
-        <button type="submit" aria-label="Шукати">🔍</button>
-      </form>
-
-      <button class="cart-btn" id="cartBtn" aria-label="Кошик">
-        🛒 <span class="cart-label">Кошик</span>
-        <span class="cart-count" id="cartCount">0</span>
-      </button>
+      <div class="main-row">
+        <button class="burger" id="burgerBtn" aria-label="Каталог"><svg><use href="#i-burger"/></svg></button>
+        <button class="catalog-btn" id="catalogBtn" aria-expanded="false" aria-controls="catalogMenu">
+          <svg><use href="#i-list"/></svg> КАТАЛОГ ТОВАРІВ
+        </button>
+        <form class="search" id="searchForm" role="search">
+          <input type="search" id="searchInput" placeholder="Я шукаю…" aria-label="Пошук товарів" autocomplete="off">
+          <button type="submit" aria-label="Шукати"><svg><use href="#i-search"/></svg></button>
+        </form>
+        <button class="head-tool" data-show-wishlist>
+          <span class="tool-icon"><svg><use href="#i-heart"/></svg><span class="count" data-wish-count hidden>0</span></span>
+          <span>Обране</span>
+        </button>
+        <div class="head-tool bonuses">
+          <span class="bonus-chip" id="bonusTotal">₴0</span>
+          <span>Ваші бонуси</span>
+        </div>
+        <button class="cart-btn" data-open-cart>
+          <span class="tool-icon"><svg><use href="#i-cart"/></svg><span class="count count-brand" data-cart-count hidden>0</span></span>
+          <span class="cart-sum"><small>Разом</small><b id="headerTotal">₴0</b></span>
+        </button>
+      </div>
     </div>
 
-    <!-- Випадаюче меню каталогу -->
     <nav class="catalog-menu" id="catalogMenu" hidden>
       <div class="container catalog-menu-grid" id="catalogMenuGrid"></div>
     </nav>
   </header>
 
   <main>
-    <!-- Банер -->
-    <section class="hero">
-      <div class="container hero-inner">
-        <div class="hero-text">
-          <span class="hero-tag">Тільки цього тижня</span>
-          <h1>Ціни, від яких хочеться сказати <em>«Огого!»</em></h1>
-          <p>Знижки до −40% на посуд, текстиль і товари для прибирання.</p>
-          <a href="#hits" class="btn btn-primary">Дивитись акції</a>
-        </div>
-        <div class="hero-art" aria-hidden="true">
-          <div class="bubble b1">🍳</div>
-          <div class="bubble b2">🧸</div>
-          <div class="bubble b3">🧴</div>
-          <div class="sale-badge">−40%</div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Переваги -->
-    <section class="container perks">
-      <div class="perk"><span>💸</span><div><b>Низькі ціни</b><small>щодня, без прихованих умов</small></div></div>
-      <div class="perk"><span>🏪</span><div><b>Поруч з домом</b><small>магазини у вашому місті</small></div></div>
-      <div class="perk"><span>🔄</span><div><b>Легке повернення</b><small>14 днів без питань</small></div></div>
-      <div class="perk"><span>⭐</span><div><b>Новинки щотижня</b><small>понад 100 нових товарів</small></div></div>
+    <!-- Банери -->
+    <section class="container scroller banners" id="deals" aria-label="Акції">
+      <article class="banner banner-warm">
+        <span class="dates">1 – 21 грудня</span>
+        <h2>ТЕПЛІШЕ<br>РАЗОМ</h2>
+        <p class="banner-big">до −40%</p>
+        <img src="images/pled.jpg" alt="" class="banner-img">
+        <button class="banner-strip" data-cat-go="home">БЕЗКОШТОВНА ДОСТАВКА</button>
+      </article>
+      <article class="banner banner-crazy">
+        <h2 class="crazy">ШАЛЕНІ ЗНИЖКИ!</h2>
+        <img src="images/girlyanda.jpg" alt="" class="banner-img">
+        <p class="banner-name">Гірлянда LED, 10 м</p>
+        <s class="banner-old">₴219</s>
+        <span class="banner-price">₴149</span>
+        <button class="installments" data-cat-go="season">ДИВИТИСЬ ДЕКОР</button>
+      </article>
+      <article class="banner banner-school">
+        <span class="dates">до 31 грудня</span>
+        <h2>ДО<br>ШКОЛИ</h2>
+        <p class="banner-big">від ₴15</p>
+        <img src="images/ryukzak.jpg" alt="" class="banner-img">
+        <button class="banner-strip" data-cat-go="office">ДО КАНЦТОВАРІВ</button>
+      </article>
     </section>
 
     <!-- Категорії -->
-    <section class="container section" id="categories">
-      <div class="section-head">
-        <h2>Категорії</h2>
-      </div>
-      <div class="category-grid" id="categoryGrid"></div>
+    <section class="container section">
+      <h2 class="section-title">Рекомендовані категорії</h2>
+      <div class="scroller categories" id="categoryList"></div>
     </section>
 
-    <!-- Хіти -->
-    <section class="container section" id="hits">
-      <div class="section-head">
-        <h2 id="productsTitle">Хіти продажу</h2>
-        <button class="link-btn" id="resetFilter" hidden>Показати все ✕</button>
-      </div>
-      <div class="product-grid" id="productGrid"></div>
-      <p class="empty" id="emptyMsg" hidden>Нічого не знайшли 😕 Спробуйте інший запит.</p>
+    <!-- Гарячі пропозиції -->
+    <section class="container section">
+      <h2 class="section-title">Гарячі пропозиції</h2>
+      <div class="scroller deals" id="dealList"></div>
     </section>
 
-    <!-- Промо-блок -->
-    <section class="container promo">
-      <div class="promo-card promo-1">
-        <h3>Сезон свят 🎄</h3>
-        <p>Гірлянди, декор і подарунки — все в одному місці.</p>
-        <button class="btn btn-light" data-filter-cat="season">Обрати декор</button>
+    <!-- Каталог -->
+    <section class="container section catalog" id="catalog">
+      <nav class="breadcrumbs" aria-label="Навігація">
+        <a href="#">Інтернет-магазин</a><span>/</span><span id="crumbCurrent">Хіти продажу</span>
+      </nav>
+      <div class="catalog-title">
+        <h2 id="catalogTitle">Хіти продажу</h2>
+        <span id="catalogCount">16 товарів</span>
       </div>
-      <div class="promo-card promo-2">
-        <h3>Для школи ✏️</h3>
-        <p>Зошити, рюкзаки й канцелярія від 9 ₴.</p>
-        <button class="btn btn-light" data-filter-cat="office">До канцтоварів</button>
-      </div>
-    </section>
 
-    <!-- Магазини -->
-    <section class="container section stores" id="stores">
-      <h2>Знайдіть «Огого!» поруч</h2>
-      <p>Понад 50 магазинів по всій країні. Працюємо щодня з 8:00 до 22:00.</p>
-      <a href="#" class="btn btn-primary">Мапа магазинів</a>
+      <div class="mobile-controls">
+        <label class="ctrl-btn sort-wrap">
+          <svg><use href="#i-sort"/></svg>
+          <select data-sort aria-label="Сортування"></select>
+        </label>
+        <button class="ctrl-btn" id="openFilters"><svg class="brand"><use href="#i-filter"/></svg> Фільтри <span class="filter-count" id="filterCount" hidden>0</span></button>
+      </div>
+      <div class="quick-chips" id="quickChips"></div>
+
+      <div class="filter-bar">
+        <div class="found"><small>Знайдено:</small><span id="foundCount">16 товарів</span></div>
+        <div class="active-filters" id="activeFilters"></div>
+        <span class="spacer"></span>
+        <button class="clear-btn" id="clearFilters">Скинути фільтри</button>
+        <label class="sort-box">
+          <svg><use href="#i-sort"/></svg>
+          <select data-sort aria-label="Сортування"></select>
+        </label>
+      </div>
+
+      <div class="listing">
+        <aside class="filters" id="filtersPanel" aria-label="Фільтри">
+          <div class="filters-head">
+            <h3>Фільтри</h3>
+            <button class="icon-btn" id="closeFilters" aria-label="Закрити"><svg><use href="#i-close"/></svg></button>
+          </div>
+
+          <details class="filter-group" open>
+            <summary>Ціна, ₴</summary>
+            <div class="price-inputs">
+              <span>Від</span><input type="number" id="priceMin" inputmode="numeric" min="0">
+              <span>До</span><input type="number" id="priceMax" inputmode="numeric" min="0">
+            </div>
+            <div class="range" id="range">
+              <div class="range-fill" id="rangeFill"></div>
+              <input type="range" id="rangeMin" aria-label="Мінімальна ціна">
+              <input type="range" id="rangeMax" aria-label="Максимальна ціна">
+            </div>
+            <button class="btn btn-brand btn-block" id="applyPrice">ЗАСТОСУВАТИ</button>
+          </details>
+
+          <details class="filter-group" open>
+            <summary>Популярні фільтри</summary>
+            <label class="check"><input type="checkbox" data-flag="sale"><i style="--dot:#E95C2A"></i>Зі знижкою</label>
+            <label class="check"><input type="checkbox" data-flag="hit"><i style="--dot:#825DC7"></i>Хіти продажу</label>
+            <label class="check"><input type="checkbox" data-flag="new"><i style="--dot:#2E8B3E"></i>Новинки</label>
+            <label class="check"><input type="checkbox" data-flag="free"><i style="--dot:#F5A524"></i>Безкоштовна доставка</label>
+          </details>
+
+          <details class="filter-group" open>
+            <summary>Категорії</summary>
+            <div id="catChecks"></div>
+          </details>
+
+          <button class="btn btn-brand btn-block show-results" id="showResults">ПОКАЗАТИ ТОВАРИ</button>
+        </aside>
+
+        <div class="products" id="productGrid"></div>
+      </div>
+      <p class="empty" id="emptyMsg" hidden>Нічого не знайшли 😕 Спробуйте змінити фільтри.</p>
     </section>
   </main>
 
-  <!-- Футер -->
   <footer class="footer" id="footer">
     <div class="container footer-grid">
       <div>
-        <a href="#" class="logo logo-footer">
-          <span class="logo-mark">О</span>
-          <span class="logo-text">гого<span class="logo-bang">!</span></span>
-        </a>
-        <p>Мультимаркет товарів для дому та родини за чесними цінами.</p>
+        <a href="#" class="logo">Огого!</a>
+        <p>Мультимаркет товарів для дому та родини за чесними цінами. Понад 50 магазинів, щодня з 8:00 до 22:00.</p>
       </div>
       <div>
         <h4>Покупцям</h4>
         <a href="#">Доставка й оплата</a>
         <a href="#">Повернення</a>
-        <a href="#">Програма лояльності</a>
+        <a href="#">Бонусна програма</a>
       </div>
       <div>
         <h4>Компанія</h4>
         <a href="#">Про нас</a>
         <a href="#">Вакансії</a>
-        <a href="#stores">Магазини</a>
+        <a href="#">Магазини</a>
       </div>
       <div>
         <h4>Контакти</h4>
-        <a href="tel:+380000000000">0 800 000 000</a>
-        <a href="mailto:hello@example.com">hello@example.com</a>
+        <a href="tel:0800000000" class="phone">0 800 000 000</a>
+        <small>Безкоштовно по Україні</small>
       </div>
     </div>
     <p class="copyright">© 2026 Огого! · Навчальний концепт-проєкт</p>
   </footer>
 
-  <!-- Кошик -->
+  <!-- Мобільне меню знизу -->
+  <nav class="tab-bar" aria-label="Навігація">
+    <button class="tab active" data-tab="home"><svg><use href="#i-home"/></svg>Головна</button>
+    <button class="tab" data-tab="catalog"><svg><use href="#i-grid"/></svg>Каталог</button>
+    <button class="tab" data-tab="cart"><span class="tool-icon"><svg><use href="#i-cart"/></svg><span class="count" data-cart-count hidden>0</span></span>Кошик</button>
+    <button class="tab" data-tab="wishlist"><span class="tool-icon"><svg><use href="#i-heart"/></svg><span class="count" data-wish-count hidden>0</span></span>Обране</button>
+    <button class="tab" data-tab="menu"><svg><use href="#i-user"/></svg>Меню</button>
+  </nav>
+
   <div class="overlay" id="overlay" hidden></div>
-  <aside class="cart-panel" id="cartPanel" aria-label="Кошик" aria-hidden="true">
-    <div class="cart-head">
-      <h3>Кошик</h3>
-      <button class="close-btn" id="closeCart" aria-label="Закрити">✕</button>
+
+  <!-- Додано в кошик -->
+  <section class="sheet" id="preCart" aria-label="Додано в кошик" aria-hidden="true">
+    <div class="sheet-handle"></div>
+    <div class="sheet-head">
+      <h3>Додано в кошик</h3>
+      <button class="icon-btn" data-close aria-label="Закрити"><svg><use href="#i-close"/></svg></button>
     </div>
-    <ul class="cart-items" id="cartItems"></ul>
-    <p class="cart-empty" id="cartEmpty">Кошик порожній</p>
-    <div class="cart-foot">
-      <div class="cart-total"><span>Разом:</span><b id="cartTotal">0 ₴</b></div>
-      <button class="btn btn-primary btn-block" id="checkoutBtn">Оформити замовлення</button>
+    <div id="preCartItem"></div>
+    <button class="btn btn-brand btn-block btn-lg" data-open-cart>ОФОРМИТИ ЗАМОВЛЕННЯ</button>
+    <h4 class="sheet-sub">Вам також знадобиться</h4>
+    <div class="scroller extras" id="preCartExtras"></div>
+  </section>
+
+  <!-- Кошик -->
+  <aside class="cart" id="cartPanel" aria-label="Кошик" aria-hidden="true">
+    <div class="cart-top">
+      <button class="icon-btn back" data-close aria-label="Назад"><svg><use href="#i-chevron-left"/></svg></button>
+      <h3>Кошик</h3><span id="cartItemsCount">0 товарів</span>
+    </div>
+    <ul class="cart-list" id="cartList"></ul>
+    <div class="cart-empty" id="cartEmpty">
+      <svg><use href="#i-cart"/></svg>
+      <p>Кошик порожній</p>
+      <button class="btn btn-outline" data-close>Перейти до покупок</button>
+    </div>
+    <div class="cart-pay" id="cartPay">
+      <div class="pay-row"><span>До сплати</span><b id="cartTotal">₴0</b></div>
+      <button class="btn btn-brand btn-block btn-lg" id="checkoutBtn">Оформити замовлення</button>
     </div>
   </aside>
 
