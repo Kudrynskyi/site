@@ -1299,3 +1299,50 @@ h1, h2, h3, .section-title, .catalog-title h2, .banner h2, .price, .deal-price {
   .store-pill-desk { flex-basis: 190px; min-width: 150px; padding: 0 14px; }
   .main-row { gap: 12px; }
 }
+
+/* =========================================================
+   Шапка на комп'ютері: один ряд + рядок розділів (Walmart, Uber Eats)
+   ========================================================= */
+.logo-desk, .sub-nav { display: none; }
+
+@media (min-width: 761px) {
+  .top-nav { display: none; }
+  .logo-desk { display: block; flex-shrink: 0; font-size: 30px; margin-right: 4px; }
+  .main-row { padding: 14px 0 12px; }
+
+  .sub-nav {
+    display: flex; align-items: center; justify-content: space-between; gap: 24px;
+    height: 44px; border-top: 1px solid var(--border-default);
+    overflow: hidden; transition: height .25s ease, opacity .2s ease;
+  }
+  .sub-left, .sub-right { display: flex; align-items: center; gap: 20px; min-width: 0; }
+  .sub-left { overflow: hidden; }
+  .sub-nav a { font-size: 14px; font-weight: 500; white-space: nowrap; color: #2B2735; }
+  .sub-nav a:hover { color: var(--text-primary); text-decoration: underline; text-underline-offset: 4px; }
+  .sub-deals { font-weight: 700 !important; }
+  .sub-sale {
+    background: var(--text-primary); color: var(--yellow) !important; font-size: 12px !important;
+    font-weight: 700 !important; padding: 5px 12px; border-radius: var(--r-pill);
+  }
+  .sub-sale:hover { text-decoration: none !important; background: #2A2238; }
+  .sub-sep { width: 1px; height: 18px; background: var(--border-default); flex-shrink: 0; }
+  .sub-right a { color: var(--text-secondary); }
+
+  /* Компактна шапка під час прокрутки */
+  .header { transition: box-shadow .2s; }
+  .header.scrolled { box-shadow: 0 6px 24px rgba(12, 6, 26, .08); }
+  .header.scrolled .sub-nav { height: 0; opacity: 0; border-top-color: transparent; }
+  .header.scrolled .main-row { padding: 10px 0; }
+  html { scroll-padding-top: 110px; }
+}
+
+@media (min-width: 761px) and (max-width: 1100px) {
+  .sub-right { display: none; }
+  .logo-desk { font-size: 26px; }
+}
+@media (min-width: 761px) {
+  .sub-left { flex: 1; mask-image: linear-gradient(90deg, #000 92%, transparent); -webkit-mask-image: linear-gradient(90deg, #000 92%, transparent); }
+  .sub-right { flex-shrink: 0; }
+  .search { flex: 1 1 320px; }
+  .store-pill-desk { flex: 0 1 260px; }
+}
