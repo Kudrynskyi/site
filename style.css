@@ -2455,3 +2455,17 @@ body.sx-open .search { background: #fff; box-shadow: inset 0 0 0 2px var(--yello
   .co-bar .btn { height: 52px; padding: 0 28px; font-size: 16px; }
 }
 @media (max-width: 960px) { .co-grid { grid-template-columns: minmax(0, 1fr); } }
+
+/* Checkout: інфо-блоки, заміна товарів, промокод-акордеон */
+.co-info { display: flex; gap: 10px; align-items: flex-start; margin: 0 20px 18px; padding: 12px 14px; border-radius: 14px; background: #EEF4FF; border: 1px solid #C9DAFB; color: #23408E; font-size: 14px; line-height: 1.4; }
+.cs-body .co-info { margin: 0; }
+.co-info svg { width: 20px; height: 20px; font-size: 20px; flex-shrink: 0; }
+.cs-q { font-size: 18px; font-weight: 700; line-height: 1.25; }
+.co-warn { font-size: 14px; line-height: 1.45; padding: 12px 14px; border-radius: 14px; background: #FFF1B8; }
+.sb-head { display: flex; align-items: center; gap: 10px; width: 100%; text-align: left; }
+.sb-head b { font-size: 18px; font-weight: 700; flex: 1; }
+.sb-head em { font-style: normal; font-weight: 700; color: var(--success); font-size: 15px; }
+.sb-arrow { display: grid; place-items: center; width: 40px; height: 40px; border-radius: 50%; background: var(--yellow); transition: transform .2s; }
+.sb-arrow svg { width: 18px; height: 18px; }
+.sb-arrow.up { transform: rotate(180deg); }
+@media (max-width: 760px) { .co-info { margin: 0 16px 16px; } }

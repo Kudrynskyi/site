@@ -170,6 +170,11 @@ const EN = {
   "Ми надішлемо SMS, коли замовлення буде готове.": "We'll text you when your order is ready.", "Менеджер зателефонує вам найближчим часом.": "A manager will call you shortly.",
   "Це демо — нічого не надсилається.": "This is a demo — nothing is sent.", "Сума бонусів": "Bonus amount", "Промокод": "Promo code",
   "Безпечна оплата: дані картки вводяться на сторінці банку (у демо — не запитуються)": "Secure payment: card details are entered on the bank's page (not requested in the demo)",
+  "Зберемо замовлення в магазині й надішлемо SMS, коли воно буде готове. Зберігаємо 4 дні.": "We'll pack your order in the store and text you when it's ready. We keep it for 4 days.",
+  "Що робити, якщо якогось товару не буде?": "What if an item is out of stock?", "Замініть на схожий товар за тією ж ціною": "Replace it with a similar item at the same price",
+  "Зберіть замовлення без нього": "Pack the order without it", "Зателефонуйте мені": "Call me",
+  "Якщо товару не буде в наявності, ми зберемо замовлення без нього. Якщо не буде жодного товару — скасуємо замовлення й повідомимо. Кошти повернемо автоматично.": "If an item is out of stock we'll pack the order without it. If nothing is available we'll cancel the order and let you know. Any payment is refunded automatically.",
+  "Якщо товару немає": "If out of stock", "Замінити на схожий": "Replace with similar", "Зібрати без нього": "Pack without it", "Зателефонувати": "Call",
   // --- Товари ---
   "Сковорода антипригарна 24 см": "Non-stick frying pan, 24 cm",
   "Набір рушників, 3 шт.": "Towel set, 3 pcs",
