@@ -90,7 +90,7 @@ function productCard(p) {
     ? `<div class="quick-stepper" aria-label="Кількість у кошику">
          <button data-dec="${p.id}" aria-label="Менше">−</button><span>${qty}</span><button data-inc="${p.id}" aria-label="Більше">+</button>
        </div>`
-    : `<button class="quick-add" data-quick-add="${p.id}" aria-label="Швидко додати «${p.name}» у кошик"><span class="qa-plus">+</span><span class="qa-l">Додати</span></button>`;
+    : `<button class="quick-add" data-quick-add="${p.id}" aria-label="Швидко додати «${p.name}» у кошик"><svg class="qa-plus" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg><span class="qa-l">Додати</span></button>`;
   return `
     <article class="card">
       <div class="card-media">
