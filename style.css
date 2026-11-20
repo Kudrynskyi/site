@@ -1981,3 +1981,116 @@ a.pf-row:hover, button.pf-row:hover { background: var(--yellow-pale); }
   .card .stk-hex b { font-size: 14px; }
 }
 @media (max-width: 760px) { .card .stk-new b { display: none; } }
+
+/* «+ Додати»: векторний плюс, рівно по центру */
+.quick-add { gap: 6px; padding: 0 16px 0 12px; }
+.quick-add .qa-plus { width: 16px; height: 16px; margin: 0; flex-shrink: 0; display: block; }
+.quick-add .qa-l { line-height: 1; display: block; transform: translateY(0.5px); }
+@media (max-width: 760px) { .quick-add .qa-plus { width: 14px; height: 14px; } .quick-add { gap: 5px; padding: 0 13px 0 10px; } }
+
+/* =========================================================
+   Вікно пошуку (UNIQLO, Temu, IKEA, Afterpay на Mobbin)
+   ========================================================= */
+.sx-shade { position: fixed; inset: 0; z-index: 44; background: rgba(12, 6, 26, .28); }
+.sx {
+  position: fixed; z-index: 45; max-height: min(640px, calc(100vh - 140px)); overflow-y: auto; overscroll-behavior: contain;
+  background: #fff; border-radius: 28px; box-shadow: 0 24px 60px rgba(12, 6, 26, .22); padding: 8px 20px 20px;
+}
+.sx[hidden] { display: none; }
+.sx-top { display: none; }
+.sx-sec { margin-top: 16px; }
+.sx-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; }
+.sx-head h3 { font-size: 16px; font-weight: 700; }
+.sx-clear { font-size: 14px; color: var(--text-secondary); text-decoration: underline; text-underline-offset: 3px; }
+.sx-count { font-size: 14px; color: var(--text-secondary); }
+
+.sx-hist { display: flex; flex-wrap: wrap; gap: 8px; }
+.sx-chip { display: inline-flex; align-items: center; gap: 6px; padding: 8px 14px; border-radius: 999px; background: var(--grey-100); font-size: 14px; font-weight: 500; }
+.sx-chip svg { width: 14px; height: 14px; color: var(--text-secondary); }
+.sx-chip:hover { background: var(--yellow-soft); }
+
+.sx-cats { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; }
+.sx-cat { display: flex; flex-direction: column; align-items: center; gap: 6px; text-align: center; font-size: 14px; font-weight: 500; line-height: 1.2; color: inherit; text-decoration: none; }
+.sx-cat-img { display: grid; place-items: center; width: 100%; aspect-ratio: 1.3; border-radius: 16px; background: var(--photo-bg); transition: background .15s; }
+.sx-cat-img img { width: 70%; height: 80%; object-fit: contain; }
+.sx-cat:hover .sx-cat-img { background: var(--yellow-soft); }
+
+.sx-pop { display: flex; flex-wrap: wrap; gap: 8px; }
+.sx-pop-chip { display: inline-flex; align-items: center; gap: 8px; padding: 4px 14px 4px 4px; border-radius: 999px; background: var(--grey-100); font-size: 14px; font-weight: 500; color: inherit; text-decoration: none; max-width: 100%; }
+.sx-pop-chip > span:last-child { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.sx-pop-img { display: grid; place-items: center; width: 32px; height: 32px; border-radius: 50%; background: #fff; flex-shrink: 0; overflow: hidden; }
+.sx-pop-img img { width: 85%; height: 85%; object-fit: contain; }
+.sx-pop-chip:hover { background: var(--yellow-soft); }
+
+.sx-row { display: flex; gap: 10px; overflow-x: auto; padding-bottom: 4px; scrollbar-width: none; }
+.sx-row::-webkit-scrollbar { display: none; }
+.sx-card { flex: 0 0 140px; display: flex; flex-direction: column; gap: 4px; color: inherit; text-decoration: none; }
+.sx-card-img { position: relative; display: grid; place-items: center; aspect-ratio: 1; border-radius: 18px; background: var(--photo-bg); }
+.sx-card-img img { width: 82%; height: 82%; object-fit: contain; }
+.sx-card-img em { position: absolute; top: 6px; left: 6px; font-style: normal; font-size: 14px; font-weight: 800; color: #fff; background: #E3242B; padding: 2px 7px; border-radius: 999px; }
+.sx-card-name { font-size: 14px; line-height: 1.3; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.sx-card-price b, .sx-item-price b { font-size: 16px; font-weight: 800; }
+.sx-card-price s, .sx-item-price s { font-size: 14px; color: var(--text-secondary); margin-left: 6px; }
+
+.sx-sugg { list-style: none; margin-top: 6px; }
+.sx-sugg li > * { display: flex; align-items: center; gap: 12px; width: 100%; padding: 11px 6px; border-radius: 12px; font-size: 16px; text-align: left; color: inherit; text-decoration: none; }
+.sx-sugg li > *:hover { background: var(--grey-100); }
+.sx-sugg svg { width: 18px; height: 18px; color: var(--text-secondary); flex-shrink: 0; }
+.sx-sugg span { flex: 1; min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.sx-sugg small { font-size: 14px; color: var(--text-secondary); }
+.sx-list { display: grid; gap: 2px; }
+.sx-item { display: flex; align-items: center; gap: 12px; padding: 8px; border-radius: 16px; color: inherit; text-decoration: none; }
+.sx-item:hover { background: var(--yellow-pale); }
+.sx-item-img { display: grid; place-items: center; width: 56px; height: 56px; border-radius: 14px; background: var(--photo-bg); flex-shrink: 0; }
+.sx-item-img img { width: 84%; height: 84%; object-fit: contain; }
+.sx-item-name { flex: 1; min-width: 0; font-size: 15px; line-height: 1.3; }
+.sx-item-price { flex-shrink: 0; text-align: right; display: flex; flex-direction: column; align-items: flex-end; }
+.sx-item-price s { margin-left: 0; }
+.sx-all { margin-top: 12px; height: 50px; }
+.sx-empty { display: flex; flex-direction: column; gap: 4px; padding: 16px 4px; font-size: 15px; color: var(--text-secondary); }
+.sx-empty b { font-size: 18px; color: var(--text-primary); }
+body.sx-open .search { background: #fff; box-shadow: inset 0 0 0 2px var(--yellow-hover), 0 0 0 4px rgba(255, 221, 31, .25); }
+
+@media (max-width: 760px) {
+  .sx-shade { display: none; }
+  .sx { inset: 0; max-height: none; border-radius: 0; padding: 0 16px 120px; box-shadow: none; }
+  .sx-top {
+    display: flex; align-items: center; gap: 8px; position: sticky; top: 0; z-index: 2;
+    margin: 0 -16px; padding: 10px 16px; background: #fff; border-bottom: 1px solid var(--border-default);
+  }
+  .sx-back { display: grid; place-items: center; width: 40px; height: 40px; border-radius: 50%; background: var(--grey-100); font-size: 20px; flex-shrink: 0; }
+  .sx-field { flex: 1; display: flex; align-items: center; gap: 8px; height: 44px; padding: 0 14px; border-radius: 999px; background: #fff; box-shadow: inset 0 0 0 2px var(--yellow-hover); }
+  .sx-ic { width: 18px; height: 18px; color: var(--text-secondary); flex-shrink: 0; }
+  .sx-input { flex: 1; min-width: 0; border: none; outline: none; background: none; font-size: 16px; }
+  .sx-cats { grid-template-columns: repeat(4, 1fr); }
+  .sx-card { flex-basis: 128px; }
+}
+.sx-shade { z-index: 29; }
+
+/* Шестикутник із заокругленими кутами */
+.stk-hex {
+  clip-path: none; border-radius: 0; background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 88'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='0.4' y2='1'%3E%3Cstop offset='0' stop-color='%23FF9E5E'/%3E%3Cstop offset='1' stop-color='%23E8506A'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpolygon points='27,7 73,7 94,44 73,81 27,81 6,44' fill='url(%23g)' stroke='url(%23g)' stroke-width='12' stroke-linejoin='round'/%3E%3C/svg%3E") center / 100% 100% no-repeat;
+  width: 80px; height: 70px; gap: 3px; padding: 0; filter: drop-shadow(0 4px 6px rgba(232, 80, 106, .3));
+}
+.stk-hex small { font-size: 14px; letter-spacing: .02em; }
+.stk-hex b { font-size: 18px; }
+.stk-new { background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 88'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='0.4' y2='1'%3E%3Cstop offset='0' stop-color='%23FFE45C'/%3E%3Cstop offset='1' stop-color='%23F5B800'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpolygon points='27,7 73,7 94,44 73,81 27,81 6,44' fill='url(%23g)' stroke='url(%23g)' stroke-width='12' stroke-linejoin='round'/%3E%3C/svg%3E") center / 100% 100% no-repeat; filter: drop-shadow(0 4px 6px rgba(200, 150, 0, .3)); }
+.pdp-photo .stk-hex { width: 100px; height: 88px; }
+
+/* Комп'ютер: швидке додавання — кругла «+», без підпису (є кнопка КУПИТИ) */
+@media (min-width: 761px) {
+  .quick-add { width: 44px; height: 44px; padding: 0; justify-content: center; }
+  .quick-add .qa-l { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+  .quick-add .qa-plus { width: 18px; height: 18px; }
+}
+
+/* Цінова панель: нічого не переноситься */
+.price-panel .drop { display: none; }
+.old-row { flex-wrap: nowrap; white-space: nowrap; }
+.buy { white-space: nowrap; flex-shrink: 0; }
+.buy.in-cart { font-size: 14px; padding: 0 16px; }
+.price-col { min-width: 0; }
+.sx-input::-webkit-search-cancel-button {
+  -webkit-appearance: none; appearance: none; width: 20px; height: 20px; border-radius: 50%; cursor: pointer;
+  background: #C7C8CF url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M7 7l10 10M17 7 7 17' stroke='white' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E") center / 12px no-repeat;
+}

@@ -60,7 +60,7 @@ function promoCard(p) {
         <button class="wish ${wished ? "on" : ""}" data-wish="${p.id}" aria-label="${wished ? "Прибрати з обраного" : "Додати в обране"}"><svg><use href="#${wished ? "i-heart-fill" : "i-heart"}"/></svg></button>
         ${qty
           ? `<div class="quick-stepper"><button data-dec="${p.id}" aria-label="Менше">−</button><span>${qty}</span><button data-inc="${p.id}" aria-label="Більше">+</button></div>`
-          : `<button class="quick-add" data-add="${p.id}" aria-label="Додати «${p.name}» у кошик"><span class="qa-plus">+</span><span class="qa-l">Додати</span></button>`}
+          : `<button class="quick-add" data-add="${p.id}" aria-label="Додати «${p.name}» у кошик"><svg class="qa-plus" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg><span class="qa-l">Додати</span></button>`}
       </div>
       <h3 class="card-name"><a href="${productUrl(p)}">${p.name}</a></h3>
       <div class="rating">${stars(p)}</div>

@@ -117,7 +117,7 @@ function relatedCard(p) {
         <div class="badges">${promoBadges(p)}</div>
         ${qty
           ? `<div class="quick-stepper"><button data-rel-dec="${p.id}" aria-label="Менше">−</button><span>${qty}</span><button data-rel-inc="${p.id}" aria-label="Більше">+</button></div>`
-          : `<button class="quick-add" data-rel-add="${p.id}" aria-label="Додати «${p.name}» у кошик"><span class="qa-plus">+</span><span class="qa-l">Додати</span></button>`}
+          : `<button class="quick-add" data-rel-add="${p.id}" aria-label="Додати «${p.name}» у кошик"><svg class="qa-plus" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg><span class="qa-l">Додати</span></button>`}
       </div>
       <div class="price-col">
         ${p.old ? `<div class="old-row"><s>${money(p.old)}</s></div>` : ""}
