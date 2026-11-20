@@ -2166,3 +2166,25 @@ body.sx-open .search { background: #fff; box-shadow: inset 0 0 0 2px var(--yello
 .pdp-bar .pdp-stepper { background: var(--grey-100); }
 .cart-summary div { padding: 2px 0; }
 .pay-row { padding-top: 10px; }
+
+/* Наліпка «ВИГОДА» / «НОВИНКА» — купон із вирізами по боках */
+.stk-hex, .pdp-photo .stk-hex {
+  width: auto; height: auto; min-width: 0; clip-path: none; filter: none;
+  display: flex; flex-direction: column; align-items: center; gap: 2px;
+  padding: 7px 14px 8px; border-radius: 12px;
+  background: linear-gradient(135deg, #FF7A45, #F0435E);
+  -webkit-mask: radial-gradient(circle 5px at 0 50%, #0000 96%, #000) left / 51% 100% no-repeat,
+                radial-gradient(circle 5px at 100% 50%, #0000 96%, #000) right / 51% 100% no-repeat;
+          mask: radial-gradient(circle 5px at 0 50%, #0000 96%, #000) left / 51% 100% no-repeat,
+                radial-gradient(circle 5px at 100% 50%, #0000 96%, #000) right / 51% 100% no-repeat;
+  transform: rotate(-5deg); margin: 2px 0 0 4px;
+}
+.stk-hex small { font-size: 14px; font-weight: 700; letter-spacing: .06em; opacity: .9; }
+.stk-hex b { font-size: 18px; font-weight: 800; letter-spacing: -0.02em; }
+.stk-new, .pdp-photo .stk-new { background: linear-gradient(135deg, #FFE45C, #FFC400); color: var(--text-primary); }
+.pdp-photo .stk-hex { padding: 9px 18px 10px; border-radius: 14px; }
+.pdp-photo .stk-hex b { font-size: 22px; }
+@media (max-width: 760px) {
+  .card .stk-hex { flex-direction: row; align-items: baseline; gap: 5px; padding: 6px 12px; transform: rotate(-4deg); }
+  .card .stk-hex b { font-size: 15px; }
+}
