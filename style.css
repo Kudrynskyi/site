@@ -1597,3 +1597,42 @@ a.pf-row:hover, button.pf-row:hover { background: var(--yellow-pale); }
   .pf-login { width: 100%; }
   .profile-page .footer { padding-bottom: 96px; }
 }
+
+/* =========================================================
+   Категорії: пастельні плитки, товар цілком, читабельні підписи
+   ========================================================= */
+.categories { display: grid; grid-template-columns: repeat(10, minmax(0, 1fr)); gap: 14px; overflow: visible; }
+.cat-tile { width: auto; gap: 10px; }
+.cat-img {
+  position: relative; width: 100%; height: auto; aspect-ratio: 1; border: none; border-radius: 26px;
+  background: var(--tint); overflow: visible; transition: transform .2s ease, box-shadow .2s ease;
+}
+.cat-img::before { /* м'яке світло зверху */
+  content: ""; position: absolute; inset: 0; border-radius: inherit;
+  background: radial-gradient(circle at 50% 18%, rgba(255, 255, 255, .7), transparent 60%);
+}
+.cat-img img {
+  position: relative; width: 84%; height: 84%; object-fit: contain; padding: 0;
+  filter: drop-shadow(0 8px 10px rgba(12, 6, 26, .14)); transition: transform .25s ease;
+}
+.cat-emoji { position: relative; font-size: 40px; }
+.cat-tile:hover .cat-img { transform: translateY(-3px); box-shadow: 0 10px 22px rgba(12, 6, 26, .08); border-color: transparent; }
+.cat-tile:hover .cat-img img { transform: scale(1.06) rotate(-3deg); }
+.cat-name {
+  text-transform: none; font-size: 14px; font-weight: 600; line-height: 1.25; letter-spacing: -0.01em;
+  color: var(--text-primary); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+}
+
+@media (max-width: 1100px) {
+  .categories { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+}
+@media (max-width: 760px) {
+  .categories {
+    display: flex; overflow-x: auto; gap: 12px; margin: 0 -16px; padding: 4px 16px 6px;
+    scroll-snap-type: x mandatory; scrollbar-width: none;
+  }
+  .categories::-webkit-scrollbar { display: none; }
+  .cat-tile { flex: 0 0 92px; width: 92px; scroll-snap-align: start; gap: 8px; }
+  .cat-img { width: 92px; height: 92px; border-radius: 24px; }
+  .cat-name { font-size: 12.5px; }
+}

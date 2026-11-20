@@ -16,12 +16,19 @@ const state = {
 };
 
 // ================= Головна: категорії й пропозиції =================
+// Пастельні відтінки плиток категорій (Wolt, Instacart)
+const CAT_TINTS = {
+  home: "#FDE7DF", kitchen: "#ECEDF1", clean: "#E2F5E6", beauty: "#E4EEFB", kids: "#FFF1C2",
+  office: "#FFF6CC", garden: "#FBE3DC", pets: "#E3F4EF", tools: "#FFE9D6", season: "#FFF0D1",
+};
+
 function renderCategories() {
   $("#categoryList").innerHTML = categories.map((c) => {
     const p = products.find((x) => x.cat === c.id);
+    const tint = CAT_TINTS[c.id] || "#F4F5F7";
     return `
-      <button class="cat-tile" data-cat-go="${c.id}">
-        <span class="cat-img">${p ? `<img src="${imgSrc(p)}" alt="" loading="lazy">` : c.icon}</span>
+      <button class="cat-tile" data-cat-go="${c.id}" style="--tint:${tint}">
+        <span class="cat-img">${p ? `<img src="${imgSrc(p)}" alt="" loading="lazy">` : `<span class="cat-emoji">${c.icon}</span>`}</span>
         <span class="cat-name">${c.name}</span>
       </button>`;
   }).join("");
