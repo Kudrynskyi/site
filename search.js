@@ -175,3 +175,35 @@
     if (c && isHome && typeof goToCategory === "function") { e.preventDefault(); close(); input.value = ""; goToCategory(c.dataset.sxCat); }
   });
 })();
+
+// ================= Каталог на весь екран (телефон) =================
+(function catalogFullscreen() {
+  const menu = document.getElementById("catalogMenu");
+  if (!menu) return;
+  const header = menu.parentElement;
+  const mq = window.matchMedia("(max-width: 760px)");
+  const EN = typeof LANG !== "undefined" && LANG === "en";
+  // фото товарів замість емодзі
+  menu.querySelectorAll(".catalog-item").forEach((a) => {
+    const id = a.dataset.catGo || (a.getAttribute("href") || "").split("cat=")[1];
+    const p = products.find((x) => x.cat === id);
+    const ic = a.querySelector("span");
+    if (p && ic) { ic.className = "ci-img"; ic.innerHTML = `<img src="${imgSrc(p)}" alt="">`; }
+    a.insertAdjacentHTML("beforeend", `<svg class="ci-chev"><use href="#i-chevron-right"/></svg>`);
+  });
+  const head = document.createElement("div");
+  head.className = "cm-head";
+  head.innerHTML = `<h2>${EN ? "Catalog" : "Каталог"}</h2><button type="button" class="icon-btn cm-close" aria-label="${EN ? "Close" : "Закрити"}"><svg><use href="#i-close"/></svg></button>`;
+  menu.prepend(head);
+  head.querySelector(".cm-close").addEventListener("click", (e) => {
+    e.stopPropagation();
+    if (typeof toggleCatalog === "function") toggleCatalog(false); else menu.hidden = true;
+  });
+  const place = () => {
+    if (mq.matches && menu.parentElement !== document.body) document.body.appendChild(menu);
+    if (!mq.matches && menu.parentElement !== header) header.appendChild(menu);
+  };
+  place(); mq.addEventListener("change", place);
+  new MutationObserver(() => document.body.classList.toggle("cm-open", mq.matches && !menu.hidden))
+    .observe(menu, { attributes: true, attributeFilter: ["hidden"] });
+})();
