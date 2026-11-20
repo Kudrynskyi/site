@@ -8,9 +8,9 @@ let storeId = load("ogogo-store", 1);
 let storeCity = "Усі";
 const co = Object.assign({
   name: "", phone: "", email: "", city: "Київ", mode: "self", delivery: "pickup", address: "", branch: "",
-  payment: "", bonusOn: false, bonusAmt: 0, promo: "", promoOn: false, noCall: true, comment: "",
+  payment: "", subst: "skip", bonusOn: false, bonusAmt: 0, promo: "", promoOn: false, noCall: true, comment: "",
 }, load("ogogo-checkout", {}));
-const ui = { open: null, items: false, promoMsg: "" };
+const ui = { open: null, items: false, promoMsg: "", promoOpen: false };
 const persist = () => save("ogogo-checkout", co);
 
 const BONUS_BALANCE = 85;
@@ -117,7 +117,8 @@ function deliverySection() {
     <div class="dopts">${keys.map(deliveryOption).join("")}</div>
     ${subtotal() < FREE_DELIVERY_FROM ? `<p class="co-tip">Додайте товарів ще на <b>${money(FREE_DELIVERY_FROM - subtotal())}</b> — і доставка буде безкоштовною</p>` : ""}
     <button type="button" class="btn btn-dark cs-next" data-next="delivery">Продовжити</button>`;
-  return section("delivery", "Доставка", ok, summary, body, "Оберіть доставку");
+  const info = co.delivery === "pickup" ? `<p class="co-info"><svg><use href="#i-info"/></svg>Зберемо замовлення в магазині й надішлемо SMS, коли воно буде готове. Зберігаємо 4 дні.</p>` : "";
+  return section("delivery", "Доставка", ok, summary ? summary + info : "", body + info, "Оберіть доставку");
 }
 
 const PAY = {
@@ -148,6 +149,15 @@ function itemsSection() {
   </section>`;
 }
 
+function substSection() {
+  const o = (v, t) => `<div class="dopt ${co.subst === v ? "on" : ""}"><label class="dopt-row"><input type="radio" name="subst" value="${v}" ${co.subst === v ? "checked" : ""}><span class="co-radio"></span><span class="dopt-txt"><b>${t}</b></span></label></div>`;
+  return `<section class="cs cs-plain">
+    <h3 class="cs-q">Що робити, якщо якогось товару не буде?</h3>
+    <div class="dopts">${o("replace", "Замініть на схожий товар за тією ж ціною")}${o("skip", "Зберіть замовлення без нього")}${o("call", "Зателефонуйте мені")}</div>
+    <p class="co-warn">Якщо товару не буде в наявності, ми зберемо замовлення без нього. Якщо не буде жодного товару — скасуємо замовлення й повідомимо. Кошти повернемо автоматично.</p>
+  </section>`;
+}
+
 function extrasSection() {
   return `<section class="cs cs-plain">
     <label class="co-check"><input type="checkbox" name="noCall" ${co.noCall ? "checked" : ""}><span>Мені можна не передзвонювати</span></label>
@@ -165,7 +175,7 @@ function sidebar() {
       ${co.bonusOn ? `<div class="sb-apply"><input name="bonusAmt" type="number" min="0" max="${BONUS_BALANCE}" value="${Number(co.bonusAmt) || BONUS_BALANCE}" inputmode="numeric" aria-label="Сума бонусів"><button type="button" class="btn btn-dark" data-bonus-all>Усі</button></div>` : ""}
     </div>
     <div class="co-box">
-      <label class="co-check"><input type="checkbox" name="promoOn" ${co.promoOn ? "checked" : ""}><span>Застосувати промокод</span></label>
+      <button type="button" class="sb-head" data-promo-toggle aria-expanded="${co.promoOn}"><b>Промокод</b>${promoDisc() ? `<em>−${money(promoDisc())}</em>` : ""}<span class="sb-arrow ${co.promoOn ? "up" : ""}"><svg viewBox="0 0 24 24"><path d="m6 9 6 6 6-6" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span></button>
       ${co.promoOn ? `<div class="sb-apply"><input name="promo" value="${esc(co.promo)}" placeholder="Напр. OGOGO10" autocapitalize="characters" aria-label="Промокод"><button type="button" class="btn btn-dark" data-promo>Застосувати</button></div>
         ${ui.promoMsg ? `<p class="sb-msg ${promoRateNow ? "ok" : "err"}">${ui.promoMsg}</p>` : `<p class="sb-msg">Спробуйте OGOGO10 — знижка 10%</p>`}` : ""}
     </div>
@@ -196,7 +206,7 @@ function render() {
   $("#coContent").innerHTML = `
     <div class="co-grid">
       <form class="co-form" id="coForm" novalidate onsubmit="return false">
-        ${recipientSection()}${deliverySection()}${paymentSection()}${itemsSection()}${extrasSection()}
+        ${recipientSection()}${deliverySection()}${paymentSection()}${itemsSection()}${substSection()}${extrasSection()}
       </form>
       <aside class="co-side" id="coSide">${sidebar()}</aside>
     </div>
@@ -224,7 +234,7 @@ document.addEventListener("input", (e) => {
 });
 
 document.addEventListener("click", (e) => {
-  const t = e.target.closest("[data-toggle],[data-next],[data-items],[data-mode],[data-city-co],[data-submit],[data-promo],[data-bonus-all]");
+  const t = e.target.closest("[data-toggle],[data-next],[data-items],[data-mode],[data-city-co],[data-submit],[data-promo],[data-promo-toggle],[data-bonus-all]");
   if (!t || !t.closest("#coContent, .co-bar")) return;
   const d = t.dataset;
   if (d.toggle) { ui.open = ui.open === d.toggle ? null : d.toggle; render(); }
@@ -237,6 +247,7 @@ document.addEventListener("click", (e) => {
   else if ("items" in d) { ui.items = !ui.items; render(); }
   else if (d.mode) { co.mode = d.mode; co.delivery = Object.keys(DELIV).find((k) => DELIV[k].mode === d.mode); persist(); render(); }
   else if (d.cityCo) { co.city = d.cityCo; persist(); render(); }
+  else if ("promoToggle" in d) { co.promoOn = !co.promoOn; persist(); render(); }
   else if ("bonusAll" in d) { co.bonusAmt = Math.min(BONUS_BALANCE, subtotal()); persist(); render(); }
   else if ("promo" in d) {
     ui.promoMsg = PROMOS[co.promo.trim().toUpperCase()] ? `Промокод застосовано: −${Math.round(PROMOS[co.promo.trim().toUpperCase()] * 100)}%` : "Такого промокоду немає";
@@ -281,6 +292,7 @@ function submit() {
         <div><span>${d.title}</span><b>${esc(where)}</b></div>
         <div><span>Отримаєте</span><b>${dateIn(d.days)}</b></div>
         <div><span>Оплата</span><b>${PAY[co.payment].title}</b></div>
+        <div><span>Якщо товару немає</span><b>${{ replace: "Замінити на схожий", skip: "Зібрати без нього", call: "Зателефонувати" }[co.subst]}</b></div>
         <div><span>Сума</span><b>${money(sum)}</b></div>
         <div><span>Бонусів буде нараховано</span><b>+${money(plus)}</b></div>
       </div>
