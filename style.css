@@ -2204,3 +2204,29 @@ body.sx-open .search { background: #fff; box-shadow: inset 0 0 0 2px var(--yello
 @media (max-width: 760px) {
   .pp-stepper { display: none; }
 }
+@media (min-width: 1700px) { .products { grid-template-columns: repeat(5, minmax(0, 1fr)); } }
+
+/* Каталог: фото категорій і повноекранний режим на телефоні */
+.cm-head { display: none; }
+.catalog-item { gap: 14px; }
+.ci-img { display: grid; place-items: center; width: 44px; height: 44px; border-radius: 14px; background: var(--photo-bg); flex-shrink: 0; }
+.ci-img img { width: 82%; height: 82%; object-fit: contain; }
+.ci-chev { display: none; }
+@media (max-width: 760px) {
+  body > .catalog-menu {
+    position: fixed; inset: 0; z-index: 34; overflow-y: auto; overscroll-behavior: contain;
+    padding: 0 0 110px; border-radius: 0; box-shadow: none; background: #fff;
+  }
+  body.cm-open { overflow: hidden; }
+  .cm-head {
+    display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 1;
+    padding: 14px 16px; background: #fff; border-bottom: 1px solid var(--border-default);
+  }
+  .cm-head h2 { font-size: 24px; font-weight: 800; letter-spacing: -0.02em; }
+  .cm-close { background: var(--grey-100); font-size: 20px; }
+  .catalog-menu-grid { display: flex; flex-direction: column; gap: 0; padding: 6px 16px 0; }
+  .catalog-item { padding: 10px 4px; border-radius: 0; border-bottom: 1px solid var(--border-default); font-size: 17px; font-weight: 500; }
+  .catalog-item:hover { background: none; }
+  .ci-img { width: 52px; height: 52px; }
+  .ci-chev { display: block; margin-left: auto; font-size: 16px; color: var(--text-secondary); }
+}
