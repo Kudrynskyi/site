@@ -74,6 +74,7 @@ function renderProduct() {
   $("#pdpBarPrice").textContent = money(p.price);
 
   $("#pdpDesc").textContent = d.desc;
+  if (window.aiSummary) $("#pdpAi").innerHTML = window.aiSummary(p);
   $("#pdpSpecs").innerHTML = [["Категорія", c.name], ...Object.entries(d.specs), ["Код товару", d.code]]
     .map(([k, v]) => `<div><dt>${k}</dt><dd>${v}</dd></div>`).join("");
 
