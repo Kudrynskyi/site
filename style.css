@@ -2475,3 +2475,39 @@ body.sx-open .search { background: #fff; box-shadow: inset 0 0 0 2px var(--yello
 .price-panel .buy, .price-panel .pp-stepper { height: 52px; margin: 5px 5px 5px 0; box-sizing: border-box; }
 .pp-stepper { padding: 0 5px; }
 .pp-stepper button { width: 38px; height: 38px; }
+
+/* =========================================================
+   Сторінка «Обране»
+   ========================================================= */
+.wl { padding-top: 20px; padding-bottom: 64px; }
+.wl-bar { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; padding: 12px 14px; margin-bottom: 14px; background: #fff; border: 1px solid var(--border-default); border-radius: 22px; }
+.wl-sum { display: flex; flex-direction: column; margin-right: auto; }
+.wl-sum span { font-size: 15px; color: var(--text-secondary); }
+.wl-sum b { color: var(--text-primary); font-size: 18px; font-weight: 800; }
+.wl-sum .wl-save { color: var(--success); font-weight: 600; font-size: 14px; }
+.wl-bar .sort-box { height: 46px; }
+.wl-clear, .wl-all { height: 46px; padding: 0 20px; font-size: 15px; }
+.wl-all:disabled { opacity: .7; cursor: default; }
+.wl-grid { gap: 10px; }
+.wl-stock { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; font-size: 14px; color: var(--success); }
+.wl-stock .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--success); }
+.wl-stock b { color: var(--text-brand); font-weight: 600; }
+.wl-remove { color: #E3242B !important; }
+.wl-undo { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 12px 16px; margin: 12px 0; border-radius: 16px; background: var(--text-primary); color: #fff; font-size: 15px; }
+.wl-undo button { color: var(--yellow); font-weight: 700; font-size: 15px; flex-shrink: 0; }
+.wl-empty { display: flex; flex-direction: column; align-items: center; gap: 10px; text-align: center; padding: 40px 16px 48px; }
+.wl-empty-ic { display: grid; place-items: center; width: 84px; height: 84px; border-radius: 50%; background: var(--yellow-soft); font-size: 40px; color: #E3242B; margin-bottom: 6px; }
+.wl-empty h1 { font-size: 28px; font-weight: 800; letter-spacing: -0.03em; }
+.wl-empty p { color: var(--text-secondary); max-width: 420px; }
+.wl-empty .btn { margin-top: 8px; height: 52px; padding: 0 28px; }
+@media (max-width: 760px) {
+  .wl { padding-top: 14px; padding-bottom: 110px; }
+  .wl-bar { padding: 12px; }
+  .wl-sum { width: 100%; flex-direction: row; justify-content: space-between; align-items: baseline; }
+  .wl-bar .sort-box { flex: 1; }
+  .wl-all { width: 100%; height: 50px; order: 5; }
+  .wl-grid { margin: 0 -8px; }
+  .wl-empty h1 { font-size: 22px; }
+  .wl-body .footer { padding-bottom: 96px; }
+}
+@media (max-width: 760px) { .wl-stock { order: 3; } }
