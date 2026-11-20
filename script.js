@@ -84,17 +84,13 @@ function filtered() {
 
 function productCard(p) {
   const wished = wishlist.has(p.id);
-  const badges = [
-    p.old ? `<span class="badge badge-sale">−${discount(p)}%</span>` : "",
-    p.hit ? `<span class="badge badge-hit">ХІТ</span>` : "",
-    p.isNew ? `<span class="badge badge-new">НОВИНКА</span>` : "",
-  ].join("");
+  const badges = promoBadges(p);
   const qty = cart[p.id] || 0;
   const quick = qty
     ? `<div class="quick-stepper" aria-label="Кількість у кошику">
          <button data-dec="${p.id}" aria-label="Менше">−</button><span>${qty}</span><button data-inc="${p.id}" aria-label="Більше">+</button>
        </div>`
-    : `<button class="quick-add" data-quick-add="${p.id}" aria-label="Швидко додати «${p.name}» у кошик">+</button>`;
+    : `<button class="quick-add" data-quick-add="${p.id}" aria-label="Швидко додати «${p.name}» у кошик"><span class="qa-plus">+</span><span class="qa-l">Додати</span></button>`;
   return `
     <article class="card">
       <div class="card-media">

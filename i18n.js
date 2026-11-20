@@ -135,6 +135,7 @@ const EN = {
   "Погоджуюсь з політикою конфіденційності й обробкою моїх даних": "I agree to the privacy policy and the processing of my data",
   "Підписатися": "Subscribe", "Огого! завжди під рукою": "Ogogo! always at hand", "Завантажити в": "Download on",
   "Способи оплати": "Payment methods", "Застосунок з'явиться згодом 🙂": "The app is coming soon 🙂",
+  "Додати": "Add", "ВИГОДА": "SAVE",
   // --- Товари ---
   "Сковорода антипригарна 24 см": "Non-stick frying pan, 24 cm",
   "Набір рушників, 3 шт.": "Towel set, 3 pcs",
