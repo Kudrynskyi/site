@@ -2115,3 +2115,76 @@ body.sx-open .search { background: #fff; box-shadow: inset 0 0 0 2px var(--yello
   .pb { flex-basis: calc((100% - 48px) / 4); }
 }
 @media (min-width: 1400px) and (max-width: 1699px) { .products { grid-template-columns: repeat(4, minmax(0, 1fr)); } .promo-grid { grid-template-columns: repeat(5, minmax(0, 1fr)); } }
+
+/* =========================================================
+   Кошик: менше світло-жовтого, більше сірого, компактніше
+   ========================================================= */
+.cart { background: var(--bg-page); }
+.cart-top { align-items: center; padding: 14px 16px; border-bottom: 1px solid var(--border-default); }
+.cart-top .back { background: var(--grey-100) !important; color: var(--text-primary); }
+.cart-top h3 { font-size: 24px; }
+.cart-top span { font-size: 14px; padding: 4px 10px; border-radius: 999px; background: var(--grey-100); color: var(--text-secondary); }
+
+.free-delivery { border: 1px solid var(--border-default); }
+.free-delivery .progress { background: var(--grey-200); }
+.free-delivery .progress span { background: var(--text-primary); }
+
+.cart-list { gap: 8px; }
+.cart-item { grid-template-columns: 76px 1fr; gap: 10px 12px; padding: 12px; border-radius: 20px; border: 1px solid var(--border-default); box-shadow: none; }
+.cart-item img { width: 76px; height: 76px; border-radius: 16px; background: var(--photo-bg); padding: 6px; }
+.cart-info p { font-size: 15px; line-height: 1.3; margin-bottom: 6px; font-weight: 500; }
+.pickup { background: none; padding: 0; color: var(--success); font-size: 14px; display: inline-flex; align-items: center; gap: 6px; }
+.pickup::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--success); }
+.cart-row { gap: 8px; }
+.cart-price s { color: #9A98A3; }
+.cart-price b { font-size: 20px; font-weight: 800; }
+.remove { width: 36px; height: 36px; background: var(--grey-100); color: var(--text-secondary); }
+.remove:hover { background: #FDE3E1; color: #D9302C; }
+
+/* Лічильник — сірий скрізь у кошику й у «Додано в кошик» */
+.stepper { background: var(--grey-100); }
+.stepper span { background: #fff; box-shadow: 0 1px 2px rgba(12, 6, 26, .08); }
+.stepper button { color: var(--text-primary); }
+.stepper button:hover { background: var(--grey-200); }
+
+/* Панель оплати — біла, з тінню, жовта лише кнопка */
+.cart-pay {
+  background: #fff; border: 1px solid var(--border-default); border-radius: 28px 28px 0 0;
+  margin: 0; padding: 16px 16px max(16px, env(safe-area-inset-bottom));
+  box-shadow: 0 -10px 30px rgba(12, 6, 26, .08);
+}
+.cart-summary { padding: 0 4px 10px; border-bottom: 1px dashed var(--border-input); }
+.cart-summary div { font-size: 15px; color: var(--text-secondary); }
+.cart-summary div span:last-child { color: var(--text-primary); font-weight: 600; }
+.sum-save span:last-child { color: #D9302C !important; }
+.pay-row { padding: 12px 4px 4px; }
+.pay-row span { font-size: 16px; font-weight: 600; }
+.pay-row b { font-size: 28px; }
+.cart-bonus { text-align: left; padding: 0 4px; margin-bottom: 12px; font-size: 14px; color: var(--text-secondary); }
+.cart-bonus b { color: var(--text-primary); background: var(--grey-100); padding: 2px 8px; border-radius: 999px; }
+.cart-pay .btn-brand { height: 54px; font-size: 17px; }
+.pdp-bar .pdp-stepper { background: var(--grey-100); }
+.cart-summary div { padding: 2px 0; }
+.pay-row { padding-top: 10px; }
+
+/* Наліпка «ВИГОДА» / «НОВИНКА» — купон із вирізами по боках */
+.stk-hex, .pdp-photo .stk-hex {
+  width: auto; height: auto; min-width: 0; clip-path: none; filter: none;
+  display: flex; flex-direction: column; align-items: center; gap: 2px;
+  padding: 7px 14px 8px; border-radius: 12px;
+  background: linear-gradient(135deg, #FF7A45, #F0435E);
+  -webkit-mask: radial-gradient(circle 5px at 0 50%, #0000 96%, #000) left / 51% 100% no-repeat,
+                radial-gradient(circle 5px at 100% 50%, #0000 96%, #000) right / 51% 100% no-repeat;
+          mask: radial-gradient(circle 5px at 0 50%, #0000 96%, #000) left / 51% 100% no-repeat,
+                radial-gradient(circle 5px at 100% 50%, #0000 96%, #000) right / 51% 100% no-repeat;
+  transform: rotate(-5deg); margin: 2px 0 0 4px;
+}
+.stk-hex small { font-size: 14px; font-weight: 700; letter-spacing: .06em; opacity: .9; }
+.stk-hex b { font-size: 18px; font-weight: 800; letter-spacing: -0.02em; }
+.stk-new, .pdp-photo .stk-new { background: linear-gradient(135deg, #FFE45C, #FFC400); color: var(--text-primary); }
+.pdp-photo .stk-hex { padding: 9px 18px 10px; border-radius: 14px; }
+.pdp-photo .stk-hex b { font-size: 22px; }
+@media (max-width: 760px) {
+  .card .stk-hex { flex-direction: row; align-items: baseline; gap: 5px; padding: 6px 12px; transform: rotate(-4deg); }
+  .card .stk-hex b { font-size: 15px; }
+}
