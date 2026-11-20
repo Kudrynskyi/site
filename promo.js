@@ -56,11 +56,11 @@ function promoCard(p) {
     <article class="card">
       <div class="card-media">
         <a href="${productUrl(p)}" class="card-link" aria-label="${p.name}"><img src="${imgSrc(p)}" alt="${p.name}" loading="lazy"></a>
-        <div class="badges">${p.old ? `<span class="badge badge-sale">−${discount(p)}%</span>` : ""}${p.hit ? `<span class="badge badge-hit">ХІТ</span>` : ""}${p.isNew ? `<span class="badge badge-new">НОВИНКА</span>` : ""}</div>
+        <div class="badges">${promoBadges(p)}</div>
         <button class="wish ${wished ? "on" : ""}" data-wish="${p.id}" aria-label="${wished ? "Прибрати з обраного" : "Додати в обране"}"><svg><use href="#${wished ? "i-heart-fill" : "i-heart"}"/></svg></button>
         ${qty
           ? `<div class="quick-stepper"><button data-dec="${p.id}" aria-label="Менше">−</button><span>${qty}</span><button data-inc="${p.id}" aria-label="Більше">+</button></div>`
-          : `<button class="quick-add" data-add="${p.id}" aria-label="Додати «${p.name}» у кошик">+</button>`}
+          : `<button class="quick-add" data-add="${p.id}" aria-label="Додати «${p.name}» у кошик"><span class="qa-plus">+</span><span class="qa-l">Додати</span></button>`}
       </div>
       <h3 class="card-name"><a href="${productUrl(p)}">${p.name}</a></h3>
       <div class="rating">${stars(p)}</div>

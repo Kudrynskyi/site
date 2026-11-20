@@ -1908,3 +1908,76 @@ a.pf-row:hover, button.pf-row:hover { background: var(--yellow-pale); }
   .fapp-badges { flex-direction: column; }
   .store-badge { flex: none; width: 100%; min-width: 0; }
 }
+
+/* =========================================================
+   Промо-наліпки на картках + кнопка «+ Додати»
+   ========================================================= */
+.badges { top: 8px; left: 8px; gap: 4px; }
+.stk {
+  position: relative; display: grid; place-items: center; align-content: center; text-align: center;
+  color: #fff; font-weight: 800; line-height: 1; letter-spacing: -0.02em;
+  filter: drop-shadow(0 4px 6px rgba(12, 6, 26, .18));
+}
+.stk b { font-size: 17px; font-weight: 800; }
+.stk small { font-size: 14px; font-weight: 800; letter-spacing: .01em; line-height: 1; }
+
+/* зубчаста зірка зі знижкою */
+.stk-burst {
+  width: 64px; height: 64px; background: #E3242B;
+  clip-path: polygon(50% 0, 59% 8%, 70% 3%, 75% 13%, 87% 12%, 87% 24%, 97% 30%, 92% 41%, 100% 50%, 92% 59%, 97% 70%, 87% 76%, 87% 88%, 75% 87%, 70% 97%, 59% 92%, 50% 100%, 41% 92%, 30% 97%, 25% 87%, 13% 88%, 13% 76%, 3% 70%, 8% 59%, 0 50%, 8% 41%, 3% 30%, 13% 24%, 13% 12%, 25% 13%, 30% 3%, 41% 8%);
+}
+/* шестикутник «Вигода» */
+.stk-hex {
+  width: 74px; height: 64px; gap: 3px; padding-top: 2px;
+  background: linear-gradient(160deg, #F7A35C, #E85C6C);
+  clip-path: polygon(25% 3%, 75% 3%, 98% 50%, 75% 97%, 25% 97%, 2% 50%);
+  border-radius: 10px;
+}
+.stk-hex b { font-size: 16px; }
+.stk-new { background: linear-gradient(160deg, #FFE45C, #F5B800); color: var(--text-primary); }
+/* круглий «Хіт» з пунктирним кільцем */
+.stk-ring {
+  width: 60px; height: 60px; border-radius: 50%; background: #2F3FB0;
+  box-shadow: inset 0 0 0 4px #2F3FB0, inset 0 0 0 6px rgba(255, 255, 255, .9);
+}
+.stk-ring::after { content: ""; position: absolute; inset: 9px; border-radius: 50%; border: 1.5px dashed rgba(255, 255, 255, .55); }
+.stk-ring b { font-size: 16px; color: var(--yellow); }
+.card:hover .stk-burst { animation: stkSpin .6s ease; }
+@keyframes stkSpin { from { transform: rotate(-12deg) scale(.95); } to { transform: none; } }
+
+/* «+ Додати» */
+.quick-add {
+  width: auto; height: 40px; padding: 0 14px 0 10px; display: inline-flex; align-items: center; gap: 4px;
+  border-radius: 999px; font-size: 14px; line-height: 1;
+}
+.qa-plus { font-size: 22px; font-weight: 700; line-height: 1; margin-top: -2px; }
+.qa-l { font-size: 14px; font-weight: 700; }
+
+.pdp-photo .badges { top: 18px; left: 18px; gap: 6px; }
+.pdp-photo .stk-burst { width: 84px; height: 84px; }
+.pdp-photo .stk-burst b { font-size: 22px; }
+.pdp-photo .stk-hex { width: 94px; height: 82px; }
+.pdp-photo .stk-hex b { font-size: 20px; }
+.pdp-photo .stk-ring { width: 78px; height: 78px; }
+.pdp-photo .stk-ring b { font-size: 20px; }
+
+@media (max-width: 760px) {
+  .stk-burst { width: 54px; height: 54px; }
+  .stk-burst b { font-size: 15px; }
+  .stk-hex { width: 62px; height: 54px; gap: 2px; }
+  .stk-hex b { font-size: 14px; }
+  .stk-ring { width: 50px; height: 50px; }
+  .stk-ring b { font-size: 14px; }
+  .stk-ring::after { inset: 7px; }
+  .quick-add { height: 36px; padding: 0 12px 0 9px; right: 6px; bottom: 6px; }
+  .qa-plus { font-size: 20px; }
+}
+@media (max-width: 760px) {
+  .card .stk + .stk { display: none; }
+  .card .stk-hex {
+    width: auto; height: auto; clip-path: none; border-radius: 999px; padding: 6px 10px;
+    display: flex; gap: 4px; align-items: baseline;
+  }
+  .card .stk-hex b { font-size: 14px; }
+}
+@media (max-width: 760px) { .card .stk-new b { display: none; } }

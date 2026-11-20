@@ -156,3 +156,14 @@ const promoProducts = (pr) => {
   if (pr.hits) list = list.sort((a, b) => (b.hit ? 1 : 0) - (a.hit ? 1 : 0) || b.rating - a.rating).slice(0, 8);
   return list;
 };
+
+// ================= Промо-наліпки на картках =================
+// Зубчаста «−N%», шестикутник «Вигода ₴X» / «Новинка», кругла «Хіт».
+function promoBadges(p, max = 2) {
+  const out = [];
+  if (p.old) out.push(`<span class="stk stk-burst"><b>−${discount(p)}%</b></span>`);
+  if (p.old && p.old - p.price >= 40) out.push(`<span class="stk stk-hex"><small>ВИГОДА</small><b>${money(p.old - p.price)}</b></span>`);
+  else if (p.isNew) out.push(`<span class="stk stk-hex stk-new"><small>НОВИНКА</small><b>2026</b></span>`);
+  if (p.hit) out.push(`<span class="stk stk-ring"><b>ХІТ</b></span>`);
+  return out.slice(0, max).join("");
+}
