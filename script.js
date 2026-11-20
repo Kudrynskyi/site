@@ -473,7 +473,7 @@ $$(".tab").forEach((tab) => tab.addEventListener("click", () => {
   if (name === "home") { closeAll(); window.scrollTo({ top: 0, behavior: "smooth" }); return; }
   if (name === "catalog") { closeAll(); toggleCatalog(true); window.scrollTo({ top: 0, behavior: "smooth" }); setTab("catalog"); return; }
   if (name === "cart") { openCart(); setTab("cart"); return; }
-  if (name === "wishlist") { showWishlist(); setTab("wishlist"); return; }
+  if (name === "wishlist") { location.href = "wishlist.html"; return; }
 
 }));
 
@@ -517,7 +517,7 @@ document.addEventListener("click", (e) => {
     renderCatalog();
   }
   else if ("openCart" in d) openCart();
-  else if ("showWishlist" in d) showWishlist();
+  else if ("showWishlist" in d) location.href = "wishlist.html";
   else if ("openStores" in d) openStores();
   else if ("close" in d) closeAll();
 });
@@ -550,7 +550,7 @@ $("#resetInSheet").addEventListener("click", () => { resetFilters(); renderCatal
     $("#catalog").scrollIntoView();
   }
   if (location.hash === "#cart") openCart();
-  if (location.hash === "#wishlist") showWishlist();
+  if (location.hash === "#wishlist") location.replace("wishlist.html");
   if (location.hash === "#catalog-menu") toggleCatalog(true);
 })();
 
