@@ -392,14 +392,7 @@ function openCart() {
   showOverlay();
 }
 
-$("#checkoutBtn").addEventListener("click", () => {
-  cart = {};
-  save("ogogo-cart", cart);
-  renderCounts();
-  renderCart();
-  closeAll();
-  toast("Дякуємо! Це демо — замовлення не надсилається 🙂");
-});
+$("#checkoutBtn").addEventListener("click", () => { location.href = "checkout.html"; });
 
 // ================= Шари =================
 // ================= Вибір магазину =================
