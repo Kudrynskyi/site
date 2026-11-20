@@ -121,6 +121,20 @@ const EN = {
   "Обрати текстиль": "Shop textiles", "Дивитися знижки": "See deals", "Отримати картку": "Get the card", "До канцтоварів": "Shop stationery",
   "Умови акції": "Deal terms", "Товари акції": "Deal products", "Інші акції": "Other deals", "Детальніше": "Learn more",
   "Діє завжди": "Always on", "Акція завершилась": "This deal has ended",
+
+  // --- Футер ---
+  "Доставка 1–2 дні": "Delivery in 1–2 days", "Безкоштовно від ₴500 або ₴59 по Україні": "Free over ₴500, otherwise ₴59 across Ukraine",
+  "Понад 50 магазинів, щодня з 8:00 до 22:00": "50+ stores, open daily 8:00–22:00", "Зручна оплата": "Easy payment",
+  "Карткою онлайн, готівкою або бонусами": "Card online, cash or bonuses", "Без зайвих питань і з чеком або без": "No questions asked, with or without a receipt",
+  "Мультимаркет товарів для дому та родини за чесними цінами.": "A multimarket of goods for home and family at fair prices.",
+  "Ми в соцмережах": "Follow us", "Каталог товарів": "Product catalog", "Обмін і повернення": "Exchanges & returns",
+  "Мій профіль": "My profile", "Партнерам": "For partners", "Політика конфіденційності": "Privacy policy",
+  "Служба підтримки": "Customer support", "Графік роботи": "Opening hours", "Пн – Нд: 8:00 – 22:00": "Mon – Sun: 8:00 – 22:00",
+  "Загальні питання": "General questions", "Підпишись на новини та акції": "Get news and deals",
+  "Надсилаємо тільки найкращі пропозиції — без спаму 🙂": "Only the best offers — no spam 🙂", "Ваш email": "Your email",
+  "Погоджуюсь з політикою конфіденційності й обробкою моїх даних": "I agree to the privacy policy and the processing of my data",
+  "Підписатися": "Subscribe", "Огого! завжди під рукою": "Ogogo! always at hand", "Завантажити в": "Download on",
+  "Способи оплати": "Payment methods", "Застосунок з'явиться згодом 🙂": "The app is coming soon 🙂",
   // --- Товари ---
   "Сковорода антипригарна 24 см": "Non-stick frying pan, 24 cm",
   "Набір рушників, 3 шт.": "Towel set, 3 pcs",
