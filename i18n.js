@@ -1,0 +1,255 @@
+// ================= Мова сайту: УКР / ENG =================
+// Вибір зберігається в localStorage ("ogogo-lang"). Для англійської
+// перекладаються всі тексти сторінки, зокрема ті, що домальовує JS.
+
+const LANG = (() => { try { return localStorage.getItem("ogogo-lang") === "en" ? "en" : "uk"; } catch (e) { return "uk"; } })();
+
+function setLang(lang) {
+  try { localStorage.setItem("ogogo-lang", lang); } catch (e) {}
+  location.reload();
+}
+
+const EN = {
+  // --- Загальне й шапка ---
+  "Огого! — мультимаркет низьких цін": "Ogogo! — the low-price multimarket",
+  "Огого! — товари для дому, кухні, дітей і свят за чесними цінами.": "Ogogo! — goods for home, kitchen, kids and holidays at fair prices.",
+  "Огого! — на головну": "Ogogo! — home",
+  "картка Огого": "Ogogo card", "СУПЕР": "SUPER", "ЗНИЖКА": "SALE",
+  "КАТАЛОГ": "CATALOG", "Каталог": "Catalog", "Каталог ▾": "Catalog ▾",
+  "Я шукаю…": "I'm looking for…", "Пошук товарів": "Search products", "Шукати": "Search",
+  "Зателефонувати": "Call us", "Змінити магазин": "Change store", "Увійти в профіль": "Sign in",
+  "Увійти": "Sign in", "Обране": "Wishlist", "Ваші бонуси": "Your bonuses", "Разом": "Total",
+  "Кошик": "Cart", "Усі акції": "All deals", "РОЗПРОДАЖ ДО −40%": "SALE UP TO −40%",
+  "Магазини": "Stores", "Допомога": "Help", "ⓘ Допомога": "ⓘ Help", "Покупцям": "For customers",
+  "Покупцям ▾": "For customers ▾", "Розділи": "Sections", "Навігація": "Navigation",
+  "Головна": "Home", "Меню": "Menu", "Профіль": "Profile", "Закрити": "Close", "Назад": "Back",
+  "Інтернет-магазин": "Online store", "Акції": "Deals",
+
+  // --- Категорії ---
+  "Дім і текстиль": "Home & textiles", "Кухня й посуд": "Kitchen & cookware", "Побутова хімія": "Household cleaning",
+  "Краса й гігієна": "Beauty & hygiene", "Дитячі товари": "Kids", "Канцтовари": "Stationery",
+  "Дача й сад": "Garden", "Для тварин": "Pets", "Інструменти": "Tools", "Сезонні товари": "Seasonal",
+
+  // --- Банери ---
+  "ТЕПЛІШЕ": "WARMER", "РАЗОМ": "TOGETHER", "ШАЛЕНІ": "CRAZY", "ЗНИЖКИ": "DEALS",
+  "КАРТКА": "OGOGO!", "ОГОГО!": "CARD", "ДО": "BACK TO", "ШКОЛИ": "SCHOOL",
+  "Пледи й рушники до −40%": "Blankets & towels up to −40%", "Обрати текстиль": "Shop textiles",
+  "+5% бонусами з кожної покупки": "+5% back in bonuses on every order", "Ціни тільки для своїх": "Members-only prices",
+  "Отримати картку": "Get the card", "Картка з'явиться згодом 🙂": "The card is coming soon 🙂",
+  "Зошити від ₴15, рюкзаки −25%": "Notebooks from ₴15, backpacks −25%", "До канцтоварів": "Shop stationery",
+  "Попередній банер": "Previous banner", "Наступний банер": "Next banner",
+  "бонусна картка": "bonus card",
+
+  // --- Головна ---
+  "Рекомендовані категорії": "Recommended categories", "Гарячі пропозиції": "Hot deals",
+  "ТОВАР": "DEAL OF", "ДНЯ": "THE DAY", "ГАРЯЧА": "HOT", "ЦІНА": "PRICE",
+  "Хіти продажу": "Best sellers", "Обране ": "Wishlist",
+  "Популярні": "Popular", "Від дешевих": "Price: low to high", "Від дорогих": "Price: high to low",
+  "Найбільша знижка": "Biggest discount", "За рейтингом": "Top rated", "Сортування": "Sort",
+  "Фільтри": "Filters", "Знайдено:": "Found:", "Скинути фільтри": "Clear filters", "Скинути": "Reset",
+  "Ціна, ₴": "Price, ₴", "Від": "From", "До": "To", "До ₴50": "Under ₴50", "₴50–₴200": "₴50–₴200", "Від ₴200": "Over ₴200",
+  "Мінімальна ціна": "Minimum price", "Максимальна ціна": "Maximum price", "ЗАСТОСУВАТИ": "APPLY",
+  "Популярні фільтри": "Popular filters", "Зі знижкою": "On sale", "Новинки": "New arrivals",
+  "До ₴100": "Under ₴100", "Хіти": "Best sellers", "Категорії": "Categories",
+  "ПОКАЗАТИ ТОВАРИ": "SHOW PRODUCTS", "НІЧОГО НЕ ЗНАЙДЕНО": "NOTHING FOUND",
+  "Нічого не знайшли 😕 Спробуйте змінити фільтри.": "Nothing found 😕 Try changing the filters.",
+  "Тільки обране": "Wishlist only", "ХІТ": "HIT", "НОВИНКА": "NEW",
+  "КУПИТИ": "BUY", "У КОШИКУ": "IN CART", "Залишити відгук": "Write a review",
+  "Додати в обране": "Add to wishlist", "Прибрати з обраного": "Remove from wishlist",
+  "Менше": "Less", "Більше": "More", "Кількість у кошику": "Quantity in cart",
+  "В обраному поки порожньо — натисніть ♥ на товарі": "Your wishlist is empty — tap ♥ on a product",
+  "Додано в обране ♥": "Added to wishlist ♥", "Прибрано з обраного": "Removed from wishlist",
+  "Додано в кошик ✓": "Added to cart ✓", "Додано в кошик": "Added to cart",
+
+  // --- Кошик ---
+  "ОФОРМИТИ ЗАМОВЛЕННЯ": "CHECKOUT", "Оформити замовлення": "Checkout", "Вам також знадобиться": "You may also need",
+  "ДОДАТИ": "ADD", "Кошик порожній": "Your cart is empty", "Перейти до покупок": "Continue shopping",
+  "До сплати": "To pay", "Знижка": "Discount", "Доставка": "Delivery", "Безкоштовно": "Free",
+  "Додайте ще": "Add", "— і доставка буде безкоштовною": "more for free delivery",
+  "Доставка безкоштовна 🎉": "Free delivery 🎉", "Ви отримаєте": "You'll earn", "бонусів": "in bonuses",
+  "Є в наявності · забрати сьогодні": "In stock · pick up today", "Прибрано з кошика": "Removed from cart",
+  "Дякуємо! Це демо — замовлення не надсилається 🙂": "Thank you! This is a demo — no order is sent 🙂",
+
+  // --- Магазини ---
+  "Оберіть магазин": "Choose a store", "Місто, вулиця або ТРЦ": "City, street or mall",
+  "Покажемо наявність і ціни у вибраному магазині. Забрати замовлення можна вже сьогодні.": "We'll show stock and prices at the selected store. You can pick up your order today.",
+  "Магазинів не знайдено": "No stores found", "Усі": "All",
+  "Київ": "Kyiv", "Львів": "Lviv", "Одеса": "Odesa", "Харків": "Kharkiv", "Дніпро": "Dnipro",
+
+  // --- Сторінка товару ---
+  "Товар — Огого!": "Product — Ogogo!", "Фото товару": "Product photo", "Є в наявності": "In stock",
+  "Самовивіз сьогодні": "Pick up today", "Безкоштовно з вибраного магазину": "Free from your store",
+  "Доставка 1–2 дні": "Delivery in 1–2 days", "₴59 · безкоштовно від ₴500": "₴59 · free over ₴500",
+  "Повернення 14 днів": "14-day returns", "Без зайвих питань": "No questions asked",
+  "Опис": "Description", "Характеристики": "Specifications", "Відгуки": "Reviews", "Схожі товари": "Similar products",
+  "Відгуків ще немає. Будьте першим!": "No reviews yet. Be the first!", "Відгуки з'являться згодом 🙂": "Reviews are coming soon 🙂",
+  "Товар не знайдено": "Product not found", "Товар не знайдено — Огого!": "Product not found — Ogogo!",
+  "Можливо, посилання застаріло.": "The link may be out of date.", "На головну": "Go home",
+  "Перейти в кошик": "Go to cart", "У кошик": "To cart", "Категорія": "Category", "Код товару": "Product code",
+
+  // --- Футер ---
+  "Мультимаркет товарів для дому та родини за чесними цінами. Понад 50 магазинів, щодня з 8:00 до 22:00.": "A multimarket of goods for home and family at fair prices. 50+ stores, open daily 8:00–22:00.",
+  "Доставка й оплата": "Delivery & payment", "Повернення": "Returns", "Бонусна програма": "Bonus program",
+  "Компанія": "Company", "Про нас": "About us", "Вакансії": "Careers", "Контакти": "Contacts",
+  "Безкоштовно по Україні": "Free across Ukraine", "© 2026 Огого! · Навчальний концепт-проєкт": "© 2026 Ogogo! · Educational concept project",
+
+  // --- Профіль ---
+  "Профіль — Огого!": "Profile — Ogogo!", "Гість": "Guest",
+  "Увійдіть, щоб бачити замовлення й бонуси": "Sign in to see your orders and bonuses",
+  "Бонусна картка": "Bonus card", "на рахунку": "on balance", "Налаштування": "Settings",
+  "Мова сайту": "Site language", "Українська": "Ukrainian", "English": "English",
+  "Мій магазин": "My store", "Покупки": "Shopping", "Мої замовлення": "My orders",
+  "Замовлення з'являться згодом 🙂": "Orders are coming soon 🙂", "Вхід з'явиться згодом 🙂": "Sign-in is coming soon 🙂",
+  "Мова": "Language", "Мову змінено": "Language changed",
+
+  // --- Товари ---
+  "Сковорода антипригарна 24 см": "Non-stick frying pan, 24 cm",
+  "Набір рушників, 3 шт.": "Towel set, 3 pcs",
+  "Засіб для миття посуду 1 л": "Dishwashing liquid, 1 L",
+  "Конструктор «Місто», 120 деталей": "“City” building set, 120 pieces",
+  "Плед флісовий 150×200 см, лавандовий": "Fleece blanket 150×200 cm, lavender",
+  "Плед флісовий": "Fleece blanket",
+  "Зошит А5, 48 аркушів": "A5 notebook, 48 sheets",
+  "Шампунь для всієї родини 750 мл": "Family shampoo, 750 ml",
+  "Гірлянда LED, 10 м, тепле світло": "LED string lights, 10 m, warm white",
+  "Гірлянда LED, 10 м": "LED string lights, 10 m", "Гірлянда LED": "LED string lights",
+  "Набір контейнерів для їжі, 5 шт.": "Food container set, 5 pcs",
+  "Іграшка м'яка «Ведмедик», 35 см": "Teddy bear plush toy, 35 cm",
+  "Губки кухонні, 10 шт.": "Kitchen sponges, 10 pcs",
+  "Рюкзак шкільний, помаранчевий": "School backpack, orange", "Рюкзак шкільний": "School backpack",
+  "Насіння томатів «Черрі»": "Cherry tomato seeds",
+  "Миска керамічна для котів": "Ceramic cat bowl",
+  "Набір викруток, 6 шт.": "Screwdriver set, 6 pcs",
+  "Ялинкові іграшки, 12 шт.": "Christmas ornaments, 12 pcs",
+
+  // --- Описи ---
+  "Легка алюмінієва сковорода з трикомпонентним антипригарним покриттям. Рівномірно прогрівається, не потребує багато олії й легко миється.": "A light aluminium pan with a three-layer non-stick coating. Heats evenly, needs little oil and is easy to clean.",
+  "Набір із трьох махрових рушників: коралового, білого й сірого. Щільна бавовна добре вбирає вологу й лишається м'якою після прання.": "A set of three terry towels: coral, white and grey. Dense cotton absorbs well and stays soft after washing.",
+  "Концентрований засіб для миття посуду з ароматом лайма. Швидко розчиняє жир навіть у холодній воді й дбайливо ставиться до шкіри рук.": "Concentrated lime-scented dishwashing liquid. Cuts grease fast even in cold water and is gentle on hands.",
+  "Конструктор для маленьких архітекторів: будиночки, дерево й автомобіль. Деталі сумісні з популярними наборами цеглинок.": "A set for little architects: houses, a tree and a car. Pieces fit popular brick sets.",
+  "Пухнастий флісовий плед ніжного лавандового кольору. Тримає тепло, не линяє й не скочується після прання.": "A fluffy fleece blanket in soft lavender. Keeps you warm, doesn't fade or pill after washing.",
+  "Зошит формату А5 у клітинку з яскравою обкладинкою. Щільний папір, на якому не просвічує ручка.": "An A5 squared notebook with a bright cover. Thick paper that pens don't bleed through.",
+  "М'який шампунь для всієї родини з дозатором. Підходить для щоденного миття, не пересушує шкіру голови.": "A gentle family shampoo with a pump. Fine for daily use and doesn't dry out the scalp.",
+  "Гірлянда на мідному дроті з теплим світлом. Тонкий дріт легко обвивається навколо ялинки, дзеркала чи полиці.": "Warm-white copper-wire string lights. The thin wire wraps easily around a tree, mirror or shelf.",
+  "П'ять контейнерів різного розміру з кольоровими кришками. Складаються один в одний і не займають місця в шафі.": "Five containers in different sizes with colourful lids. They nest inside each other to save cupboard space.",
+  "М'який ведмедик із бантиком, який захоче обійняти кожен. Гіпоалергенний наповнювач, міцні шви.": "A soft teddy bear with a bow that everyone wants to hug. Hypoallergenic filling, strong seams.",
+  "Кухонні губки з абразивним шаром для складних забруднень і м'якою стороною для делікатного посуду.": "Kitchen sponges with a scouring side for tough dirt and a soft side for delicate dishes.",
+  "Легкий шкільний рюкзак з ортопедичною спинкою, двома відділеннями й бічними кишенями для пляшки.": "A light school backpack with an ergonomic back, two compartments and side bottle pockets.",
+  "Насіння солодких томатів черрі для городу й балкона. Невибаглива рання культура з високим урожаєм.": "Sweet cherry tomato seeds for the garden or balcony. An easy, early, high-yield variety.",
+  "Стійка керамічна миска для котів, що не ковзає підлогою. Підходить для сухого й вологого корму.": "A stable ceramic cat bowl that doesn't slide. Suits dry and wet food.",
+  "Набір викруток з магнітними наконечниками й зручними прогумованими ручками для дому й дачі.": "A screwdriver set with magnetic tips and comfortable rubber grips for home and garden.",
+  "Набір скляних ялинкових кульок у червоно-золотих тонах. Кожна кулька в окремій комірці подарункової коробки.": "A set of red-and-gold glass baubles. Each one sits in its own slot of a gift box.",
+
+  // --- Характеристики: назви ---
+  "Діаметр": "Diameter", "Матеріал": "Material", "Покриття": "Coating", "Підходить для": "Suitable for",
+  "Можна мити в посудомийці": "Dishwasher safe", "Кількість": "Quantity", "Розмір": "Size", "Склад": "Composition",
+  "Щільність": "Density", "Прання": "Washing", "Об'єм": "Volume", "Аромат": "Scent", "Тип": "Type",
+  "Кількість деталей": "Pieces", "Вік": "Age", "Розмір коробки": "Box size", "Колір": "Colour",
+  "Формат": "Format", "Аркушів": "Sheets", "Лініювання": "Ruling", "Щільність паперу": "Paper weight",
+  "Тип волосся": "Hair type", "Дозатор": "Pump", "Без": "Free from", "Довжина": "Length",
+  "Кількість LED": "LED count", "Колір світла": "Light colour", "Живлення": "Power", "Режимів": "Modes",
+  "Мікрохвильовка": "Microwave safe", "Висота": "Height", "Наповнювач": "Filling", "Вага": "Weight",
+  "Дозрівання": "Ripening", "Вирощування": "Growing", "Посудомийка": "Dishwasher", "Типи шліців": "Tip types",
+  "Магнітні": "Magnetic", "Кольори": "Colours",
+
+  // --- Характеристики: значення ---
+  "алюміній": "aluminium", "антипригарне, 3 шари": "non-stick, 3 layers", "газ, електро, склокераміка": "gas, electric, ceramic",
+  "так": "yes", "так, без кришки": "yes, without the lid", "100% бавовна": "100% cotton", "до 40 °C": "up to 40 °C",
+  "до 30 °C": "up to 30 °C", "лайм": "lime", "концентрат": "concentrate", "нейтральний": "neutral",
+  "від 4 років": "4+ years", "ABS-пластик": "ABS plastic", "фліс": "fleece", "лавандовий": "lavender",
+  "клітинка": "squared", "А5": "A5", "усі типи": "all types", "силіконів": "silicones",
+  "теплий білий": "warm white", "поліпропілен": "polypropylene", "від 0,3 до 2,5 л": "0.3 to 2.5 L",
+  "від 0 років": "0+ years", "холофайбер": "hollow fibre", "ручне": "hand wash", "поролон, абразив": "foam, abrasive",
+  "поліестер": "polyester", "помаранчевий": "orange", "індетермінантний": "indeterminate",
+  "відкритий ґрунт, балкон": "open ground, balcony", "кераміка": "ceramic", "м'ятний": "mint",
+  "хром-ванадієва сталь": "chrome-vanadium steel", "скло": "glass", "червоний, золотий, білий": "red, gold, white",
+};
+
+// Частини рядків (адреси, одиниці виміру)
+const EN_PARTS = [
+  ["ТРЦ «Сонячний»", "“Sonyachnyi” Mall"], ["ТРЦ «Простір»", "“Prostir” Mall"], ["ТЦ «Каштан»", "“Kashtan” Mall"], ["ТЦ «Площа»", "“Ploshcha” Mall"],
+  ["вул. Прикладна", "Prykladna St"], ["вул. Зелена", "Zelena St"], ["вул. Квіткова", "Kvitkova St"], ["вул. Морська", "Morska St"],
+  ["вул. Річкова", "Richkova St"], ["вул. Липова", "Lypova St"], ["просп. Світлий", "Svitlyi Ave"],
+  ["Київ", "Kyiv"], ["Львів", "Lviv"], ["Одеса", "Odesa"], ["Харків", "Kharkiv"], ["Дніпро", "Dnipro"],
+  [" шт.", " pcs"], [" см", " cm"], [" мл", " ml"], [" л", " L"], [" м", " m"], [" г/м²", " g/m²"], [" кг", " kg"], [" г", " g"],
+  [" років", " years"], [" днів", " days"], ["–12 years", "–12 years"],
+];
+
+const EN_RULES = [
+  [/^(\d+) товар(?:ів|и)?$/, (m, n) => `${n} ${n === "1" ? "item" : "items"}`],
+  [/^ПОКАЗАТИ (\d+) ТОВАР(?:ІВ|И)?$/, (m, n) => `SHOW ${n} ${n === "1" ? "ITEM" : "ITEMS"}`],
+  [/^Пошук: «(.*)»$/, (m, q) => `Search: “${q}”`],
+  [/^Пошук: (.*)$/, (m, q) => `Search: ${q}`],
+  [/^Ціна: (.*)$/, (m, v) => `Price: ${v}`],
+  [/^Товари \((\d+)\)$/, (m, n) => `Items (${n})`],
+  [/^на основі (\d+) відгук(?:у|ів)$/, (m, n) => `based on ${n} review${n === "1" ? "" : "s"}`],
+  [/^\+(₴\d+) бонусів на картку Огого$/, (m, v) => `+${v} in bonuses on your Ogogo card`],
+  [/^Код: (.*)$/, (m, v) => `Code: ${v}`],
+  [/^Рейтинг (.*)$/, (m, v) => `Rating ${v}`],
+  [/^Банер (\d+)$/, (m, n) => `Banner ${n}`],
+  [/^Магазин: (.*)$/, (m, v) => `Store: ${trParts(v)}`],
+  [/^Швидко додати «(.*)» у кошик$/, (m, v) => `Quick add “${tr(v)}” to cart`],
+  [/^Додати «(.*)» у кошик$/, (m, v) => `Add “${tr(v)}” to cart`],
+  [/^(.*) — купити за (₴[\d\s]+) \| Огого!$/, (m, n, p) => `${tr(n)} — buy for ${p} | Ogogo!`],
+  [/^(.*) за (₴[\d\s]+) в Огого!\. (.*)$/, (m, n, p, d) => `${tr(n)} for ${p} at Ogogo!. ${tr(d)}`],
+  [/^(\d+)\s*$/, (m, n) => n],
+  [/^([^\sА-Яа-яЇїІіЄєҐґA-Za-z0-9]+)\s+(.+)$/, (m, icon, rest) => (EN[rest] !== undefined ? `${icon} ${EN[rest]}` : null)],
+];
+
+function trParts(s) {
+  let out = s;
+  for (const [a, b] of EN_PARTS) out = out.split(a).join(b);
+  return out;
+}
+
+function tr(s) {
+  if (LANG !== "en" || typeof s !== "string") return s;
+  const k = s.trim();
+  if (!k || !/[А-Яа-яЇїІіЄєҐґ]/.test(k)) return s;
+  if (EN[k] !== undefined) return s.replace(k, EN[k]);
+  for (const [re, f] of EN_RULES) { const m = k.match(re); if (m) { const v = f(...m); if (v !== null) return s.replace(k, v); } }
+  const parts = trParts(k);
+  return parts !== k ? s.replace(k, parts) : s;
+}
+
+const I18N_ATTRS = ["placeholder", "aria-label", "title", "alt"];
+function translateTree(root) {
+  if (LANG !== "en" || !root) return;
+  if (root.nodeType === 3) { if (root.parentElement && root.parentElement.closest('[translate="no"]')) return; const v = tr(root.nodeValue); if (v !== root.nodeValue) root.nodeValue = v; return; }
+  if (root.nodeType !== 1) return;
+  if (root.tagName === "SCRIPT" || root.tagName === "STYLE") return;
+  if (root.closest && root.closest('[translate="no"]')) return;
+  for (const a of I18N_ATTRS) if (root.hasAttribute && root.hasAttribute(a)) { const v = tr(root.getAttribute(a)); if (v !== root.getAttribute(a)) root.setAttribute(a, v); }
+  if (root.tagName === "OPTION" && root.textContent) { const v = tr(root.textContent); if (v !== root.textContent) root.textContent = v; return; }
+  const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT | NodeFilter.SHOW_ELEMENT);
+  let n = walker.nextNode();
+  while (n) {
+    if (n.nodeType === 3) { if (n.parentElement && n.parentElement.closest('[translate="no"]')) { n = walker.nextNode(); continue; } const v = tr(n.nodeValue); if (v !== n.nodeValue) n.nodeValue = v; }
+    else for (const a of I18N_ATTRS) if (n.hasAttribute(a)) { const v = tr(n.getAttribute(a)); if (v !== n.getAttribute(a)) n.setAttribute(a, v); }
+    n = walker.nextNode();
+  }
+}
+
+// Лого й перемикач мови не перекладаються; лого лишається українським текстом
+document.querySelectorAll(".logo, .lc-logo, .pf-card-logo, .pf-avatar, .seg, .lang").forEach((el) => {
+  el.setAttribute("translate", "no");
+  el.setAttribute("lang", "uk");
+});
+
+if (LANG === "en") {
+  document.documentElement.lang = "en";
+  translateTree(document.body);
+  document.title = tr(document.title);
+  const meta = document.querySelector('meta[name="description"]');
+  if (meta) meta.setAttribute("content", tr(meta.getAttribute("content")));
+  new MutationObserver((muts) => {
+    for (const m of muts) {
+      if (m.type === "characterData") translateTree(m.target);
+      else if (m.type === "attributes") translateTree(m.target);
+      else m.addedNodes.forEach(translateTree);
+    }
+  }).observe(document.body, { childList: true, subtree: true, characterData: true, attributes: true, attributeFilter: I18N_ATTRS });
+  // заголовок вкладки, який сторінки товару змінюють з JS
+  new MutationObserver(() => { const t = tr(document.title); if (t !== document.title) document.title = t; })
+    .observe(document.querySelector("title"), { childList: true, characterData: true, subtree: true });
+}
