@@ -69,7 +69,7 @@ function promoCard(p) {
           ${p.old ? `<div class="old-row"><s>${money(p.old)}</s><span class="drop">−${money(p.old - p.price)}</span></div>` : ""}
           <b class="price">${money(p.price)}</b>
         </div>
-        <button class="buy ${qty ? "in-cart" : ""}" data-add="${p.id}">${qty ? "У КОШИКУ" : "КУПИТИ"}</button>
+        ${qty ? `<div class="pp-stepper" aria-label="Кількість у кошику"><button data-dec="${p.id}" aria-label="Менше">−</button><span>${qty}</span><button data-inc="${p.id}" aria-label="Більше">+</button></div>` : `<button class="buy" data-add="${p.id}">КУПИТИ</button>`}
       </div>
     </article>`;
 }

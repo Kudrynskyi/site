@@ -2188,3 +2188,19 @@ body.sx-open .search { background: #fff; box-shadow: inset 0 0 0 2px var(--yello
   .card .stk-hex { flex-direction: row; align-items: baseline; gap: 5px; padding: 6px 12px; transform: rotate(-4deg); }
   .card .stk-hex b { font-size: 15px; }
 }
+
+/* Лічильник у ціновій панелі (комп'ютер): ціна лишається видимою */
+.pp-stepper {
+  display: flex; align-items: center; gap: 2px; flex-shrink: 0;
+  height: 52px; padding: 4px; margin: 5px 5px 5px 0; border-radius: 999px;
+  background: var(--text-primary); color: #fff; animation: pop .18s ease-out;
+}
+.pp-stepper button { width: 36px; height: 44px; border-radius: 999px; color: var(--yellow); font-size: 22px; font-weight: 700; }
+.pp-stepper button:hover { background: rgba(255, 255, 255, .12); }
+.pp-stepper span { min-width: 26px; text-align: center; font-size: 17px; font-weight: 800; }
+@media (min-width: 761px) {
+  .card-media .quick-stepper { display: none; }
+}
+@media (max-width: 760px) {
+  .pp-stepper { display: none; }
+}
