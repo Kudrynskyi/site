@@ -56,7 +56,7 @@ function renderDeals() {
 function filtered() {
   const q = state.query.trim().toLowerCase();
   let list = products.filter((p) =>
-    (!q || p.name.toLowerCase().includes(q) || catById(p.cat).name.toLowerCase().includes(q)) &&
+    (!q || p.name.toLowerCase().includes(q) || (typeof tr === "function" && tr(p.name).toLowerCase().includes(q)) || catById(p.cat).name.toLowerCase().includes(q)) &&
     (!state.cats.size || state.cats.has(p.cat)) &&
     p.price >= state.min && p.price <= state.max &&
     (!state.flags.has("sale") || p.old) &&
@@ -478,7 +478,7 @@ $$(".tab").forEach((tab) => tab.addEventListener("click", () => {
   if (name === "catalog") { closeAll(); toggleCatalog(true); window.scrollTo({ top: 0, behavior: "smooth" }); setTab("catalog"); return; }
   if (name === "cart") { openCart(); setTab("cart"); return; }
   if (name === "wishlist") { showWishlist(); setTab("wishlist"); return; }
-  if (name === "menu") { closeAll(); $("#footer").scrollIntoView({ behavior: "smooth" }); setTab("menu"); }
+
 }));
 
 // ================= Кліки =================
