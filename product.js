@@ -265,3 +265,25 @@ const headerEl = $(".header");
 const onScrollHeader = () => headerEl.classList.toggle("scrolled", window.scrollY > 80);
 window.addEventListener("scroll", onScrollHeader, { passive: true });
 onScrollHeader();
+
+// Телефон: ховати рядок з лого й магазином під час прокрутки вниз, показувати — вгору
+(function autoHideTopRow() {
+  const header = document.querySelector(".header");
+  const top = header && header.querySelector(".top-nav");
+  if (!top) return;
+  const mq = window.matchMedia("(max-width: 760px)");
+  const setH = () => header.style.setProperty("--top-h", top.offsetHeight + "px");
+  setH(); window.addEventListener("resize", setH);
+  let lastY = window.scrollY, ticking = false;
+  window.addEventListener("scroll", () => {
+    if (ticking) return; ticking = true;
+    requestAnimationFrame(() => {
+      const y = window.scrollY, dy = y - lastY;
+      if (!mq.matches || y < 120 || document.body.classList.contains("locked")) header.classList.remove("hide-top");
+      else if (dy > 6) header.classList.add("hide-top");
+      else if (dy < -6) header.classList.remove("hide-top");
+      if (Math.abs(dy) > 6) lastY = y;
+      ticking = false;
+    });
+  }, { passive: true });
+})();

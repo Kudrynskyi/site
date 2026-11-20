@@ -1636,3 +1636,11 @@ a.pf-row:hover, button.pf-row:hover { background: var(--yellow-pale); }
   .cat-img { width: 92px; height: 92px; border-radius: 24px; }
   .cat-name { font-size: 12.5px; }
 }
+
+/* Телефон: шапка з'їжджає вгору, лишаючи пошук */
+@media (max-width: 760px) {
+  .header { transition: transform .28s cubic-bezier(.2, .8, .2, 1), box-shadow .2s; will-change: transform; }
+  .header.hide-top { transform: translateY(calc(-1 * var(--top-h, 54px))); box-shadow: 0 6px 18px rgba(12, 6, 26, .08); }
+  .header .top-nav { transition: opacity .2s; }
+  .header.hide-top .top-nav { opacity: 0; pointer-events: none; }
+}
