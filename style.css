@@ -2230,3 +2230,22 @@ body.sx-open .search { background: #fff; box-shadow: inset 0 0 0 2px var(--yello
   .ci-img { width: 52px; height: 52px; }
   .ci-chev { display: block; margin-left: auto; font-size: 16px; color: var(--text-secondary); }
 }
+
+/* Лічильник «− 1 +» (IKEA, talabat на Mobbin): обведена біла пігулка */
+.stepper, .pdp-stepper, .pdp-bar .pdp-stepper {
+  display: inline-flex; align-items: center; gap: 0; height: 40px; padding: 0 3px;
+  background: #fff; border: 1.5px solid var(--border-input); border-radius: 999px; box-shadow: none;
+}
+.stepper button, .pdp-stepper button, .pdp-bar .pdp-stepper button {
+  display: grid; place-items: center; width: 32px; height: 32px; border-radius: 50%;
+  font-size: 20px; font-weight: 600; line-height: 1; color: var(--text-primary); background: none;
+}
+.stepper button:hover, .pdp-stepper button:hover { background: var(--grey-100); }
+.stepper button:first-child { color: var(--text-secondary); }
+.stepper span, .pdp-stepper span, .pdp-bar .pdp-stepper span {
+  min-width: 32px; height: auto; line-height: 1; padding: 0 2px; background: none; box-shadow: none;
+  border-radius: 0; font-size: 16px; font-weight: 700; text-align: center;
+}
+.pdp-actions .pdp-stepper { height: 52px; padding: 0 6px; }
+.pdp-actions .pdp-stepper button { width: 40px; height: 40px; }
+.pdp-actions .pdp-stepper span { min-width: 40px; font-size: 18px; }
