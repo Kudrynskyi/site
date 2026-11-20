@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=20261120-5">
+  <link rel="stylesheet" href="style.css?v=20261120-6">
 </head>
 <body class="product-page">
 
@@ -89,7 +89,7 @@
           <svg class="pin"><use href="#i-pin"/></svg>
           <span><b data-store-city>Київ</b><small data-store-addr>ТРЦ «Сонячний», вул. Прикладна, 1</small></span>
         </button>
-        <a href="tel:0800000000" class="phone-btn" aria-label="Зателефонувати"><svg><use href="#i-phone"/></svg></a>
+        <button class="phone-btn ai-btn" data-ai aria-label="AI-помічник"><svg viewBox="0 0 24 24"><path d="M12 2.5l1.9 5.4 5.6 1.6-5.6 1.7L12 16.5l-1.9-5.3-5.6-1.7 5.6-1.6Z" fill="currentColor"/><path d="M19 14.5l.9 2.4 2.4.8-2.4.9-.9 2.4-.8-2.4-2.5-.9 2.5-.8Z" fill="currentColor"/><path d="M5 15.5l.6 1.6 1.6.6-1.6.5L5 19.8l-.6-1.6-1.6-.5 1.6-.6Z" fill="currentColor"/></svg></button>
         <a class="head-tool" href="index.html#wishlist">
           <span class="tool-icon"><svg><use href="#i-heart"/></svg><span class="count" data-wish-count hidden>0</span></span>
           <span>Обране</span>
@@ -175,6 +175,8 @@
       </section>
     </div>
 
+    <section class="pdp-section" id="pdpAi"></section>
+
     <section class="pdp-section">
       <h2 class="section-title">Опис</h2>
       <p class="pdp-desc" id="pdpDesc"></p>
@@ -255,8 +257,9 @@
 
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
-  <script src="data.js?v=20261120-5"></script>
-  <script src="i18n.js?v=20261120-5"></script>
-  <script src="product.js?v=20261120-5"></script>
+  <script src="data.js?v=20261120-6"></script>
+  <script src="i18n.js?v=20261120-6"></script>
+  <script src="assistant.js?v=20261120-6"></script>
+  <script src="product.js?v=20261120-6"></script>
 </body>
 </html>

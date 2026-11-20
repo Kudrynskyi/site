@@ -17,7 +17,7 @@ const EN = {
   "картка Огого": "Ogogo card", "СУПЕР": "SUPER", "ЗНИЖКА": "SALE",
   "КАТАЛОГ": "CATALOG", "Каталог": "Catalog", "Каталог ▾": "Catalog ▾",
   "Я шукаю…": "I'm looking for…", "Пошук товарів": "Search products", "Шукати": "Search",
-  "Зателефонувати": "Call us", "Змінити магазин": "Change store", "Увійти в профіль": "Sign in",
+  "Зателефонувати": "Call us", "AI-помічник": "AI assistant", "Змінити магазин": "Change store", "Увійти в профіль": "Sign in",
   "Увійти": "Sign in", "Обране": "Wishlist", "Ваші бонуси": "Your bonuses", "Разом": "Total",
   "Кошик": "Cart", "Усі акції": "All deals", "РОЗПРОДАЖ ДО −40%": "SALE UP TO −40%",
   "Магазини": "Stores", "Допомога": "Help", "ⓘ Допомога": "ⓘ Help", "Покупцям": "For customers",
