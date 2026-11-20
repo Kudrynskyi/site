@@ -2204,3 +2204,4 @@ body.sx-open .search { background: #fff; box-shadow: inset 0 0 0 2px var(--yello
 @media (max-width: 760px) {
   .pp-stepper { display: none; }
 }
+@media (min-width: 1700px) { .products { grid-template-columns: repeat(5, minmax(0, 1fr)); } }
