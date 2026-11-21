@@ -106,11 +106,20 @@
 
     // 1) привітання + швидкі категорії
     const name0 = (load("ogogo-checkout", {}).name || "").trim().split(/\s+/)[0];
-    const quick = (has ? top : ["season", "kitchen", "home", "kids"]).slice(0, 4).map(catById).filter(Boolean);
+    // товар, який цікавив, — зі знижкою
+    const seenIds = [...s.viewed, ...s.wish].filter((p) => !s.cart[p.id]);
+    const deal = has ? (seenIds.find((p) => p.old)
+      || products.filter((p) => p.old && !s.cart[p.id] && top.slice(0, 2).includes(p.cat)).sort((a, b) => discount(b) - discount(a))[0]) : null;
+    const dealHtml = deal ? `<a class="pz-deal" href="${productUrl(deal)}">
+        <span class="pz-deal-img"><img src="${imgSrc(deal)}" alt=""><em>−${discount(deal)}%</em></span>
+        <span class="pz-deal-txt"><small>${seenIds.includes(deal) ? "Вас цікавило — тепер дешевше" : "Знижка для вас"}</small><span class="pz-deal-name">${deal.name}</span><span class="pz-deal-price"><b>${money(deal.price)}</b><s>${money(deal.old)}</s></span></span>
+      </a>` : "";
+    const quick = (has ? top : ["season", "kitchen", "home", "kids"]).slice(0, deal ? 3 : 4).map(catById).filter(Boolean);
     strip.innerHTML = `
       <div class="pz-hello">
         <div><h2>${greeting()}${name0 ? `, <span translate="no">${name0}</span>` : ""}!</h2>
           <p>${has ? "Ми підібрали товари й категорії на основі ваших переглядів і покупок" : "Переглядайте товари — і ми підберемо добірку саме для вас"}</p></div>
+        ${dealHtml}
         <div class="pz-quick">${quick.map((c) => { const p = products.find((x) => x.cat === c.id); return `<button type="button" class="pz-chip" data-cat-go="${c.id}"><img src="${imgSrc(p)}" alt="">${c.name}</button>`; }).join("")}</div>
       </div>`;
 

@@ -87,7 +87,7 @@ function productCard(p) {
   const badges = promoBadges(p);
   const qty = cart[p.id] || 0;
   const quick = qty
-    ? `<div class="quick-stepper" aria-label="Кількість у кошику">
+    ? `<div class="quick-stepper qs-home" aria-label="Кількість у кошику">
          <button data-dec="${p.id}" aria-label="Менше">−</button><span>${qty}</span><button data-inc="${p.id}" aria-label="Більше">+</button>
        </div>`
     : `<button class="quick-add" data-quick-add="${p.id}" aria-label="Швидко додати «${p.name}» у кошик"><svg class="qa-plus" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg><span class="qa-l">Додати</span></button>`;
@@ -108,7 +108,7 @@ function productCard(p) {
           ${p.old ? `<div class="old-row"><s>${money(p.old)}</s><span class="drop">−${money(p.old - p.price)}</span></div>` : ""}
           <b class="price">${money(p.price)}</b>
         </div>
-        ${qty ? `<div class="pp-stepper" aria-label="Кількість у кошику"><button data-dec="${p.id}" aria-label="Менше">−</button><span>${qty}</span><button data-inc="${p.id}" aria-label="Більше">+</button></div>` : `<button class="buy" data-add="${p.id}">КУПИТИ</button>`}
+        ${qty ? `<button class="buy in-cart" data-open-cart>У КОШИКУ</button>` : `<button class="buy" data-add="${p.id}">КУПИТИ</button>`}
       </div>
     </article>`;
 }
