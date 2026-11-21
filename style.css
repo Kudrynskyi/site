@@ -2773,3 +2773,22 @@ body.sx-open .search { background: #fff; box-shadow: inset 0 0 0 2px var(--yello
   .auth { place-items: end center; }
   .auth-box { width: 100%; border-radius: 28px 28px 0 0; padding-bottom: max(24px, env(safe-area-inset-bottom)); }
 }
+
+/* ===== Крос-сел у кошику ===== */
+.cart-xs { flex-shrink: 0; list-style: none; margin: 6px -16px 0; padding: 14px 0 4px; border-top: 1px solid var(--grey-100); }
+.cart-xs h4 { margin: 0 16px 10px; font-size: 17px; font-weight: 800; }
+.xs-row { display: flex; gap: 10px; overflow-x: auto; padding: 0 16px 6px; scroll-snap-type: x mandatory; scrollbar-width: none; }
+.xs-row::-webkit-scrollbar { display: none; }
+.xs-item { position: relative; flex: 0 0 138px; scroll-snap-align: start; display: flex; flex-direction: column; gap: 6px; padding: 8px; border-radius: 18px; background: #fff; border: 1px solid var(--grey-100); }
+.xs-img { position: relative; display: grid; place-items: center; height: 104px; border-radius: 12px; background: var(--photo-bg); }
+.xs-img img { width: 86px; height: 86px; object-fit: contain; }
+.xs-img em { position: absolute; top: 6px; left: 6px; padding: 2px 7px; border-radius: 999px; background: #E5242B; color: #fff; font-style: normal; font-size: 14px; font-weight: 800; line-height: 1.2; }
+.xs-tag { align-self: flex-start; padding: 2px 8px; border-radius: 999px; background: #EAF7EE; color: #157A3C; font-size: 14px; font-weight: 600; line-height: 1.3; }
+.xs-name { font-size: 14px; line-height: 1.3; color: var(--text-primary); text-decoration: none; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; min-height: 2.6em; }
+.xs-foot { margin-top: auto; display: flex; align-items: center; justify-content: space-between; gap: 6px; }
+.xs-price { display: flex; flex-direction: column; line-height: 1.1; }
+.xs-price b { font-size: 16px; font-weight: 800; }
+.xs-price s { font-size: 14px; color: var(--text-secondary); }
+.xs-add { flex-shrink: 0; width: 36px; height: 36px; display: grid; place-items: center; border-radius: 50%; background: var(--yellow); color: var(--text-primary); transition: transform .12s, background .12s; }
+.xs-add:hover { background: var(--yellow-hover); transform: scale(1.06); }
+.xs-add svg { width: 18px; height: 18px; }
