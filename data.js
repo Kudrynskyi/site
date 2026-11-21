@@ -120,6 +120,14 @@ const details = {
 };
 const productUrl = (p) => `product.html?id=${p.id}`;
 
+// Клік по рейтингу в картці → відгуки товару
+document.addEventListener("click", (e) => {
+  const r = e.target.closest(".card .rating");
+  if (!r) return;
+  const a = r.closest(".card").querySelector('a[href*="product.html"]');
+  if (a) { e.preventDefault(); location.href = a.getAttribute("href").split("#")[0] + "#reviews"; }
+});
+
 // ================= Акції =================
 const promos = [
   {

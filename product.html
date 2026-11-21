@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=20261121-5">
+  <link rel="stylesheet" href="style.css?v=20261121-6">
 </head>
 <body class="product-page">
 
@@ -187,7 +187,7 @@
       <dl class="pdp-specs" id="pdpSpecs"></dl>
     </section>
 
-    <section class="pdp-section">
+    <section class="pdp-section" id="reviews">
       <h2 class="section-title">Відгуки</h2>
       <div class="pdp-reviews" id="pdpReviews"></div>
     </section>
@@ -283,6 +283,26 @@
 
   <div class="overlay" id="overlay" hidden></div>
 
+  <!-- Новий відгук -->
+  <section class="store-modal rv-modal" id="reviewModal" role="dialog" aria-modal="true" aria-labelledby="rvTitle" aria-hidden="true">
+    <div class="sheet-handle"></div>
+    <div class="sheet-head">
+      <h3 id="rvTitle">Ваш відгук</h3>
+      <button class="icon-btn" data-close aria-label="Закрити"><svg><use href="#i-close"/></svg></button>
+    </div>
+    <div class="rv-prod"></div>
+    <div class="rv-pick-wrap">
+      <div class="rv-pick" id="rvPick" role="radiogroup" aria-label="Оцінка">
+        <button type="button" data-rv-pick="1" aria-label="1"><svg><use href="#i-star"/></svg></button><button type="button" data-rv-pick="2" aria-label="2"><svg><use href="#i-star"/></svg></button><button type="button" data-rv-pick="3" aria-label="3"><svg><use href="#i-star"/></svg></button><button type="button" data-rv-pick="4" aria-label="4"><svg><use href="#i-star"/></svg></button><button type="button" data-rv-pick="5" aria-label="5"><svg><use href="#i-star"/></svg></button>
+      </div>
+      <span id="rvPickLabel">Оберіть оцінку</span>
+    </div>
+    <label class="rv-field"><span>Ім’я</span><input id="rvName" type="text" maxlength="40" placeholder="Як вас звати" autocomplete="given-name"></label>
+    <label class="rv-field"><span>Відгук</span><textarea id="rvText" rows="4" maxlength="800" placeholder="Що сподобалось, а що ні? Як використовуєте товар?"></textarea></label>
+    <p class="rv-err" role="alert"></p>
+    <button class="btn btn-brand rv-submit" data-rv-submit>Опублікувати</button>
+  </section>
+
   <!-- Вибір магазину -->
   <section class="store-modal" id="storeModal" role="dialog" aria-modal="true" aria-labelledby="storeTitle" aria-hidden="true">
     <div class="sheet-handle"></div>
@@ -301,11 +321,12 @@
 
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
-  <script src="data.js?v=20261121-5"></script>
-  <script src="i18n.js?v=20261121-5"></script>
-  <script src="footer.js?v=20261121-5"></script>
-  <script src="assistant.js?v=20261121-5"></script>
-  <script src="product.js?v=20261121-5"></script>
-  <script src="search.js?v=20261121-5"></script>
+  <script src="data.js?v=20261121-6"></script>
+  <script src="i18n.js?v=20261121-6"></script>
+  <script src="footer.js?v=20261121-6"></script>
+  <script src="assistant.js?v=20261121-6"></script>
+  <script src="reviews.js?v=20261121-6"></script>
+  <script src="product.js?v=20261121-6"></script>
+  <script src="search.js?v=20261121-6"></script>
 </body>
 </html>
