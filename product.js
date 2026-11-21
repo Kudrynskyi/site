@@ -75,6 +75,7 @@ function renderProduct() {
     .map(([k, v]) => `<div><dt>${k}</dt><dd>${v}</dd></div>`).join("");
 
   if (window.renderReviews) renderReviews(p);
+  $("#pdpFomo").innerHTML = `${isLowStock(p) ? `<span class="fomo-low">${FLAME}Залишилось ${stockLeft(p)} шт. у вашому магазині</span>` : ""}<span class="fomo-pop"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 17l5-5 4 4 7-7M14 9h6v6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Купили ${boughtWeek(p)} разів за тиждень</span>`;
 
   renderWish();
   renderActions();

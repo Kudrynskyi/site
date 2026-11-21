@@ -120,6 +120,13 @@ const details = {
 };
 const productUrl = (p) => `product.html?id=${p.id}`;
 
+// FOMO: залишок у магазині та популярність (демо, стабільні для товару)
+const stockLeft = (p) => ((p.id * 37 + 11) % 23) + 2;          // 2…24
+const isLowStock = (p) => stockLeft(p) <= 7;
+const boughtWeek = (p) => 18 + ((p.id * 53) % 140) + Math.round((p.reviews || 0) / 2);
+const FLAME = `<svg class="fomo-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5c.6 3-1.6 4.6-2.9 6.4C7.8 10.7 7 12.3 7 14.3A5 5 0 0 0 17 14.4c0-2-.9-3.6-2-4.8.1 1.4-.4 2.6-1.4 3.2.3-3.6-.8-7.4-1.6-10.3Z" fill="currentColor"/></svg>`;
+const fomoLine = (p) => isLowStock(p) ? `<p class="card-fomo">${FLAME}Залишилось ${stockLeft(p)} шт.</p>` : "";
+
 // Клік по рейтингу в картці → відгуки товару
 document.addEventListener("click", (e) => {
   const r = e.target.closest(".card .rating");

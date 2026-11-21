@@ -103,6 +103,7 @@ function productCard(p) {
       </div>
       <h3 class="card-name"><a href="${productUrl(p)}">${p.name}</a></h3>
       <div class="rating">${stars(p)}</div>
+      ${fomoLine(p)}
       <div class="price-panel">
         <div class="price-col">
           ${p.old ? `<div class="old-row"><s>${money(p.old)}</s><span class="drop">−${money(p.old - p.price)}</span></div>` : ""}
@@ -318,7 +319,8 @@ function renderCart() {
       <img src="${imgSrc(p)}" alt="">
       <div class="cart-info">
         <p>${p.name}</p>
-        <span class="pickup">Є в наявності · забрати сьогодні</span>
+        ${isLowStock(p) ? `<span class="fomo-low">${FLAME}Залишилось ${stockLeft(p)}. Замовляйте зараз</span>` : ""}
+        <span class="pickup-chip">Можна забрати сьогодні</span>
       </div>
       <div class="cart-row">
         ${stepper(p, qty)}
@@ -363,10 +365,10 @@ function crossSell(entries) {
   if (!list.length) return "";
   return `<li class="cart-xs">
       <h4>Додайте до замовлення</h4>
-      <div class="xs-row">${list.map((p) => `
+      <div class="xs-row">${list.map((p, i) => `
         <div class="xs-item">
           <a class="xs-img" href="${productUrl(p)}"><img src="${imgSrc(p)}" alt="" loading="lazy">${p.old ? `<em>−${discount(p)}%</em>` : ""}</a>
-          ${left > 0 && p.price >= left ? `<span class="xs-tag">Безкоштовна доставка</span>` : ""}
+          ${i === 0 && left > 0 && p.price >= left ? `<span class="xs-tag">Безкоштовна доставка</span>` : ""}
           <a class="xs-name" href="${productUrl(p)}">${p.name}</a>
           <div class="xs-foot"><span class="xs-price"><b>${money(p.price)}</b>${p.old ? `<s>${money(p.old)}</s>` : ""}</span>
             <button class="xs-add" data-add-extra="${p.id}" aria-label="Додати «${p.name}» у кошик"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg></button></div>
