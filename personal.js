@@ -59,7 +59,7 @@
   }
 
   function pcard({ p, why }) {
-    return `<div class="pz-item">${productCard(p)}<p class="pz-why"><svg viewBox="0 0 24 24"><path d="M12 2.5l1.9 5.4 5.6 1.6-5.6 1.7L12 16.5l-1.9-5.3-5.6-1.7 5.6-1.6Z" fill="currentColor"/></svg>${why}</p></div>`;
+    return `<div class="pz-item">${productCard(p)}</div>`;
   }
 
   function greeting() {
