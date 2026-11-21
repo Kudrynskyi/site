@@ -200,6 +200,7 @@ const EN = {
   "Свою функцію виконує, без вау-ефекту.": "Does the job, nothing special.", "Якість так собі, швидко втратило вигляд.": "So-so quality, quickly lost its look.",
   "Не зовсім те, що в описі.": "Not quite as described.", "Не підійшло, повернув без проблем — дякую магазину.": "Didn't suit me, returned with no hassle — thanks to the store.", "Розчарований, на жаль.": "Disappointed, unfortunately.",
   "Вас цікавило — тепер дешевше": "You looked at this — now cheaper", "Знижка для вас": "A deal for you",
+  "Можна отримати": "Pick up", "за ~10 хв": "in ~10 min", "у": "at", "Змінити магазин": "Change store",
   // --- Товари ---
   "Сковорода антипригарна 24 см": "Non-stick frying pan, 24 cm",
   "Набір рушників, 3 шт.": "Towel set, 3 pcs",
