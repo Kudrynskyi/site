@@ -199,6 +199,7 @@ const EN = {
   "Нормально, але очікував більшого.": "Okay, but expected more.", "За акційною ціною — ок, за повною не взяв би.": "Fine at the sale price, wouldn't pay full price.",
   "Свою функцію виконує, без вау-ефекту.": "Does the job, nothing special.", "Якість так собі, швидко втратило вигляд.": "So-so quality, quickly lost its look.",
   "Не зовсім те, що в описі.": "Not quite as described.", "Не підійшло, повернув без проблем — дякую магазину.": "Didn't suit me, returned with no hassle — thanks to the store.", "Розчарований, на жаль.": "Disappointed, unfortunately.",
+  "Вас цікавило — тепер дешевше": "You looked at this — now cheaper", "Знижка для вас": "A deal for you",
   // --- Товари ---
   "Сковорода антипригарна 24 см": "Non-stick frying pan, 24 cm",
   "Набір рушників, 3 шт.": "Towel set, 3 pcs",
