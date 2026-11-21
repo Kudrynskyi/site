@@ -96,7 +96,7 @@
     // 3) «Для вас»
     const { list: rec } = picks(s, score);
     document.getElementById("pzFor").innerHTML = `
-      <div class="pz-head"><h2 class="section-title">${has ? "Рекомендуємо для вас" : "Популярне зараз"}</h2>${has ? `<button type="button" class="pz-reset" data-pz-reset>Скинути рекомендації</button>` : ""}</div>
+      <div class="pz-head"><h2 class="section-title">${has ? "Рекомендуємо для вас" : "Популярне зараз"}</h2></div>
       <div class="scroller pz-row">${rec.map(pcard).join("")}</div>`;
 
     // 4) «Нещодавно переглянуте»
