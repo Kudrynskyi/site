@@ -185,6 +185,7 @@ const EN = {
   "Скинути рекомендації": "Reset recommendations", "Нещодавно переглянуте": "Recently viewed", "Рекомендації скинуто": "Recommendations reset",
   "З обраного — зараз зі знижкою": "From your wishlist — now on sale", "Доброго ранку": "Good morning", "Добрий день": "Good afternoon",
   "Добрий вечір": "Good evening", "Доброї ночі": "Good night", "Для вас": "For you",
+  "— персональна ціна для вас": "— your personal price", "Для вас персональна знижка −10%": "Personal discount for you −10%", "— увійдіть, щоб побачити свої ціни": "— sign in to see your prices", "Оформити": "Checkout", "Ваша ціна": "Your price", "Обрати": "Choose",
   // --- Товари ---
   "Сковорода антипригарна 24 см": "Non-stick frying pan, 24 cm",
   "Набір рушників, 3 шт.": "Towel set, 3 pcs",
@@ -295,6 +296,8 @@ const EN_RULES = [
   [/^Пасує до «(.*)»$/, (m, v) => `Goes with “${tr(v)}”`],
   [/^Бо вам цікаві «(.*)»$/, (m, v) => `Because you like “${tr(v)}”`],
   [/^(Доброго ранку|Добрий день|Добрий вечір|Доброї ночі)([,!]?)$/, (m, g, c) => `${EN[g]}${c}`],
+  [/^У кошику (\d+) (товар|товари|товарів)$/, (m, n) => `${n} ${n === "1" ? "item" : "items"} in cart`],
+  [/^на «(.+)»$/, (m, c) => `on “${tr(c)}”`],
   [/^Банер (\d+)$/, (m, n) => `Banner ${n}`],
   [/^Магазин: (.*)$/, (m, v) => `Store: ${trParts(v)}`],
   [/^Швидко додати «(.*)» у кошик$/, (m, v) => `Quick add “${tr(v)}” to cart`],

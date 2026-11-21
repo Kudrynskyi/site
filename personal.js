@@ -67,11 +67,42 @@
     return h < 5 ? "Доброї ночі" : h < 12 ? "Доброго ранку" : h < 18 ? "Добрий день" : "Добрий вечір";
   }
 
+  // 0) снек-бар: персональна ціна / знижка
+  function snack(s, top) {
+    const el = document.getElementById("pzSnack");
+    if (!el) return;
+    let hidden = false; try { hidden = sessionStorage.getItem("ogogo-snack") === "1"; } catch (e) {}
+    if (hidden) { el.hidden = true; return; }
+    const authed = !!(load("ogogo-checkout", {}).name || "").trim();
+    const items = Object.entries(s.cart).map(([k, q]) => [byId(k), q]).filter(([p]) => p);
+    const ic = `<span class="pzs-ic" aria-hidden="true">%</span>`;
+    let body;
+    if (items.length) {
+      const n = items.reduce((a, [, q]) => a + q, 0);
+      const sum = items.reduce((a, [p, q]) => a + p.price * q, 0);
+      const pers = Math.round(sum * 0.95);
+      body = `<span class="pzs-thumbs">${items.slice(0, 3).map(([p]) => `<img src="${imgSrc(p)}" alt="">`).join("")}</span>
+        <span class="pzs-txt"><b>У кошику ${n} ${plural(n, "товар", "товари", "товарів")}</b><span class="pzs-long"> — персональна ціна для вас </span><span class="pzs-short">Ваша ціна </span><b class="pzs-price">${money(pers)}</b> <s>${money(sum)}</s></span>
+        <a class="pzs-cta" href="checkout.html">Оформити</a>`;
+    } else if (!authed) {
+      body = `${ic}<span class="pzs-txt"><b>Для вас персональна знижка −10%</b> — увійдіть, щоб побачити свої ціни</span>
+        <a class="pzs-cta" href="profile.html">Увійти</a>`;
+    } else {
+      const c = catById(top[0] || "home");
+      body = `${ic}<span class="pzs-txt"><b>Для вас персональна знижка −10%</b> на «${c.name}»</span>
+        <button type="button" class="pzs-cta" data-cat-go="${c.id}">Обрати</button>`;
+    }
+    el.innerHTML = `${body}<button type="button" class="pzs-x" data-pz-snack-x aria-label="Закрити"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg></button>`;
+    el.hidden = false;
+  }
+
   function render() {
     const s = signals();
     const score = affinity(s);
     const has = Object.keys(score).length > 0;
     const top = Object.entries(score).sort((a, b) => b[1] - a[1]).map(([c]) => c);
+
+    snack(s, top);
 
     // 1) привітання + швидкі категорії
     const name0 = (load("ogogo-checkout", {}).name || "").trim().split(/\s+/)[0];
@@ -110,6 +141,7 @@
 
   document.addEventListener("click", (e) => {
     if (e.target.closest("[data-pz-reset]")) { ["ogogo-viewed", "ogogo-cats", "ogogo-search"].forEach((k) => save(k, k === "ogogo-cats" ? {} : [])); render(); if (typeof toast === "function") toast("Рекомендації скинуто"); return; }
+    if (e.target.closest("[data-pz-snack-x]")) { try { sessionStorage.setItem("ogogo-snack", "1"); } catch (er) {} document.getElementById("pzSnack").hidden = true; return; }
     if (e.target.closest("[data-pz-clear-viewed]")) { save("ogogo-viewed", []); render(); return; }
     // після дій у картках — оновити добірку (кошик/обране змінились)
     if (e.target.closest("#pzFor [data-quick-add], #pzFor [data-add], #pzFor [data-inc], #pzFor [data-dec], #pzFor [data-wish]")) setTimeout(render, 0);
