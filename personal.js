@@ -40,7 +40,7 @@
   const PAIRS = { kitchen: ["clean", "home"], clean: ["kitchen", "beauty"], home: ["season", "beauty"], beauty: ["clean", "home"], kids: ["office", "season"], office: ["kids"], garden: ["tools"], tools: ["garden"], pets: ["home"], season: ["home", "kids"] };
 
   function picks(s, score) {
-    const seen = new Set([...s.inCart.map((p) => p.id)]);
+    const seen = new Set();
     const anchor = s.viewed[0] || s.wish[0] || s.inCart[0];
     const out = [];
     const push = (p, why) => { if (p && !seen.has(p.id)) { seen.add(p.id); out.push({ p, why }); } };
@@ -98,7 +98,8 @@
     el.hidden = false;
   }
 
-  function render() {
+  let lastRec = null;
+  function render(keepRec) {
     const s = signals();
     const score = affinity(s);
     const has = Object.keys(score).length > 0;
@@ -136,7 +137,10 @@
     }
 
     // 3) «Для вас»
-    const { list: rec } = picks(s, score);
+    let rec;
+    if (keepRec && lastRec) rec = lastRec.map(({ p, why }) => ({ p: byId(p.id), why }));
+    else rec = picks(s, score).list;
+    lastRec = rec;
     document.getElementById("pzFor").innerHTML = `
       <div class="pz-head"><h2 class="section-title">${has ? "Рекомендуємо для вас" : "Популярне зараз"}</h2></div>
       <div class="scroller pz-row">${rec.map(pcard).join("")}</div>`;
@@ -155,7 +159,7 @@
     if (e.target.closest("[data-pz-snack-x]")) { try { sessionStorage.setItem("ogogo-snack", "1"); } catch (er) {} document.getElementById("pzSnack").hidden = true; return; }
     if (e.target.closest("[data-pz-clear-viewed]")) { save("ogogo-viewed", []); render(); return; }
     // після дій у картках — оновити добірку (кошик/обране змінились)
-    if (e.target.closest("#pzFor [data-quick-add], #pzFor [data-add], #pzFor [data-inc], #pzFor [data-dec], #pzFor [data-wish]")) setTimeout(render, 0);
+    if (e.target.closest("#pzFor [data-quick-add], #pzFor [data-add], #pzFor [data-inc], #pzFor [data-dec], #pzFor [data-wish]")) setTimeout(() => render(true), 0);
   });
   window.addEventListener("storage", render);
   document.addEventListener("ogogo-auth", render);
