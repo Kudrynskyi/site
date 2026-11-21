@@ -74,10 +74,7 @@ function renderProduct() {
   $("#pdpSpecs").innerHTML = [["Категорія", c.name], ...Object.entries(d.specs), ["Код товару", d.code]]
     .map(([k, v]) => `<div><dt>${k}</dt><dd>${v}</dd></div>`).join("");
 
-  $("#pdpReviews").innerHTML = p.reviews
-    ? `<div class="rev-score"><b>${p.rating.toFixed(1)}</b><div>${stars(p)}<small>на основі ${p.reviews} ${plural(p.reviews, "відгуку", "відгуків", "відгуків")}</small></div></div>
-       <button class="btn btn-ghost" data-review>Залишити відгук</button>`
-    : `<p class="muted">Відгуків ще немає. Будьте першим!</p><button class="btn btn-ghost" data-review>Залишити відгук</button>`;
+  if (window.renderReviews) renderReviews(p);
 
   renderWish();
   renderActions();
@@ -198,8 +195,7 @@ $("#storeModal").addEventListener("click", (e) => {
 // ---------- Шари й сповіщення ----------
 function showOverlay() { $("#overlay").hidden = false; document.body.classList.add("locked"); }
 function closeAll() {
-  $("#storeModal").classList.remove("open");
-  $("#storeModal").setAttribute("aria-hidden", "true");
+  $$(".store-modal").forEach((m) => { m.classList.remove("open"); m.setAttribute("aria-hidden", "true"); });
   $("#overlay").hidden = true;
   document.body.classList.remove("locked");
   toggleCatalog(false);
@@ -218,7 +214,7 @@ function toast(msg) {
 
 // ---------- Кліки ----------
 document.addEventListener("click", (e) => {
-  const t = e.target.closest("[data-add],[data-inc],[data-dec],[data-rel-add],[data-rel-inc],[data-rel-dec],[data-open-stores],[data-close],[data-review],#pdpWish");
+  const t = e.target.closest("[data-add],[data-inc],[data-dec],[data-rel-add],[data-rel-inc],[data-rel-dec],[data-open-stores],[data-close],#pdpWish");
   if (!t) {
     if (!e.target.closest("#catalogMenu, #catalogBtn, #burgerBtn")) toggleCatalog(false);
     return;
@@ -234,7 +230,6 @@ document.addEventListener("click", (e) => {
   else if (t.id === "pdpWish") toggleWish(product.id);
   else if ("openStores" in d) openStores();
   else if ("close" in d) closeAll();
-  else if ("review" in d) toast("Відгуки з'являться згодом 🙂");
 });
 
 // Синхронізація, якщо кошик змінили в іншій вкладці

@@ -1184,6 +1184,8 @@ h1, h2, h3, .section-title, .catalog-title h2, .banner h2, .price, .deal-price {
 .pdp-specs dt { color: var(--text-secondary); }
 .pdp-specs dd { font-weight: 500; }
 .pdp-reviews { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; max-width: 760px; background: #fff; border-radius: 24px; padding: 20px 22px; }
+.pdp-reviews:has(.rv-layout) { display: block; }
+.pdp-reviews > .rv-layout { width: 100%; }
 .rev-score { display: flex; align-items: center; gap: 16px; }
 .rev-score > b { font-size: 44px; font-weight: 800; line-height: 1; }
 .rev-score .stars svg { font-size: 20px; }
@@ -2473,6 +2475,8 @@ body.sx-open .search { background: #fff; box-shadow: inset 0 0 0 2px var(--yello
 /* Вирівнювання: лічильник у ціновій панелі такої ж висоти, як КУПИТИ */
 .price-panel { min-height: 62px; }
 .price-panel .buy, .price-panel .pp-stepper { height: 52px; margin: 5px 5px 5px 0; box-sizing: border-box; }
+@media (max-width: 760px) { .price-panel { min-height: 0; } .price-panel .pp-stepper { display: none; } }
+@media (max-width: 760px) { .card .rating { margin-top: auto; } }
 .pp-stepper { padding: 0 5px; }
 .pp-stepper button { width: 38px; height: 38px; }
 
@@ -2619,4 +2623,69 @@ body.sx-open .search { background: #fff; box-shadow: inset 0 0 0 2px var(--yello
   .pzs-txt s { display: none; }
   .pzs-cta { padding: 0 14px; }
   .pzs-txt > b:first-child { display: block; }
+}
+
+/* ===== Відгуки ===== */
+.card .rating { cursor: pointer; }
+#reviews { scroll-margin-top: 110px; }
+.rv-count { display: inline-grid; place-items: center; min-width: 30px; height: 26px; padding: 0 8px; margin-left: 6px; border-radius: 999px; background: var(--grey-100); font-size: 15px; font-weight: 700; vertical-align: middle; }
+#pdpRating { cursor: pointer; }
+.rv-layout { display: grid; grid-template-columns: minmax(0, 1fr); gap: 20px; }
+.rv-sum { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; gap: 28px; padding: 20px 24px; border-radius: 24px; background: var(--photo-bg); }
+.rv-big { display: flex; align-items: center; gap: 14px; }
+.rv-big > b { font-size: 48px; font-weight: 800; line-height: 1; letter-spacing: -0.03em; }
+.rv-big small { display: block; color: var(--text-secondary); font-size: 14px; margin-top: 4px; }
+.rv-stars { display: inline-flex; gap: 2px; }
+.rv-stars svg { width: 18px; height: 18px; }
+.rv-bars { display: grid; gap: 2px; max-width: 360px; }
+.rv-bar { width: 100%; display: grid; grid-template-columns: 12px 14px 1fr 32px; align-items: center; gap: 6px; padding: 4px 6px; border-radius: 8px; font-size: 14px; text-align: left; }
+.rv-bar:hover { background: var(--grey-100); }
+.rv-bar svg { width: 14px; height: 14px; color: var(--star); }
+.rv-bar i { height: 8px; border-radius: 4px; background: var(--grey-100); overflow: hidden; }
+.rv-bar em { display: block; height: 100%; border-radius: 4px; background: var(--star); }
+.rv-bar small { color: var(--text-secondary); text-align: right; }
+.rv-write { padding-left: 24px; padding-right: 24px; }
+.rv-tools { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; margin-bottom: 12px; }
+.rv-chips { display: flex; gap: 8px; flex-wrap: wrap; }
+.rv-chip { height: 38px; padding: 0 16px; border-radius: 999px; background: var(--grey-100); font-weight: 600; font-size: 14px; }
+.rv-chip.on { background: var(--text-primary); color: #fff; }
+.rv-list { list-style: none; margin: 0; padding: 0; display: grid; }
+.rv-item { padding: 18px 0; border-bottom: 1px solid var(--grey-100); }
+.rv-item:last-child { border-bottom: 0; }
+.rv-head { display: flex; align-items: center; gap: 12px; margin-bottom: 8px; }
+.rv-head b { display: block; font-size: 15px; }
+.rv-head small { color: var(--text-secondary); font-size: 14px; }
+.rv-ava { display: grid; place-items: center; width: 40px; height: 40px; border-radius: 50%; background: var(--yellow-soft); font-weight: 800; flex-shrink: 0; }
+.rv-ver { margin-left: auto; padding: 4px 10px; border-radius: 999px; background: #E6F6EC; color: #157A3C; font-size: 14px; font-weight: 600; white-space: nowrap; }
+.rv-mine { background: var(--yellow-soft); color: var(--text-primary); }
+.rv-item p { margin: 8px 0 10px; font-size: 15px; line-height: 1.5; }
+.rv-help { height: 34px; padding: 0 14px; border-radius: 999px; border: 1px solid var(--grey-200); font-size: 14px; font-weight: 600; color: var(--text-secondary); }
+.rv-help.on { background: var(--yellow-soft); border-color: var(--yellow); color: var(--text-primary); }
+.rv-more { display: block; margin: 16px auto 0; }
+.rv-none { padding: 24px 0; }
+.rv-empty { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+/* форма */
+.rv-modal { max-width: 520px; }
+.rv-prod { display: flex; align-items: center; gap: 12px; padding: 10px; border-radius: 16px; background: var(--photo-bg); margin-bottom: 14px; font-weight: 600; }
+.rv-prod img { width: 48px; height: 48px; object-fit: contain; border-radius: 10px; background: #fff; }
+.rv-pick-wrap { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
+.rv-pick { display: flex; gap: 4px; }
+.rv-pick button { width: 40px; height: 40px; display: grid; place-items: center; border-radius: 10px; }
+.rv-pick svg { width: 32px; height: 32px; color: var(--grey-200); transition: color .12s, transform .12s; }
+.rv-pick button.on svg { color: var(--star); }
+.rv-pick button:hover svg { transform: scale(1.1); }
+#rvPickLabel { font-weight: 600; color: var(--text-secondary); }
+.rv-field { display: grid; gap: 6px; margin-bottom: 12px; font-size: 14px; font-weight: 600; }
+.rv-field input, .rv-field textarea { width: 100%; box-sizing: border-box; padding: 12px 14px; border-radius: 14px; border: 1px solid var(--grey-200); font: inherit; font-weight: 400; font-size: 16px; resize: vertical; }
+.rv-field input:focus, .rv-field textarea:focus { outline: none; border-color: var(--text-primary); }
+.rv-err { min-height: 18px; margin: 0 0 8px; color: #E5242B; font-size: 14px; }
+.rv-submit { width: 100%; }
+@media (max-width: 900px) {
+  .rv-layout { gap: 14px; }
+  .rv-sum { grid-template-columns: minmax(0, 1fr); gap: 14px; padding: 16px; }
+  .rv-bars { max-width: none; }
+  .rv-write { width: 100%; }
+  .rv-tools { flex-direction: column; align-items: stretch; }
+  .rv-chips { flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; }
+  .rv-chip { flex-shrink: 0; }
 }
