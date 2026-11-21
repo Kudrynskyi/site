@@ -31,6 +31,7 @@ function wlCard(p) {
       </div>
       <h3 class="card-name"><a href="${productUrl(p)}">${p.name}</a></h3>
       <div class="rating">${stars(p)}</div>
+      ${fomoLine(p)}
       <p class="wl-stock"><span class="dot"></span>Є в наявності${p.old ? ` · <b>економія ${money(p.old - p.price)}</b>` : ""}</p>
       <div class="price-panel">
         <div class="price-col">

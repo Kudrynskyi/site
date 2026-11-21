@@ -210,6 +210,7 @@ const EN = {
   "Увійдіть, щоб бачити замовлення, бонуси й персональні ціни": "Sign in to see orders, bonuses and personal prices",
   "Персональна ціна для вас": "Personal price for you", "— увійдіть, щоб бачити свої знижки до −10%": "— sign in to see your discounts up to −10%", "— увійдіть": "— sign in",
   "Додайте до замовлення": "Add to your order", "Безкоштовна доставка": "Free delivery",
+  "Можна забрати сьогодні": "Pick up today", "Оформити": "Checkout",
   // --- Товари ---
   "Сковорода антипригарна 24 см": "Non-stick frying pan, 24 cm",
   "Набір рушників, 3 шт.": "Towel set, 3 pcs",
@@ -330,6 +331,10 @@ const EN_RULES = [
   [/^Вітаємо, (.+)! Персональні ціни увімкнено ✓$/, (m, n) => `Welcome, ${n}! Personal prices are on ✓`],
   [/^— увійдіть, і (\d+) (товари|товарів) з кошика стануть дешевшими$/, (m, n) => `— sign in and ${n} cart items get cheaper`],
   [/^— увійдіть, і товар з кошика стане дешевшим$/, () => "— sign in and your cart item gets cheaper"],
+  [/^Залишилось (\d+) шт\.$/, (m, n) => `Only ${n} left`],
+  [/^Залишилось (\d+)\. Замовляйте зараз$/, (m, n) => `Only ${n} left. Order now`],
+  [/^Залишилось (\d+) шт\. у вашому магазині$/, (m, n) => `Only ${n} left in your store`],
+  [/^Купили (\d+) разів за тиждень$/, (m, n) => `Bought ${n} times this week`],
   [/^Банер (\d+)$/, (m, n) => `Banner ${n}`],
   [/^Магазин: (.*)$/, (m, v) => `Store: ${trParts(v)}`],
   [/^Швидко додати «(.*)» у кошик$/, (m, v) => `Quick add “${tr(v)}” to cart`],
