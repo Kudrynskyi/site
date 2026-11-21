@@ -2,7 +2,19 @@
 // Вибір зберігається в localStorage ("ogogo-lang"). Для англійської
 // перекладаються всі тексти сторінки, зокрема ті, що домальовує JS.
 
-const LANG = (() => { try { return localStorage.getItem("ogogo-lang") === "en" ? "en" : "uk"; } catch (e) { return "uk"; } })();
+// Якщо мову ще не обирали: відвідувачам із США — англійська за замовчуванням.
+// Країну визначаємо за часовим поясом браузера (без сторонніх сервісів і IP).
+const US_TZ = /^(America\/(New_York|Detroit|Chicago|Denver|Phoenix|Boise|Los_Angeles|Anchorage|Juneau|Sitka|Nome|Adak|Metlakatla|Yakutat|Menominee|Indiana\/.+|Kentucky\/.+|North_Dakota\/.+)|Pacific\/Honolulu|US\/.+)$/;
+function defaultLang() {
+  try {
+    const tz = Intl.DateTimeFormat().resolvedOptions().timeZone || "";
+    const first = ((navigator.languages && navigator.languages[0]) || navigator.language || "").toLowerCase();
+    if (US_TZ.test(tz) && !/^(uk|ru)/.test(first)) return "en";
+  } catch (e) {}
+  return "uk";
+}
+const LANG = (() => { try { const v = localStorage.getItem("ogogo-lang"); return v === "en" || v === "uk" ? v : defaultLang(); } catch (e) { return defaultLang(); } })();
+if (LANG === "en") document.documentElement.lang = "en";
 
 function setLang(lang) {
   try { localStorage.setItem("ogogo-lang", lang); } catch (e) {}
