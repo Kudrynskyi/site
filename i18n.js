@@ -209,6 +209,7 @@ const EN = {
   "Код надіслано повторно": "Code sent again", "Ви вийшли з акаунту": "You've signed out", "Вийти": "Sign out", "Гість": "Guest",
   "Увійдіть, щоб бачити замовлення, бонуси й персональні ціни": "Sign in to see orders, bonuses and personal prices",
   "Персональна ціна для вас": "Personal price for you", "— увійдіть, щоб бачити свої знижки до −10%": "— sign in to see your discounts up to −10%", "— увійдіть": "— sign in",
+  "Додайте до замовлення": "Add to your order", "Безкоштовна доставка": "Free delivery",
   // --- Товари ---
   "Сковорода антипригарна 24 см": "Non-stick frying pan, 24 cm",
   "Набір рушників, 3 шт.": "Towel set, 3 pcs",
@@ -327,7 +328,8 @@ const EN_RULES = [
   [/^(\d+) (січня|лютого|березня|квітня|травня|червня|липня|серпня|вересня|жовтня|листопада|грудня) (\d{4})$/, (m, d, mo, y) => `${["January","February","March","April","May","June","July","August","September","October","November","December"][["січня","лютого","березня","квітня","травня","червня","липня","серпня","вересня","жовтня","листопада","грудня"].indexOf(mo)]} ${d}, ${y}`],
   [/^Надіслати ще раз через (\d+) с$/, (m, n) => `Resend in ${n} s`],
   [/^Вітаємо, (.+)! Персональні ціни увімкнено ✓$/, (m, n) => `Welcome, ${n}! Personal prices are on ✓`],
-  [/^— увійдіть, і (\d+) (товар|товари) з кошика стануть дешевші$/, (m, n) => `— sign in and ${n} cart item${n === "1" ? "" : "s"} get cheaper`],
+  [/^— увійдіть, і (\d+) (товари|товарів) з кошика стануть дешевшими$/, (m, n) => `— sign in and ${n} cart items get cheaper`],
+  [/^— увійдіть, і товар з кошика стане дешевшим$/, () => "— sign in and your cart item gets cheaper"],
   [/^Банер (\d+)$/, (m, n) => `Banner ${n}`],
   [/^Магазин: (.*)$/, (m, v) => `Store: ${trParts(v)}`],
   [/^Швидко додати «(.*)» у кошик$/, (m, v) => `Quick add “${tr(v)}” to cart`],

@@ -80,7 +80,7 @@
     if (!authed) {
       const n = items.reduce((a, [, q]) => a + q, 0);
       body = `${items.length ? `<span class="pzs-thumbs">${items.slice(0, 3).map(([p]) => `<img src="${imgSrc(p)}" alt="">`).join("")}</span>` : ic}
-        <span class="pzs-txt"><b>Персональна ціна для вас</b><span class="pzs-long"> — ${items.length ? `увійдіть, і ${n} ${plural(n, "товар", "товари", "товари")} з кошика стануть дешевші` : "увійдіть, щоб бачити свої знижки до −10%"}</span><span class="pzs-short"> — увійдіть</span></span>
+        <span class="pzs-txt"><b>Персональна ціна для вас</b><span class="pzs-long"> — ${items.length ? `увійдіть, і ${n === 1 ? "товар з кошика стане дешевшим" : `${n} ${plural(n, "товар", "товари", "товарів")} з кошика стануть дешевшими`}` : "увійдіть, щоб бачити свої знижки до −10%"}</span><span class="pzs-short"> — увійдіть</span></span>
         <button type="button" class="pzs-cta" data-login>Увійти</button>`;
     } else if (items.length) {
       const n = items.reduce((a, [, q]) => a + q, 0);

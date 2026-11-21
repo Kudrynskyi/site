@@ -325,7 +325,7 @@ function renderCart() {
         <div class="cart-price">${p.old ? `<s>${money(p.old * qty)}</s>` : ""}<b>${money(p.price * qty)}</b></div>
         <button class="icon-btn remove" data-remove-item="${p.id}" aria-label="Видалити"><svg><use href="#i-trash"/></svg></button>
       </div>
-    </li>`).join("");
+    </li>`).join("") + crossSell(entries);
   $("#cartItemsCount").textContent = itemsWord(cartCount());
   const goods = entries.reduce((s, [p, q]) => s + (p.old || p.price) * q, 0);
   const total = cartTotal();
@@ -345,6 +345,33 @@ function renderCart() {
   $("#cartEmpty").hidden = entries.length > 0;
   $("#freeDelivery").hidden = entries.length === 0;
   $("#cartPay").hidden = entries.length === 0;
+}
+
+// Крос-сел у кошику: доповнення до того, що вже лежить у кошику
+const XS_PAIRS = { kitchen: ["clean", "home"], clean: ["kitchen", "beauty"], home: ["season", "beauty"], beauty: ["clean", "home"], kids: ["office", "season"], office: ["kids"], garden: ["tools"], tools: ["garden"], pets: ["home", "clean"], season: ["home", "kids"] };
+function crossSell(entries) {
+  if (!entries.length) return "";
+  const inCart = new Set(entries.map(([p]) => p.id));
+  const cats = [...new Set(entries.flatMap(([p]) => XS_PAIRS[p.cat] || []))];
+  const left = FREE_DELIVERY_FROM - cartTotal();
+  let list = products.filter((p) => !inCart.has(p.id) && cats.includes(p.cat))
+    .sort((a, b) => (b.old ? 1 : 0) - (a.old ? 1 : 0) || b.rating - a.rating);
+  if (list.length < 6) list = list.concat(products.filter((p) => !inCart.has(p.id) && !list.includes(p) && (p.hit || p.old)));
+  list = list.slice(0, 8);
+  // товар, що «закриває» безкоштовну доставку, — першим
+  if (left > 0) { const i = list.findIndex((p) => p.price >= left); if (i > 0) list.unshift(list.splice(i, 1)[0]); }
+  if (!list.length) return "";
+  return `<li class="cart-xs">
+      <h4>Додайте до замовлення</h4>
+      <div class="xs-row">${list.map((p) => `
+        <div class="xs-item">
+          <a class="xs-img" href="${productUrl(p)}"><img src="${imgSrc(p)}" alt="" loading="lazy">${p.old ? `<em>−${discount(p)}%</em>` : ""}</a>
+          ${left > 0 && p.price >= left ? `<span class="xs-tag">Безкоштовна доставка</span>` : ""}
+          <a class="xs-name" href="${productUrl(p)}">${p.name}</a>
+          <div class="xs-foot"><span class="xs-price"><b>${money(p.price)}</b>${p.old ? `<s>${money(p.old)}</s>` : ""}</span>
+            <button class="xs-add" data-add-extra="${p.id}" aria-label="Додати «${p.name}» у кошик"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg></button></div>
+        </div>`).join("")}</div>
+    </li>`;
 }
 
 let lastAdded = null;
@@ -494,7 +521,7 @@ document.addEventListener("click", (e) => {
     renderCatalog();
   }
   else if (d.add) addToCart(d.add);
-  else if (d.addExtra) { addToCart(d.addExtra, false); renderPreCart(); }
+  else if (d.addExtra) { addToCart(d.addExtra, false); renderPreCart(); if (t.closest(".cart-xs")) toast("Додано в кошик ✓"); }
   else if (d.inc) setQty(d.inc, (cart[d.inc] || 0) + 1);
   else if (d.dec) setQty(d.dec, (cart[d.dec] || 0) - 1);
   else if (d.removeItem) setQty(d.removeItem, 0);
