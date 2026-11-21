@@ -73,20 +73,22 @@
     if (!el) return;
     let hidden = false; try { hidden = sessionStorage.getItem("ogogo-snack") === "1"; } catch (e) {}
     if (hidden) { el.hidden = true; return; }
-    const authed = !!(load("ogogo-checkout", {}).name || "").trim();
+    const authed = !!(window.ogogoAuth && ogogoAuth.user());
     const items = Object.entries(s.cart).map(([k, q]) => [byId(k), q]).filter(([p]) => p);
     const ic = `<span class="pzs-ic" aria-hidden="true">%</span>`;
     let body;
-    if (items.length) {
+    if (!authed) {
+      const n = items.reduce((a, [, q]) => a + q, 0);
+      body = `${items.length ? `<span class="pzs-thumbs">${items.slice(0, 3).map(([p]) => `<img src="${imgSrc(p)}" alt="">`).join("")}</span>` : ic}
+        <span class="pzs-txt"><b>Персональна ціна для вас</b><span class="pzs-long"> — ${items.length ? `увійдіть, і ${n} ${plural(n, "товар", "товари", "товари")} з кошика стануть дешевші` : "увійдіть, щоб бачити свої знижки до −10%"}</span><span class="pzs-short"> — увійдіть</span></span>
+        <button type="button" class="pzs-cta" data-login>Увійти</button>`;
+    } else if (items.length) {
       const n = items.reduce((a, [, q]) => a + q, 0);
       const sum = items.reduce((a, [p, q]) => a + p.price * q, 0);
       const pers = Math.round(sum * 0.95);
       body = `<span class="pzs-thumbs">${items.slice(0, 3).map(([p]) => `<img src="${imgSrc(p)}" alt="">`).join("")}</span>
         <span class="pzs-txt"><b>У кошику ${n} ${plural(n, "товар", "товари", "товарів")}</b><span class="pzs-long"> — персональна ціна для вас </span><span class="pzs-short">Ваша ціна </span><b class="pzs-price">${money(pers)}</b> <s>${money(sum)}</s></span>
         <a class="pzs-cta" href="checkout.html">Оформити</a>`;
-    } else if (!authed) {
-      body = `${ic}<span class="pzs-txt"><b>Для вас персональна знижка −10%</b> — увійдіть, щоб побачити свої ціни</span>
-        <a class="pzs-cta" href="profile.html">Увійти</a>`;
     } else {
       const c = catById(top[0] || "home");
       body = `${ic}<span class="pzs-txt"><b>Для вас персональна знижка −10%</b> на «${c.name}»</span>
@@ -105,7 +107,7 @@
     snack(s, top);
 
     // 1) привітання + швидкі категорії
-    const name0 = (load("ogogo-checkout", {}).name || "").trim().split(/\s+/)[0];
+    const name0 = ((window.ogogoAuth && ogogoAuth.user()) || {}).name || "";
     // товар, який цікавив, — зі знижкою
     const seenIds = [...s.viewed, ...s.wish].filter((p) => !s.cart[p.id]);
     const deal = has ? (seenIds.find((p) => p.old)
@@ -156,5 +158,6 @@
     if (e.target.closest("#pzFor [data-quick-add], #pzFor [data-add], #pzFor [data-inc], #pzFor [data-dec], #pzFor [data-wish]")) setTimeout(render, 0);
   });
   window.addEventListener("storage", render);
+  document.addEventListener("ogogo-auth", render);
   render();
 })();
