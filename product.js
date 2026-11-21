@@ -150,6 +150,7 @@ function renderStoreLabels() {
   const st = stores.find((x) => x.id === storeId) || stores[0];
   $$("[data-store-full]").forEach((el) => (el.textContent = `${st.city}, ${storeAddr(st)}`));
   $$("[data-store-city]").forEach((el) => (el.textContent = st.city));
+  $$("[data-store-place]").forEach((el) => (el.textContent = st.place || `${st.city}, ${st.street}`));
   $$("[data-store-addr]").forEach((el) => (el.textContent = storeAddr(st)));
 }
 
@@ -279,3 +280,9 @@ onScrollHeader();
     });
   }, { passive: true });
 })();
+
+// Нижня панель покупки — лише коли ціновий блок поза екраном
+if ("IntersectionObserver" in window && document.querySelector(".pdp-buybox")) {
+  new IntersectionObserver(([en]) => document.body.classList.toggle("pdp-bar-on", !en.isIntersecting), { rootMargin: "-80px 0px 0px 0px" })
+    .observe(document.querySelector(".pdp-buybox"));
+}

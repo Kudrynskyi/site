@@ -2718,3 +2718,22 @@ body.sx-open .search { background: #fff; box-shadow: inset 0 0 0 2px var(--yello
   .pz-hello:has(.pz-deal) .pz-quick { grid-column: 1; grid-row: 2; justify-content: flex-start; }
   .pz-hello:has(.pz-deal) .pz-deal { grid-column: 2; grid-row: 1 / 3; width: 100%; box-sizing: border-box; }
 }
+
+/* PDP: самовивіз за 10 хв */
+.pdp-pickup { display: flex; align-items: center; gap: 12px; width: 100%; min-height: 52px; padding: 8px 16px 8px 8px; border-radius: 999px; background: #EAF7EE; color: #157A3C; text-align: left; font-size: 15px; transition: background .15s; }
+.pdp-pickup:hover { background: #DDF2E4; }
+.pk-ic { flex-shrink: 0; display: grid; place-items: center; width: 36px; height: 36px; border-radius: 50%; background: #1F9D55; color: #fff; }
+.pk-ic svg { width: 20px; height: 20px; }
+.pk-txt { flex: 1; min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.pk-txt b { font-weight: 800; }
+.pdp-pickup .chev { flex-shrink: 0; font-size: 16px; color: #157A3C; }
+@media (max-width: 760px) {
+  .pdp-buybox { flex-wrap: nowrap; gap: 12px; }
+  .pdp-buybox .pdp-actions { display: flex; flex-shrink: 0; }
+  .pdp-buybox .pdp-buy { height: 52px; padding: 0 26px; font-size: 16px; }
+  .pdp-buybox .pdp-in-cart { display: none; }
+  .pdp-bar { transform: translateY(140%); transition: transform .25s ease; }
+  body.pdp-bar-on .pdp-bar { transform: none; }
+  .pdp-pickup { font-size: 14px; }
+}
+.pdp-info, .pdp > * { min-width: 0; }
