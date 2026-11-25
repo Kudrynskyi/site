@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Sana Vita Medical — багатопрофільний медичний центр в Одесі</title>
+  <meta name="description" content="Check-up програми, УЗД-діагностика, лабораторія й лікарі 25 спеціальностей в одному центрі. Одеса, вул. Водопровідна, 2/5.">
+  <meta name="theme-color" content="#A0177F">
+  <link rel="icon" href="assets/icons/logo-mark.svg" type="image/svg+xml">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Sana Vita Medical">
+  <meta property="og:locale" content="uk_UA">
+  <meta property="og:title" content="Sana Vita Medical — check-up за один візит">
+  <meta property="og:description" content="Аналізи, УЗД і консультації лікарів без черг. Висновок того ж дня.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Перейти до змісту</a>
+
+  <!-- Utility bar (desktop) -->
+  <div class="utility">
+    <div class="container utility__inner">
+      <ul class="utility__contacts">
+        <li><img src="assets/icons/util-pin.svg" width="16" height="16" alt="">Одеса, вул. Водопровідна, 2/5</li>
+        <li><img src="assets/icons/util-phone.svg" width="16" height="16" alt=""><a class="utility__phone" href="tel:+380672864378">+38 (067) 286 43 78</a></li>
+        <li><img src="assets/icons/util-clock.svg" width="16" height="16" alt="">Щодня 8:00–22:00</li>
+        <li><img src="assets/icons/util-telegram.svg" width="16" height="16" alt=""><a href="#" data-stub>Telegram</a></li>
+        <li><img src="assets/icons/util-viber.svg" width="16" height="16" alt=""><a href="#" data-stub>Viber</a></li>
+      </ul>
+      <div class="lang" role="group" aria-label="Мова сайту">
+        <button class="lang__item is-active" aria-pressed="true">УКР</button>
+        <span class="lang__sep" aria-hidden="true">|</span>
+        <button class="lang__item" aria-pressed="false">EN</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header class="header" id="top">
+    <div class="container header__inner">
+      <a class="logo" href="#top" aria-label="Sana Vita Medical — на головну">
+        <img class="logo__mark" src="assets/icons/logo-mark.svg" width="36" height="36" alt="">
+        <span class="logo__word">
+          <span class="logo__name">sana <span class="logo__accent">vita</span></span>
+          <span class="logo__sub">MEDICAL</span>
+        </span>
+      </a>
+      <nav class="nav" aria-label="Головне меню">
+        <a href="#directions">Послуги</a>
+        <a href="#programs">Програми</a>
+        <a href="#programs">Ціни</a>
+        <a href="#doctors">Лікарі</a>
+        <a href="#reviews">Відгуки</a>
+        <a href="#how">Про нас</a>
+        <a href="#footer">Контакти</a>
+        <button class="nav__more" type="button" aria-expanded="false" aria-controls="more-menu">Ще <img src="assets/icons/chevron-nav.svg" width="12" height="12" alt=""></button>
+        <div class="nav__dropdown" id="more-menu" hidden>
+          <a href="#footer">Ліцензії</a>
+          <a href="#footer">Вакансії</a>
+          <a href="#footer">Блог</a>
+        </div>
+      </nav>
+      <a class="btn btn--primary btn--s header__cta" href="#booking">Записатися на прийом</a>
+      <div class="header__mobile">
+        <a class="icon-btn icon-btn--soft" href="tel:+380672864378" aria-label="Зателефонувати"><img src="assets/icons/m-phone.svg" width="17" height="17" alt=""></a>
+        <button class="icon-btn" type="button" id="burger" aria-label="Відкрити меню" aria-expanded="false" aria-controls="drawer"><img src="assets/icons/m-burger.svg" width="18" height="12" alt=""></button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile drawer -->
+  <div class="drawer" id="drawer" hidden>
+    <nav class="drawer__nav" aria-label="Мобільне меню">
+      <a href="#directions">Послуги</a>
+      <a href="#programs">Програми й ціни</a>
+      <a href="#doctors">Лікарі</a>
+      <a href="#reviews">Відгуки</a>
+      <a href="#how">Як це працює</a>
+      <a href="#footer">Контакти</a>
+    </nav>
+    <div class="drawer__contacts">
+      <a href="tel:+380672864378"><img src="assets/icons/util-phone.svg" width="16" height="16" alt="">+38 (067) 286 43 78</a>
+      <span><img src="assets/icons/util-pin.svg" width="16" height="16" alt="">Одеса, вул. Водопровідна, 2/5</span>
+      <span><img src="assets/icons/util-clock.svg" width="16" height="16" alt="">Щодня 8:00–22:00</span>
+    </div>
+    <a class="btn btn--primary btn--m btn--block" href="#booking">Записатися на прийом</a>
+  </div>
+
+  <main id="main">
+    <!-- Hero -->
+    <section class="hero" aria-roledescription="карусель" aria-label="Програми та акції">
+      <div class="hero__card">
+        <div class="hero__track" id="hero-track" tabindex="-1">
+          <!-- 1 -->
+          <article class="slide" aria-roledescription="слайд" aria-label="1 з 7">
+            <div class="slide__content">
+              <span class="chip"><span class="d-only">Комплексна діагностика для жінок</span><span class="m-only">Діагностика для жінок</span></span>
+              <h1 class="slide__title"><span>Жіночий check-up</span> <span class="accent">за один візит</span></h1>
+              <p class="slide__text">Аналізи, УЗД і консультація гінеколога — без черг і зайвих візитів. Висновок лікаря того ж дня.</p>
+              <ul class="facts"><li>1 візит · ~2 год</li><li>12 обстежень</li><li>від ХХХХ грн</li></ul>
+              <div class="slide__actions">
+                <a class="btn btn--primary btn--l" href="#booking" data-program="Жіночий check-up">Записатися на check-up <img src="assets/icons/arrow-white.svg" width="18" height="18" alt=""></a>
+                <a class="btn btn--secondary btn--l" href="#programs">Що входить у програму</a>
+              </div>
+            </div>
+            <div class="slide__photo">
+              <img src="assets/img/hero-women.jpg" width="520" height="500" alt="Пацієнтка на консультації в лікарки">
+              <div class="badge"><span class="badge__icon"><img src="assets/icons/star-badge.svg" width="20" height="20" alt=""></span><span><b>4.9 · 1 200+ відгуків</b><small>Google та Doc.ua</small></span></div>
+            </div>
+          </article>
+          <!-- 2 -->
+          <article class="slide" aria-roledescription="слайд" aria-label="2 з 7">
+            <div class="slide__content">
+              <span class="chip">Для чоловіків 30+</span>
+              <h2 class="slide__title"><span>Check-up</span> <span class="accent">для чоловіків</span></h2>
+              <p class="slide__text">Одна програма замість пʼяти окремих візитів: аналізи, ЕКГ, УЗД і консультації профільних лікарів.</p>
+              <ul class="facts"><li>1 візит · ~2 год</li><li>10 обстежень</li><li>від ХХХХ грн</li></ul>
+              <div class="slide__actions">
+                <a class="btn btn--primary btn--l" href="#booking" data-program="Чоловічий check-up">Записатися на check-up <img src="assets/icons/arrow-white.svg" width="18" height="18" alt=""></a>
+                <a class="btn btn--secondary btn--l" href="#programs">Що входить у програму</a>
+              </div>
+            </div>
+            <div class="slide__photo">
+              <img src="assets/img/prog-men.jpg" width="520" height="500" alt="Лікар пояснює пацієнту результати обстеження" loading="lazy">
+              <div class="badge"><span class="badge__icon"><img src="assets/icons/shield.svg" width="20" height="20" alt=""></span><span><b>Висновок того ж дня</b><small>Від лікаря-терапевта</small></span></div>
+            </div>
+          </article>
+          <!-- 3 -->
+          <article class="slide" aria-roledescription="слайд" aria-label="3 з 7">
+            <div class="slide__content">
+              <span class="chip">Державна програма</span>
+              <h2 class="slide__title"><span>Скринінг 40+</span> <span class="accent">безкоштовно</span></h2>
+              <p class="slide__text">Базове обстеження для людей від 40 років: тиск, цукор, холестерин, ЕКГ і консультація лікаря.</p>
+              <ul class="facts"><li>~1,5 год</li><li>8 обстежень</li><li>0 грн</li></ul>
+              <div class="slide__actions">
+                <a class="btn btn--primary btn--l" href="#booking" data-program="Скринінг 40+">Перевірити, чи я маю право <img src="assets/icons/arrow-white.svg" width="18" height="18" alt=""></a>
+                <a class="btn btn--secondary btn--l" href="#programs">Умови програми</a>
+              </div>
+            </div>
+            <div class="slide__photo">
+              <img src="assets/img/prog-screening.jpg" width="520" height="500" alt="Медсестра вимірює тиск пацієнтці" loading="lazy">
+              <div class="badge"><span class="badge__icon"><img src="assets/icons/shield.svg" width="20" height="20" alt=""></span><span><b>Без направлення</b><small>Достатньо декларації</small></span></div>
+            </div>
+          </article>
+          <!-- 4 -->
+          <article class="slide" aria-roledescription="слайд" aria-label="4 з 7">
+            <div class="slide__content">
+              <span class="chip">Акція до 30 листопада</span>
+              <h2 class="slide__title"><span>Кардіо-скринінг</span> <span class="accent">зі знижкою 20%</span></h2>
+              <p class="slide__text">ЕКГ, УЗД серця й консультація кардіолога. Знижка діє на повну програму.</p>
+              <ul class="facts"><li>~1 год</li><li>5 обстежень</li><li>від ХХХХ грн</li></ul>
+              <div class="slide__actions">
+                <a class="btn btn--primary btn--l" href="#booking" data-program="Кардіо-скринінг">Записатися зі знижкою <img src="assets/icons/arrow-white.svg" width="18" height="18" alt=""></a>
+                <a class="btn btn--secondary btn--l" href="#programs">Деталі акції</a>
+              </div>
+            </div>
+            <div class="slide__photo">
+              <img src="assets/img/prog-cardio.jpg" width="520" height="500" alt="Пацієнт на ЕКГ" loading="lazy">
+              <div class="badge"><span class="badge__icon"><img src="assets/icons/badge-heart.svg" width="20" height="20" alt=""></span><span><b>−20% на програму</b><small>До 30 листопада</small></span></div>
+            </div>
+          </article>
+          <!-- 5 -->
+          <article class="slide" aria-roledescription="слайд" aria-label="5 з 7">
+            <div class="slide__content">
+              <span class="chip">Апарати експертного класу</span>
+              <h2 class="slide__title"><span>УЗД без черг</span> <span class="accent">запис на сьогодні</span></h2>
+              <p class="slide__text">Усі види УЗД-діагностики з висновком лікаря одразу після обстеження.</p>
+              <ul class="facts"><li>від 20 хв</li><li>30+ видів УЗД</li><li>від ХХХ грн</li></ul>
+              <div class="slide__actions">
+                <a class="btn btn--primary btn--l" href="#booking" data-program="УЗД-діагностика">Обрати вид УЗД <img src="assets/icons/arrow-white.svg" width="18" height="18" alt=""></a>
+                <a class="btn btn--secondary btn--l" href="#directions">Ціни на УЗД</a>
+              </div>
+            </div>
+            <div class="slide__photo">
+              <img src="assets/img/prog-women.jpg" width="520" height="500" alt="Лікарка проводить УЗД" loading="lazy">
+              <div class="badge"><span class="badge__icon"><img src="assets/icons/calendar.svg" width="20" height="20" alt=""></span><span><b>Є вікна сьогодні</b><small>14:30 · 16:00 · 18:15</small></span></div>
+            </div>
+          </article>
+          <!-- 6 -->
+          <article class="slide" aria-roledescription="слайд" aria-label="6 з 7">
+            <div class="slide__content">
+              <span class="chip">Безкоштовно за програмою НСЗУ</span>
+              <h2 class="slide__title"><span>Сімейний лікар</span> <span class="accent">для всієї родини</span></h2>
+              <p class="slide__text">Укладіть декларацію онлайн за 5 хвилин: терапевт і педіатр поруч із домом.</p>
+              <ul class="facts"><li>Онлайн за 5 хв</li><li>Дорослі й діти</li><li>0 грн</li></ul>
+              <div class="slide__actions">
+                <a class="btn btn--primary btn--l" href="#booking" data-program="Сімейний лікар">Укласти декларацію <img src="assets/icons/arrow-white.svg" width="18" height="18" alt=""></a>
+                <a class="btn btn--secondary btn--l" href="#doctors">Обрати лікаря</a>
+              </div>
+            </div>
+            <div class="slide__photo">
+              <img src="assets/img/hero-family.jpg" width="520" height="500" alt="Лікарка розмовляє з родиною" loading="lazy">
+              <div class="badge"><span class="badge__icon"><img src="assets/icons/badge-child.svg" width="20" height="20" alt=""></span><span><b>Е-направлення й рецепти</b><small>Без черг у реєстратурі</small></span></div>
+            </div>
+          </article>
+          <!-- 7 -->
+          <article class="slide" aria-roledescription="слайд" aria-label="7 з 7">
+            <div class="slide__content">
+              <span class="chip">Власна лабораторія</span>
+              <h2 class="slide__title"><span>Аналізи онлайн</span> <span class="accent">за 24 години</span></h2>
+              <p class="slide__text">300+ аналізів без попереднього запису. Результати в особистому кабінеті вже за 24 години.</p>
+              <ul class="facts"><li>Без запису</li><li>300+ аналізів</li><li>від ХХ грн</li></ul>
+              <div class="slide__actions">
+                <a class="btn btn--primary btn--l" href="#booking" data-program="Аналізи">Обрати аналізи <img src="assets/icons/arrow-white.svg" width="18" height="18" alt=""></a>
+                <a class="btn btn--secondary btn--l" href="#directions">Підготовка до аналізів</a>
+              </div>
+            </div>
+            <div class="slide__photo">
+              <img src="assets/img/hero-lab.jpg" width="520" height="500" alt="Лаборантка працює з пробірками" loading="lazy">
+              <div class="badge"><span class="badge__icon"><img src="assets/icons/badge-flask.svg" width="20" height="20" alt=""></span><span><b>Результати за 24 год</b><small>В особистому кабінеті</small></span></div>
+            </div>
+          </article>
+        </div>
+
+        <div class="slider-nav">
+          <div class="tabs" role="tablist" aria-label="Слайди">
+            <button class="tab" role="tab" type="button"><span class="tab__track"><span class="tab__progress"></span></span><span class="tab__label">Жіночий check-up</span></button>
+            <button class="tab" role="tab" type="button"><span class="tab__track"><span class="tab__progress"></span></span><span class="tab__label">Чоловічий check-up</span></button>
+            <button class="tab" role="tab" type="button"><span class="tab__track"><span class="tab__progress"></span></span><span class="tab__label">Скринінг 40+</span></button>
+            <button class="tab" role="tab" type="button"><span class="tab__track"><span class="tab__progress"></span></span><span class="tab__label">Кардіо −20%</span></button>
+            <button class="tab" role="tab" type="button"><span class="tab__track"><span class="tab__progress"></span></span><span class="tab__label">УЗД без черг</span></button>
+            <button class="tab" role="tab" type="button"><span class="tab__track"><span class="tab__progress"></span></span><span class="tab__label">Сімейний лікар</span></button>
+            <button class="tab" role="tab" type="button"><span class="tab__track"><span class="tab__progress"></span></span><span class="tab__label">Аналізи онлайн</span></button>
+          </div>
+          <p class="slider-nav__mobile-label"><span class="slider-nav__mobile-count" id="hero-count-m">1 / 7</span> <span id="hero-label-m">Жіночий check-up</span></p>
+          <div class="controls">
+            <button class="round-btn controls__arrow" type="button" id="hero-prev" aria-label="Попередній слайд"><img src="assets/icons/arrow-left.svg" width="20" height="20" alt=""></button>
+            <span class="controls__count" id="hero-count" aria-live="polite">01 / 07</span>
+            <button class="round-btn controls__arrow" type="button" id="hero-next" aria-label="Наступний слайд"><img src="assets/icons/arrow-right.svg" width="20" height="20" alt=""></button>
+            <button class="round-btn" type="button" id="hero-pause" aria-label="Зупинити автопрокрутку" aria-pressed="false">
+              <img class="ic-pause" src="assets/icons/pause.svg" width="20" height="20" alt="">
+              <svg class="ic-play" width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><path d="M6 4.5v11l9-5.5z" fill="#2B2B2B"/></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <form class="search" id="search" role="search" autocomplete="off">
+        <img class="search__icon" src="assets/icons/search.svg" width="22" height="22" alt="">
+        <label class="visually-hidden" for="search-input">Пошук лікаря, послуги або обстеження</label>
+        <input class="search__input" id="search-input" type="search" placeholder="Знайдіть лікаря, послугу або обстеження" data-placeholder-m="Лікар або послуга">
+        <span class="search__divider" aria-hidden="true"></span>
+        <label class="search__select">
+          <span class="visually-hidden">Напрямок</span>
+          <select id="search-dir">
+            <option value="">Усі напрямки</option>
+            <option>Гінекологія</option>
+            <option>Кардіологія</option>
+            <option>УЗД-діагностика</option>
+            <option>Лабораторія</option>
+            <option>Педіатрія</option>
+            <option>Терапія</option>
+          </select>
+          <img src="assets/icons/chevron-select.svg" width="16" height="16" alt="">
+        </label>
+        <button class="btn btn--primary btn--s search__btn" type="submit"><span class="search__btn-label">Знайти</span><svg class="search__btn-icon" width="20" height="20" viewBox="0 0 22 22" aria-hidden="true"><circle cx="10" cy="10" r="6.5" fill="none" stroke="#fff" stroke-width="2"/><path d="m15 15 4 4" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg></button>
+        <div class="search__results" id="search-results" role="listbox" hidden></div>
+      </form>
+    </section>
+
+    <!-- Trust stats -->
+    <section class="stats container" aria-label="Sana Vita в цифрах">
+      <div class="stat"><b>15+</b><span><span class="d-only">років турботи про здоровʼя</span><span class="m-only">років</span></span></div>
+      <div class="stat"><b>40+</b><span><span class="d-only">лікарів у команді</span><span class="m-only">лікарів</span></span></div>
+      <div class="stat"><b>30 000+</b><span><span class="d-only">пацієнтів щороку</span><span class="m-only">пацієнтів</span></span></div>
+      <div class="stat stat--desktop"><b>4.9</b><span>середня оцінка пацієнтів</span></div>
+    </section>
+
+    <!-- Programs -->
+    <section class="section container" id="programs">
+      <div class="section-head">
+        <div>
+          <p class="overline">Програми обстежень</p>
+          <h2 class="section-title">Оберіть check-up під свій вік і ціль</h2>
+        </div>
+        <a class="link-arrow" href="#booking">Усі програми <img src="assets/icons/link-arrow.svg" width="18" height="18" alt=""></a>
+      </div>
+      <div class="cards-row" data-scroll-row>
+        <article class="program program--featured">
+          <div class="program__img"><img src="assets/img/prog-women.jpg" width="257" height="180" alt="УЗД-обстеження пацієнтки" loading="lazy"></div>
+          <div class="program__body">
+            <h3 class="card-title">Жіночий check-up</h3>
+            <p class="muted-s">Аналізи, УЗД і консультація гінеколога за один візит</p>
+            <ul class="facts facts--wrap"><li>12 обстежень</li><li>~2 год</li></ul>
+          </div>
+          <div class="program__foot">
+            <div class="price"><small>Вартість</small><b>від ХХХХ грн</b></div>
+            <a class="go go--brand" href="#booking" data-program="Жіночий check-up" aria-label="Записатися на жіночий check-up"><img src="assets/icons/card-arrow.svg" width="20" height="20" alt=""></a>
+          </div>
+        </article>
+        <article class="program">
+          <div class="program__img"><img src="assets/img/prog-men.jpg" width="257" height="180" alt="Лікар консультує пацієнта" loading="lazy"></div>
+          <div class="program__body">
+            <h3 class="card-title">Чоловічий check-up</h3>
+            <p class="muted-s">Серце, гормони й урологія в одній програмі</p>
+            <ul class="facts facts--wrap"><li>10 обстежень</li><li>~2 год</li></ul>
+          </div>
+          <div class="program__foot">
+            <div class="price"><small>Вартість</small><b>від ХХХХ грн</b></div>
+            <a class="go" href="#booking" data-program="Чоловічий check-up" aria-label="Записатися на чоловічий check-up"><img src="assets/icons/card-arrow.svg" width="20" height="20" alt=""></a>
+          </div>
+        </article>
+        <article class="program">
+          <div class="program__img"><img src="assets/img/prog-screening.jpg" width="257" height="180" alt="Вимірювання тиску" loading="lazy"><span class="program__badge">Безкоштовно</span></div>
+          <div class="program__body">
+            <h3 class="card-title">Скринінг 40+</h3>
+            <p class="muted-s">Базове обстеження за державною програмою</p>
+            <ul class="facts facts--wrap"><li>8 обстежень</li><li>~1,5 год</li></ul>
+          </div>
+          <div class="program__foot">
+            <div class="price"><small>Вартість</small><b>Безкоштовно</b></div>
+            <a class="go" href="#booking" data-program="Скринінг 40+" aria-label="Записатися на скринінг 40+"><img src="assets/icons/card-arrow.svg" width="20" height="20" alt=""></a>
+          </div>
+        </article>
+        <article class="program">
+          <div class="program__img"><img src="assets/img/prog-cardio.jpg" width="257" height="180" alt="ЕКГ-обстеження" loading="lazy"></div>
+          <div class="program__body">
+            <h3 class="card-title">Кардіо-скринінг</h3>
+            <p class="muted-s">ЕКГ, УЗД серця й консультація кардіолога</p>
+            <ul class="facts facts--wrap"><li>5 обстежень</li><li>~1 год</li></ul>
+          </div>
+          <div class="program__foot">
+            <div class="price"><small>Вартість</small><b>від ХХХХ грн</b></div>
+            <a class="go" href="#booking" data-program="Кардіо-скринінг" aria-label="Записатися на кардіо-скринінг"><img src="assets/icons/card-arrow.svg" width="20" height="20" alt=""></a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Directions -->
+    <section class="section container" id="directions">
+      <div class="section-head">
+        <div>
+          <p class="overline">Напрямки</p>
+          <h2 class="section-title"><span class="d-only">Лікарі 25 спеціальностей в одному центрі</span><span class="m-only">25 спеціальностей в одному центрі</span></h2>
+        </div>
+        <a class="link-arrow" href="#doctors">Усі напрямки <img src="assets/icons/link-arrow.svg" width="18" height="18" alt=""></a>
+      </div>
+      <div class="tiles">
+        <a class="tile" href="#booking" data-program="Гінекологія">
+          <span class="tile__top"><span class="tile__icon"><img src="assets/icons/female.svg" width="26" height="26" alt=""></span><img src="assets/icons/tile-arrow.svg" width="20" height="20" alt=""></span>
+          <span class="tile__title">Гінекологія</span>
+          <span class="muted-s"><span class="d-only">8 лікарів · ведення вагітності</span><span class="m-only">8 лікарів</span></span>
+        </a>
+        <a class="tile" href="#booking" data-program="Кардіологія">
+          <span class="tile__top"><span class="tile__icon"><img src="assets/icons/heart.svg" width="26" height="26" alt=""></span><img src="assets/icons/tile-arrow.svg" width="20" height="20" alt=""></span>
+          <span class="tile__title">Кардіологія</span>
+          <span class="muted-s"><span class="d-only">6 лікарів · ЕКГ, УЗД серця</span><span class="m-only">6 лікарів</span></span>
+        </a>
+        <a class="tile" href="#booking" data-program="УЗД-діагностика">
+          <span class="tile__top"><span class="tile__icon"><img src="assets/icons/scan.svg" width="26" height="26" alt=""></span><img src="assets/icons/tile-arrow.svg" width="20" height="20" alt=""></span>
+          <span class="tile__title"><span class="d-only">УЗД-діагностика</span><span class="m-only">УЗД</span></span>
+          <span class="muted-s"><span class="d-only">Експертні апарати · без черг</span><span class="m-only">Без черг</span></span>
+        </a>
+        <a class="tile" href="#booking" data-program="Лабораторія">
+          <span class="tile__top"><span class="tile__icon"><img src="assets/icons/flask.svg" width="26" height="26" alt=""></span><img src="assets/icons/tile-arrow.svg" width="20" height="20" alt=""></span>
+          <span class="tile__title">Лабораторія</span>
+          <span class="muted-s"><span class="d-only">300+ аналізів · результати онлайн</span><span class="m-only">300+ аналізів</span></span>
+        </a>
+        <a class="tile tile--desktop" href="#booking" data-program="Педіатрія">
+          <span class="tile__top"><span class="tile__icon"><img src="assets/icons/child.svg" width="26" height="26" alt=""></span><img src="assets/icons/tile-arrow.svg" width="20" height="20" alt=""></span>
+          <span class="tile__title">Педіатрія</span>
+          <span class="muted-s">5 лікарів · від народження</span>
+        </a>
+        <a class="tile tile--desktop" href="#booking" data-program="Терапія">
+          <span class="tile__top"><span class="tile__icon"><img src="assets/icons/stethoscope.svg" width="26" height="26" alt=""></span><img src="assets/icons/tile-arrow.svg" width="20" height="20" alt=""></span>
+          <span class="tile__title">Терапія</span>
+          <span class="muted-s">Сімейний лікар · декларації</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- How it works -->
+    <section class="how" id="how">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <p class="overline">Як це працює</p>
+            <h2 class="section-title"><span class="d-only">Check-up за три прості кроки</span><span class="m-only">Check-up за три кроки</span></h2>
+          </div>
+        </div>
+        <ol class="steps">
+          <li class="step">
+            <span class="step__num">01</span>
+            <h3 class="step__title">Запишіться онлайн або телефоном</h3>
+            <p class="step__text"><span class="d-only">Оберіть програму й зручний час — адміністратор підтвердить запис.</span><span class="m-only">Оберіть програму й зручний час.</span></p>
+          </li>
+          <li class="step">
+            <span class="step__num">02</span>
+            <h3 class="step__title">Пройдіть обстеження за один візит</h3>
+            <p class="step__text"><span class="d-only">Аналізи, УЗД і консультації в одному місці, без черг між кабінетами.</span><span class="m-only">Усе в одному місці, без черг.</span></p>
+          </li>
+          <li class="step">
+            <span class="step__num">03</span>
+            <h3 class="step__title">Отримайте висновок і план</h3>
+            <p class="step__text"><span class="d-only">Лікар пояснить результати й дасть рекомендації того ж дня.</span><span class="m-only">Лікар пояснить результати того ж дня.</span></p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- Doctors -->
+    <section class="section container" id="doctors">
+      <div class="section-head">
+        <div>
+          <p class="overline">Наші лікарі</p>
+          <h2 class="section-title"><span class="d-only">Досвідчені лікарі, яким довіряють</span><span class="m-only">Лікарі, яким довіряють</span></h2>
+        </div>
+        <a class="link-arrow" href="#booking">Усі лікарі <img src="assets/icons/link-arrow.svg" width="18" height="18" alt=""></a>
+      </div>
+      <div class="cards-row cards-row--doctors" data-scroll-row>
+        <article class="doctor">
+          <div class="doctor__photo"><img src="assets/img/doc-koval.jpg" width="258" height="260" alt="Олена Коваль" loading="lazy"></div>
+          <div class="doctor__info">
+            <h3 class="doctor__name">Олена Коваль</h3>
+            <p class="muted-s">Гінеколог-ендокринолог</p>
+            <div class="doctor__meta"><span class="chip">Стаж 15 років</span><span class="rating"><img src="assets/icons/star-rating.svg" width="16" height="16" alt="">4.9</span></div>
+          </div>
+          <a class="btn btn--secondary btn--s btn--block" href="#booking" data-program="Гінеколог · Олена Коваль">Записатися</a>
+        </article>
+        <article class="doctor">
+          <div class="doctor__photo"><img src="assets/img/doc-melnyk.jpg" width="258" height="260" alt="Андрій Мельник" loading="lazy"></div>
+          <div class="doctor__info">
+            <h3 class="doctor__name">Андрій Мельник</h3>
+            <p class="muted-s">Кардіолог</p>
+            <div class="doctor__meta"><span class="chip">Стаж 12 років</span><span class="rating"><img src="assets/icons/star-rating.svg" width="16" height="16" alt="">4.8</span></div>
+          </div>
+          <a class="btn btn--secondary btn--s btn--block" href="#booking" data-program="Кардіолог · Андрій Мельник">Записатися</a>
+        </article>
+        <article class="doctor">
+          <div class="doctor__photo"><img src="assets/img/doc-bondar.jpg" width="258" height="260" alt="Ірина Бондар" loading="lazy"></div>
+          <div class="doctor__info">
+            <h3 class="doctor__name">Ірина Бондар</h3>
+            <p class="muted-s">Лікар УЗД-діагностики</p>
+            <div class="doctor__meta"><span class="chip">Стаж 10 років</span><span class="rating"><img src="assets/icons/star-rating.svg" width="16" height="16" alt="">4.9</span></div>
+          </div>
+          <a class="btn btn--secondary btn--s btn--block" href="#booking" data-program="УЗД · Ірина Бондар">Записатися</a>
+        </article>
+        <article class="doctor">
+          <div class="doctor__photo"><img src="assets/img/doc-shevchuk.jpg" width="258" height="260" alt="Марія Шевчук" loading="lazy"></div>
+          <div class="doctor__info">
+            <h3 class="doctor__name">Марія Шевчук</h3>
+            <p class="muted-s">Терапевт</p>
+            <div class="doctor__meta"><span class="chip">Стаж 8 років</span><span class="rating"><img src="assets/icons/star-rating.svg" width="16" height="16" alt="">4.8</span></div>
+          </div>
+          <a class="btn btn--secondary btn--s btn--block" href="#booking" data-program="Терапевт · Марія Шевчук">Записатися</a>
+        </article>
+      </div>
+    </section>
+
+    <!-- Reviews -->
+    <section class="section container" id="reviews">
+      <div class="section-head">
+        <div>
+          <p class="overline">Відгуки</p>
+          <h2 class="section-title">Що кажуть пацієнти</h2>
+        </div>
+        <a class="link-arrow" href="#reviews"><span class="d-only">Усі відгуки</span><span class="m-only">Усі</span> <img src="assets/icons/link-arrow.svg" width="18" height="18" alt=""></a>
+      </div>
+      <div class="cards-row cards-row--reviews" data-scroll-row>
+        <figure class="review">
+          <div class="review__top"><span class="stars" role="img" aria-label="5 з 5"><img src="assets/icons/star-review.svg" width="18" height="18" alt=""><img src="assets/icons/star-review.svg" width="18" height="18" alt=""><img src="assets/icons/star-review.svg" width="18" height="18" alt=""><img src="assets/icons/star-review.svg" width="18" height="18" alt=""><img src="assets/icons/star-review.svg" width="18" height="18" alt=""></span><img src="assets/icons/quote.svg" width="24" height="24" alt=""></div>
+          <blockquote class="review__text">Пройшла check-up за один ранок: усі аналізи й УЗД в одному місці, а висновок лікаря отримала того ж дня.</blockquote>
+          <figcaption class="review__author"><img src="assets/img/avatar-iryna.jpg" width="40" height="40" alt="" loading="lazy"><span><b>Ірина</b><small>Жіночий check-up</small></span></figcaption>
+        </figure>
+        <figure class="review">
+          <div class="review__top"><span class="stars" role="img" aria-label="5 з 5"><img src="assets/icons/star-review.svg" width="18" height="18" alt=""><img src="assets/icons/star-review.svg" width="18" height="18" alt=""><img src="assets/icons/star-review.svg" width="18" height="18" alt=""><img src="assets/icons/star-review.svg" width="18" height="18" alt=""><img src="assets/icons/star-review.svg" width="18" height="18" alt=""></span><img src="assets/icons/quote.svg" width="24" height="24" alt=""></div>
+          <blockquote class="review__text">Записався онлайн за хвилину, передзвонили через 10 хвилин. Кардіолог пояснив усе спокійно й зрозуміло.</blockquote>
+          <figcaption class="review__author"><img src="assets/img/avatar-oleh.jpg" width="40" height="40" alt="" loading="lazy"><span><b>Олег</b><small>Кардіо-скринінг</small></span></figcaption>
+        </figure>
+        <figure class="review">
+          <div class="review__top"><span class="stars" role="img" aria-label="5 з 5"><img src="assets/icons/star-review.svg" width="18" height="18" alt=""><img src="assets/icons/star-review.svg" width="18" height="18" alt=""><img src="assets/icons/star-review.svg" width="18" height="18" alt=""><img src="assets/icons/star-review.svg" width="18" height="18" alt=""><img src="assets/icons/star-review.svg" width="18" height="18" alt=""></span><img src="assets/icons/quote.svg" width="24" height="24" alt=""></div>
+          <blockquote class="review__text">Привела маму на скринінг 40+. Персонал уважний, усе чітко за часом і без зайвих витрат.</blockquote>
+          <figcaption class="review__author"><img src="assets/img/avatar-natalia.jpg" width="40" height="40" alt="" loading="lazy"><span><b>Наталія</b><small>Скринінг 40+</small></span></figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- Booking -->
+    <section class="booking-wrap container" id="booking">
+      <div class="booking">
+        <div class="booking__info">
+          <p class="overline overline--inverse">Запис на прийом</p>
+          <h2 class="booking__title">Запишіться на check-up або консультацію</h2>
+          <p class="booking__text"><span class="d-only">Залиште номер — адміністратор передзвонить, допоможе обрати програму й підбере зручний час.</span><span class="m-only">Адміністратор передзвонить і підбере зручний час.</span></p>
+          <ul class="booking__contacts">
+            <li><img src="assets/icons/book-phone.svg" width="18" height="18" alt=""><a href="tel:+380672864378"><b>+38 (067) 286 43 78</b></a></li>
+            <li><img src="assets/icons/book-pin.svg" width="18" height="18" alt="">Одеса, вул. Водопровідна, 2/5</li>
+            <li><img src="assets/icons/book-clock.svg" width="18" height="18" alt="">Щодня 8:00–22:00</li>
+          </ul>
+        </div>
+        <form class="booking__form" id="booking-form" novalidate>
+          <p class="booking__program" id="booking-program" hidden></p>
+          <div class="fields">
+            <div class="field">
+              <label for="f-name">Ваше імʼя</label>
+              <input id="f-name" name="name" type="text" placeholder="Як до вас звертатися" autocomplete="given-name" required>
+              <span class="field__error" id="f-name-err"></span>
+            </div>
+            <div class="field">
+              <label for="f-phone">Номер телефону</label>
+              <input id="f-phone" name="phone" type="tel" inputmode="tel" placeholder="+38 (0__) ___ __ __" autocomplete="tel" required>
+              <span class="field__error" id="f-phone-err"></span>
+            </div>
+          </div>
+          <fieldset class="time">
+            <legend>Коли зручно передзвонити?</legend>
+            <div class="time__chips">
+              <label class="time-chip"><input type="radio" name="time" value="asap" checked><span>Якнайшвидше</span></label>
+              <label class="time-chip"><input type="radio" name="time" value="morning"><span>Ранок<span class="d-only">&nbsp;· 8–12</span></span></label>
+              <label class="time-chip"><input type="radio" name="time" value="day"><span>День<span class="d-only">&nbsp;· 12–17</span></span></label>
+              <label class="time-chip"><input type="radio" name="time" value="evening"><span>Вечір<span class="d-only">&nbsp;· 17–22</span></span></label>
+            </div>
+          </fieldset>
+          <button class="btn btn--primary btn--l btn--block" type="submit">Записатися <img src="assets/icons/arrow-white.svg" width="18" height="18" alt=""></button>
+          <p class="consent">Передзвонимо протягом 15 хв у робочий час. Натискаючи кнопку, ви погоджуєтеся на обробку персональних даних.</p>
+          <div class="booking__success" id="booking-success" hidden tabindex="-1">
+            <b>Дякуємо, заявку прийнято!</b>
+            <p>Адміністратор передзвонить вам найближчим часом.</p>
+          </div>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer" id="footer">
+    <div class="container">
+      <div class="footer__top">
+        <div class="footer__brand">
+          <a class="logo logo--inverse" href="#top" aria-label="Sana Vita Medical — на головну">
+            <img class="logo__mark" src="assets/icons/logo-mark-inverse.svg" width="36" height="36" alt="">
+            <span class="logo__word"><span class="logo__name">sana <span class="logo__accent">vita</span></span><span class="logo__sub">MEDICAL</span></span>
+          </a>
+          <p>Багатопрофільний медичний центр в Одесі: check-up програми, діагностика й лікарі 25 спеціальностей.</p>
+        </div>
+        <nav class="footer__col" aria-label="Пацієнтам">
+          <h3>Пацієнтам</h3>
+          <a href="#programs"><span class="d-only">Програми обстежень</span><span class="m-only">Програми</span></a>
+          <a href="#programs">Ціни</a>
+          <a href="#doctors">Лікарі</a>
+          <a href="#reviews">Відгуки</a>
+        </nav>
+        <nav class="footer__col" aria-label="Клініка">
+          <h3>Клініка</h3>
+          <a href="#how">Про нас</a>
+          <a href="#" data-stub>Ліцензії</a>
+          <a href="#" data-stub>Вакансії</a>
+          <a href="#" data-stub>Блог</a>
+        </nav>
+        <div class="footer__col footer__contacts">
+          <h3>Контакти</h3>
+          <a class="footer__phone" href="tel:+380672864378"><img src="assets/icons/footer-phone.svg" width="16" height="16" alt="">+38 (067) 286 43 78</a>
+          <span><img src="assets/icons/footer-pin.svg" width="16" height="16" alt="">Одеса, вул. Водопровідна, 2/5</span>
+          <span><img src="assets/icons/footer-clock.svg" width="16" height="16" alt="">Щодня 8:00–22:00</span>
+          <div class="messengers">
+            <a class="messenger" href="#" data-stub><img src="assets/icons/footer-telegram.svg" width="16" height="16" alt="">Telegram</a>
+            <a class="messenger" href="#" data-stub><img src="assets/icons/footer-viber.svg" width="16" height="16" alt="">Viber</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <p>© 2026 Sana Vita Medical · Ліцензія МОЗ № ХХХХХХ</p>
+        <a href="#" data-stub>Політика конфіденційності</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Sticky CTA (mobile) -->
+  <div class="sticky-cta" id="sticky-cta">
+    <a class="btn btn--primary btn--m btn--block" href="#booking">Записатися на прийом</a>
+  </div>
+
+  <script src="main.js" defer></script>
+</body>
+</html>
