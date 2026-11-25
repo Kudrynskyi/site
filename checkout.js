@@ -393,7 +393,13 @@ document.addEventListener("click", (e) => {
 
 // ---------- Компактна шапка ----------
 const headerEl = $(".header");
-const onScrollHeader = () => headerEl.classList.toggle("scrolled", window.scrollY > 80);
+// Гістерезис: згортаємо після 140px, розгортаємо лише біля самого верху —
+// інакше зміна висоти шапки зсуває сторінку й клас перемикається туди-сюди.
+const onScrollHeader = () => {
+  const y = window.scrollY, on = headerEl.classList.contains("scrolled");
+  if (!on && y > 140) headerEl.classList.add("scrolled");
+  else if (on && y < 20) headerEl.classList.remove("scrolled");
+};
 window.addEventListener("scroll", onScrollHeader, { passive: true });
 onScrollHeader();
 
