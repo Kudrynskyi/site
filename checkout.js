@@ -2,14 +2,31 @@
 // Кроки згортаються після заповнення (✓ / !), праворуч — бонуси, промокод, підсумок.
 // Нічого не надсилається, дані картки не збираються.
 
-let cart = load("ogogo-cart", {});
+// Кошик: лише існуючі товари з цілою додатною кількістю
+let cart = (() => {
+  const raw = load("ogogo-cart", {}), out = {};
+  if (raw && typeof raw === "object") for (const [k, q] of Object.entries(raw)) { const n = Math.floor(Number(q)); if (n > 0 && byId(k)) out[k] = n; }
+  return out;
+})();
 let wishlist = new Set(load("ogogo-wish", []));
 let storeId = load("ogogo-store", 1);
 let storeCity = "Усі";
-const co = Object.assign({
+const CO_DEFAULTS = {
   name: "", phone: "", email: "", city: "Київ", mode: "self", delivery: "pickup", address: "", branch: "",
   payment: "", subst: "skip", bonusOn: false, bonusAmt: 0, promo: "", promoOn: false, noCall: true, comment: "",
-}, load("ogogo-checkout", {}));
+};
+// Збережені дані могли лишитися від старих версій або бути пошкоджені — беремо лише поля правильного типу
+function cleanCo(raw) {
+  const o = { ...CO_DEFAULTS };
+  if (raw && typeof raw === "object") for (const k of Object.keys(CO_DEFAULTS)) {
+    const v = raw[k], t = typeof CO_DEFAULTS[k];
+    if (typeof v === t) o[k] = v;
+    else if (t === "number" && v != null && v !== "" && !isNaN(Number(v))) o[k] = Number(v);
+    else if (t === "string" && typeof v === "number") o[k] = String(v);
+  }
+  return o;
+}
+const co = cleanCo(load("ogogo-checkout", {}));
 const ui = { open: null, items: false, promoMsg: "", promoOpen: false };
 const persist = () => save("ogogo-checkout", co);
 
@@ -302,7 +319,25 @@ function submit() {
   window.scrollTo({ top: 0 });
 }
 
-render();
+// Значення, що залежать від довідників (оголошених вище), перевіряємо тут
+function fixRefs() {
+  if (!DELIV[co.delivery]) co.delivery = "pickup";
+  co.mode = DELIV[co.delivery].mode;
+  if (co.payment && !PAY[co.payment]) co.payment = "";
+  if (!["replace", "skip", "call"].includes(co.subst)) co.subst = "skip";
+  co.bonusAmt = Math.max(0, Math.round(co.bonusAmt) || 0);
+}
+fixRefs();
+const renderSafe = () => {
+  try { render(); }
+  catch (err) {
+    console.error("checkout: скидаю пошкоджені налаштування", err);
+    Object.assign(co, cleanCo({ name: co.name, phone: co.phone, email: co.email }));
+    fixRefs(); persist(); ui.open = null;
+    render();
+  }
+};
+renderSafe();
 renderCounts();
 
 // ---------- Каталог у шапці ----------
