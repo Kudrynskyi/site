@@ -128,8 +128,8 @@ function deliverySection() {
       <datalist id="coCities">${CITIES.map((c) => `<option value="${c}">`).join("")}</datalist>
     </div>
     <div class="seg-tabs" role="tablist">
-      <button type="button" role="tab" class="${co.mode === "self" ? "on" : ""}" data-mode="self">Забрати самостійно <small>${minPrice("self") ? `від ${money(minPrice("self"))}` : "від ₴0"}</small></button>
-      <button type="button" role="tab" class="${co.mode === "courier" ? "on" : ""}" data-mode="courier">Кур'єром <small>від ${money(minPrice("courier"))}</small></button>
+      <button type="button" role="tab" class="${co.mode === "self" ? "on" : ""}" data-mode="self"><b>Самовивіз</b><small>${minPrice("self") ? `від ${money(minPrice("self"))}` : "безкоштовно"}</small></button>
+      <button type="button" role="tab" class="${co.mode === "courier" ? "on" : ""}" data-mode="courier"><b>Кур'єром</b><small>від ${money(minPrice("courier"))}</small></button>
     </div>
     <div class="dopts">${keys.map(deliveryOption).join("")}</div>
     ${subtotal() < FREE_DELIVERY_FROM ? `<p class="co-tip">Додайте товарів ще на <b>${money(FREE_DELIVERY_FROM - subtotal())}</b> — і доставка буде безкоштовною</p>` : ""}

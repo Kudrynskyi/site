@@ -171,7 +171,7 @@ const EN = {
   "Оберіть доставку": "Choose delivery", "Оберіть спосіб оплати": "Choose payment", "Спосіб оплати": "Payment method",
   "Самовивіз з магазину": "Store pickup", "Кур'єр до дверей": "Courier to your door", "Доставка з 10:00 до 21:00": "Delivered 10:00–21:00",
   "Заберіть у найближчому відділенні, у зручний час": "Pick up at the nearest branch whenever suits you",
-  "Ваше місто:": "Your city:", "Забрати самостійно": "Pick up", "Кур'єром": "By courier", "Обрати інший магазин": "Choose another store",
+  "Ваше місто:": "Your city:", "Забрати самостійно": "Pick up", "Самовивіз": "Pickup", "безкоштовно": "free", "Кур'єром": "By courier", "Обрати інший магазин": "Choose another store",
   "Оплата при отриманні": "Pay on delivery", "Ваші товари": "Your items", "На суму": "Total", "Редагувати кошик": "Edit cart",
   "Мені можна не передзвонювати": "No need to call me", "Якщо вам потрібна консультація щодо замовлення — зніміть галочку": "Untick if you'd like a call about your order",
   "Коментар до замовлення": "Order comment", "Списати бонуси": "Use bonuses", "Доступно:": "Available:", "Усі": "All",
